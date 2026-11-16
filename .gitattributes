@@ -1,0 +1,8 @@
+# Preserve supplied source files byte-for-byte, including their original spacing.
+design/brand-kit/** -text -whitespace
+*.pdf binary
+*.zip binary
+*.pptx binary
+*.ttf binary
+*.png binary
+*.jpg binary

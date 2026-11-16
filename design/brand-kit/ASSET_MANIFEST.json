@@ -1,0 +1,660 @@
+{
+  "kit": "VoltoShare Brand Kit",
+  "version": "2.0",
+  "prepared": "2026-11-16",
+  "ai_entry_point": "05_Website/OPENCLAW_IMPLEMENTATION_GUIDE.md",
+  "human_entry_point": "01_Guidelines/VoltoShare_Design_Guidelines.pdf",
+  "demo_entry_point": "05_Website/index.html",
+  "original_editable_font": "Unknown from supplied raster references",
+  "editable_companion_font": "Liberation Sans",
+  "font_license": "04_Fonts/LICENSE.txt",
+  "files": [
+    {
+      "path": "01_Guidelines/VoltoShare_Design_Guidelines.pdf",
+      "bytes": 4786950,
+      "sha256": "3a7d4c02d566f734a8912f9b730e65919d6ac26db05a2ab19c22a15bddcdee2c",
+      "mime": "application/pdf",
+      "role": "Human-readable design guide and reproducible source",
+      "pages": 18
+    },
+    {
+      "path": "01_Guidelines/source/README.txt",
+      "bytes": 324,
+      "sha256": "4661a0ab3c7293d7cec53f2623ce3f99cdb0602bb2ad27d62dca664a99bfe457",
+      "mime": "text/plain",
+      "role": "Human-readable design guide and reproducible source"
+    },
+    {
+      "path": "01_Guidelines/source/build-guide.py",
+      "bytes": 29432,
+      "sha256": "0025db492db4e2212bd9d5f9185daf62cb444e34b96cd22666436ce6f12e2395",
+      "mime": "text/x-python",
+      "role": "Human-readable design guide and reproducible source"
+    },
+    {
+      "path": "01_Guidelines/source/requirements.txt",
+      "bytes": 32,
+      "sha256": "6c5c8f18e275ca6f26ef56387136452c5382fdf6c0590eea68a78c2f6f6ae1ea",
+      "mime": "text/plain",
+      "role": "Human-readable design guide and reproducible source"
+    },
+    {
+      "path": "02_Logos/README.txt",
+      "bytes": 1250,
+      "sha256": "69adb9bf2a0f490312aa6b98c2085976b10e2e227e645b7717bacaaf66036025",
+      "mime": "text/plain",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export"
+    },
+    {
+      "path": "02_Logos/voltoshare-logo-black.png",
+      "bytes": 101523,
+      "sha256": "519798ef9e1a7b16e2ba175524da4cc905f950d9929c6402149c1f6b0fe8ca0e",
+      "mime": "image/png",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "width": 3000,
+      "height": 676,
+      "has_alpha": true
+    },
+    {
+      "path": "02_Logos/voltoshare-logo-black.svg",
+      "bytes": 35561,
+      "sha256": "05468cf2ef156d4809904c081a0b554bbcb5d480795446b4032a6f01c0dffc6d",
+      "mime": "image/svg+xml",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "native_paths": true,
+      "provenance": "Cleaned vector reconstruction from supplied raster artwork, not original editable source file"
+    },
+    {
+      "path": "02_Logos/voltoshare-logo-navigation.png",
+      "bytes": 88830,
+      "sha256": "145e20f33661d6a7e38fb138afa76b98ea36bcbc868ceeb562f65ff3a3b9015e",
+      "mime": "image/png",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "width": 3000,
+      "height": 516,
+      "has_alpha": true
+    },
+    {
+      "path": "02_Logos/voltoshare-logo-navigation.svg",
+      "bytes": 14422,
+      "sha256": "274abf9f7776049ca5e89c62d1c34fdb065b1265739a5f0631d17d2c11863a8a",
+      "mime": "image/svg+xml",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "native_paths": true,
+      "provenance": "Cleaned vector reconstruction from supplied raster artwork, not original editable source file"
+    },
+    {
+      "path": "02_Logos/voltoshare-logo-primary.png",
+      "bytes": 133405,
+      "sha256": "3f47e9f0318960da9d666d5eb787f3815ae7ea98b21066620a0fe89c9de13e64",
+      "mime": "image/png",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "width": 3000,
+      "height": 676,
+      "has_alpha": true
+    },
+    {
+      "path": "02_Logos/voltoshare-logo-primary.svg",
+      "bytes": 35561,
+      "sha256": "81fbdbdbda35b2db67e0f5fb448be541d8f62b77d78b26f48f574f38f8512998",
+      "mime": "image/svg+xml",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "native_paths": true,
+      "provenance": "Cleaned vector reconstruction from supplied raster artwork, not original editable source file"
+    },
+    {
+      "path": "02_Logos/voltoshare-logo-white.png",
+      "bytes": 100731,
+      "sha256": "d220e29842ee065e7691b1e863057a02fd5347cb1c8fe6c4c148b4c772622514",
+      "mime": "image/png",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "width": 3000,
+      "height": 676,
+      "has_alpha": true
+    },
+    {
+      "path": "02_Logos/voltoshare-logo-white.svg",
+      "bytes": 35561,
+      "sha256": "df591609163817f7e4d714eae6406b758cbbfbb4f9340a455151963c71007e19",
+      "mime": "image/svg+xml",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "native_paths": true,
+      "provenance": "Cleaned vector reconstruction from supplied raster artwork, not original editable source file"
+    },
+    {
+      "path": "02_Logos/voltoshare-symbol-black.png",
+      "bytes": 73500,
+      "sha256": "26c7490e60bf403301b6d4a5951f4ec1dea07193f92384cb66541d0153c6824f",
+      "mime": "image/png",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "width": 1800,
+      "height": 1727,
+      "has_alpha": true
+    },
+    {
+      "path": "02_Logos/voltoshare-symbol-black.svg",
+      "bytes": 3394,
+      "sha256": "a2f581a3bdd876bbc294e937fb54cda7dc7b17fd87656f665e1d4ddf205d0b94",
+      "mime": "image/svg+xml",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "native_paths": true,
+      "provenance": "Cleaned vector reconstruction from supplied raster artwork, not original editable source file"
+    },
+    {
+      "path": "02_Logos/voltoshare-symbol-green.png",
+      "bytes": 92275,
+      "sha256": "356cc8799019f4b7e8ce169c368dc5effb4f3ada0147f4211342651b8bf18210",
+      "mime": "image/png",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "width": 1800,
+      "height": 1727,
+      "has_alpha": true
+    },
+    {
+      "path": "02_Logos/voltoshare-symbol-green.svg",
+      "bytes": 3394,
+      "sha256": "eb67082b060072809a174849ec2080e408684bac285d6105d5f614f337f1fd3b",
+      "mime": "image/svg+xml",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "native_paths": true,
+      "provenance": "Cleaned vector reconstruction from supplied raster artwork, not original editable source file"
+    },
+    {
+      "path": "02_Logos/voltoshare-symbol-white.png",
+      "bytes": 61849,
+      "sha256": "ed03dd836efdcea943869c7513f2b56c7d2721c0371bf18d4b1453737064fd1c",
+      "mime": "image/png",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "width": 1800,
+      "height": 1727,
+      "has_alpha": true
+    },
+    {
+      "path": "02_Logos/voltoshare-symbol-white.svg",
+      "bytes": 3394,
+      "sha256": "dd110d6ded54effa84563c6146cbc5c8f614802c6f166bbbd24b85d325d0e36e",
+      "mime": "image/svg+xml",
+      "role": "Cleaned native SVG reconstruction and transparent PNG export",
+      "native_paths": true,
+      "provenance": "Cleaned vector reconstruction from supplied raster artwork, not original editable source file"
+    },
+    {
+      "path": "03_Images/icon-contact-sheet.svg",
+      "bytes": 3833,
+      "sha256": "631db2e36200e92d778e5d4a11e3e0daa1dd958da9766a4e3df718d469f05d49",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon"
+    },
+    {
+      "path": "03_Images/icons/icon-building.png",
+      "bytes": 1319,
+      "sha256": "7659f3a3224a02fe29e8fb8bfc2fe81983e629474fb047aa90e7a074c019b12d",
+      "mime": "image/png",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 128,
+      "height": 128,
+      "has_alpha": true,
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-building.svg",
+      "bytes": 395,
+      "sha256": "0b34e0dcd43e5d95d08b5165651b40d252d9a0d3f0916b8f3259fae6402d3550",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon",
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-calendar.png",
+      "bytes": 1889,
+      "sha256": "841f89d4d6e824e4419fdb5009d4dafc7da9485c56dbafb186585a69ebb6b29a",
+      "mime": "image/png",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 128,
+      "height": 128,
+      "has_alpha": true,
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-calendar.svg",
+      "bytes": 397,
+      "sha256": "d6aa71570bb213d3406d16e13b4fb472cd12e87a011797a377a869fc502922f9",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon",
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-car.png",
+      "bytes": 1447,
+      "sha256": "ea43191dafbc59c2af8267f178dcabede83736678c707940703250a6f26c6dad",
+      "mime": "image/png",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 128,
+      "height": 128,
+      "has_alpha": true,
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-car.svg",
+      "bytes": 362,
+      "sha256": "52f39156af14fcf74f47a4ef14849d79649977efc46de925804d4c023fb74920",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon",
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-charger.png",
+      "bytes": 2503,
+      "sha256": "86976a1c2c4024aadb21258f8759c92d9e4c45d3144c710f4cd9df8e1ab53a01",
+      "mime": "image/png",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 128,
+      "height": 128,
+      "has_alpha": true,
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-charger.svg",
+      "bytes": 435,
+      "sha256": "aef33a7935692f911e6735597371a91bc9e6216e981f31eee87df02411e5e4f1",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon",
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-energy.png",
+      "bytes": 1638,
+      "sha256": "8d325d7317dca58a5f2fa0a5944006607226e3594b063c51a86b44af5c4d749b",
+      "mime": "image/png",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 128,
+      "height": 128,
+      "has_alpha": true,
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-energy.svg",
+      "bytes": 321,
+      "sha256": "ffc1265a028ad81b36f3a454d327a1ac0b9568cef5c2699249760573639ef590",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon",
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-household.png",
+      "bytes": 2317,
+      "sha256": "242bdf0ce574deff548c49c8ac6254f4b2adef88d1b05fe42de93246842b1c98",
+      "mime": "image/png",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 128,
+      "height": 128,
+      "has_alpha": true,
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-household.svg",
+      "bytes": 397,
+      "sha256": "d8d5d6b5e9099383ee37e626b202d2c6384af14e4307a21fe64cd17cc84818df",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon",
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-invoice.png",
+      "bytes": 1651,
+      "sha256": "a857236e407e8faf3111fa37f11e625ec77683e00d21f30f4ce6585efabc007a",
+      "mime": "image/png",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 128,
+      "height": 128,
+      "has_alpha": true,
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-invoice.svg",
+      "bytes": 377,
+      "sha256": "d9fea4acf529dd2fc6027f2bc48aecde6ee33d006f13c68e63fc0c30f2df408a",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon",
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-maintenance.png",
+      "bytes": 2187,
+      "sha256": "89a98d73d1d01fccb3d9801bd6f70d8ec41feb75c1a4ad79a05c86b80e7003e3",
+      "mime": "image/png",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 128,
+      "height": 128,
+      "has_alpha": true,
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/icons/icon-maintenance.svg",
+      "bytes": 433,
+      "sha256": "867b554e2d3323db8ed051b2313de8826ee4daf1ca1825037b65e3fda2a623ac",
+      "mime": "image/svg+xml",
+      "role": "Supplied concept imagery or original interface icon",
+      "provenance": "Original line icon created for this kit"
+    },
+    {
+      "path": "03_Images/voltoshare-app-icon-charcoal.jpg",
+      "bytes": 318201,
+      "sha256": "82ceef4955267155a2ee41a4173f599d8336b3585a51a5ae7d53e45539df6626",
+      "mime": "image/jpeg",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 2048,
+      "height": 2048,
+      "has_alpha": false,
+      "provenance": "Supplied concept imagery, not verified deployed installation"
+    },
+    {
+      "path": "03_Images/voltoshare-app-icon-green.jpg",
+      "bytes": 713123,
+      "sha256": "c8fee18b15d66f1bbad11a1c02f2e127fae80346931d8789843f77f48530a764",
+      "mime": "image/jpeg",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 2048,
+      "height": 2048,
+      "has_alpha": false,
+      "provenance": "Supplied concept imagery, not verified deployed installation"
+    },
+    {
+      "path": "03_Images/voltoshare-charger-garage.jpg",
+      "bytes": 491193,
+      "sha256": "d69d5c40afbc5cb16300e060ac61d93a5efcf6c69b68c9131e91d19a7c54efe2",
+      "mime": "image/jpeg",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 2048,
+      "height": 1143,
+      "has_alpha": false,
+      "provenance": "Supplied concept imagery, not verified deployed installation"
+    },
+    {
+      "path": "03_Images/voltoshare-nfc-card.jpg",
+      "bytes": 194490,
+      "sha256": "55c7414a4633feebb8bb8eb9ddc57909cc53a17d435ef26291ce96c9d42860c7",
+      "mime": "image/jpeg",
+      "role": "Supplied concept imagery or original interface icon",
+      "width": 2048,
+      "height": 1143,
+      "has_alpha": false,
+      "provenance": "Supplied concept imagery, not verified deployed installation"
+    },
+    {
+      "path": "04_Fonts/LICENSE.txt",
+      "bytes": 5756,
+      "sha256": "f32df582a2aab128c07b2f7e36e7b928dc5f6bd82657b905c04f91459f9e5cf9",
+      "mime": "text/plain",
+      "role": "Editable text companion fonts and licence notices"
+    },
+    {
+      "path": "04_Fonts/LiberationSans-Bold.ttf",
+      "bytes": 414568,
+      "sha256": "1b5f2da6f4cadce4c05b9ecebe3a6fcd374eb95ae443605e799f4c3287978939",
+      "mime": "font/ttf",
+      "role": "Editable text companion fonts and licence notices"
+    },
+    {
+      "path": "04_Fonts/LiberationSans-BoldItalic.ttf",
+      "bytes": 409108,
+      "sha256": "352e9dc2be89f210dbd3c0fd5dfaf97135de70e0beb5f22378601861462493a7",
+      "mime": "font/ttf",
+      "role": "Editable text companion fonts and licence notices"
+    },
+    {
+      "path": "04_Fonts/LiberationSans-Italic.ttf",
+      "bytes": 415920,
+      "sha256": "93ff5260834141b6f9d8f2b846d427f3a5dc492dbdce8ebdad406e38a38f34bb",
+      "mime": "font/ttf",
+      "role": "Editable text companion fonts and licence notices"
+    },
+    {
+      "path": "04_Fonts/LiberationSans-Regular.ttf",
+      "bytes": 410820,
+      "sha256": "bade59d822652f76e6941aa87b40a87c13d1cc70db98ededb5011127efafd1d3",
+      "mime": "font/ttf",
+      "role": "Editable text companion fonts and licence notices"
+    },
+    {
+      "path": "04_Fonts/README.txt",
+      "bytes": 602,
+      "sha256": "a71c1676f3c807d75b731194c63dc67bf4a08cd091cb785ded3e81710d704419",
+      "mime": "text/plain",
+      "role": "Editable text companion fonts and licence notices"
+    },
+    {
+      "path": "05_Website/OPENCLAW_IMPLEMENTATION_GUIDE.md",
+      "bytes": 36673,
+      "sha256": "544c3564cef0be9932c43e8c0655444873cffcacd5e184c7d1ca117a8f23373e",
+      "mime": "text/markdown",
+      "role": "OpenClaw specification, local demonstration and implementation data"
+    },
+    {
+      "path": "05_Website/demo-data.json",
+      "bytes": 7437,
+      "sha256": "8237b8511e41129a7778c6c6725cec09b77e72ee3758eb3164328628c29dd914",
+      "mime": "application/json",
+      "role": "OpenClaw specification, local demonstration and implementation data"
+    },
+    {
+      "path": "05_Website/design-tokens.json",
+      "bytes": 1955,
+      "sha256": "74a9e234ed4a7e5e99e25c0bfc7771f0ac9e3c0f6909bc5a69246667d6f46f0e",
+      "mime": "application/json",
+      "role": "OpenClaw specification, local demonstration and implementation data"
+    },
+    {
+      "path": "05_Website/implementation-guide.html",
+      "bytes": 47264,
+      "sha256": "d6d4eccfaf65369679b4da1fc604c158bede39dafb51c12f8ccfe2eef4d3bb8e",
+      "mime": "text/html",
+      "role": "OpenClaw specification, local demonstration and implementation data"
+    },
+    {
+      "path": "05_Website/index.html",
+      "bytes": 66363,
+      "sha256": "220a247df675f9f659392a1b9b5de4a2ca69e9263e796b7de336400696d5f5b9",
+      "mime": "text/html",
+      "role": "OpenClaw specification, local demonstration and implementation data"
+    },
+    {
+      "path": "05_Website/tokens.css",
+      "bytes": 1266,
+      "sha256": "7e82e1e8a1bcbea9d46a913cfabc897f8fee4d0cc99c793ddcfb7bb5f1bf6ef8",
+      "mime": "text/css",
+      "role": "OpenClaw specification, local demonstration and implementation data"
+    },
+    {
+      "path": "06_Presentation/README.txt",
+      "bytes": 2010,
+      "sha256": "4b98816b8e42e8c4502fa671f0ed6cc453c3e0e8c2804530ca86209796ce22f0",
+      "mime": "text/plain",
+      "role": "Editable presentation starter, preview and source"
+    },
+    {
+      "path": "06_Presentation/VoltoShare_Presentation_Starter.pptx",
+      "bytes": 1713614,
+      "sha256": "f790e10b7d283e47bb36efaec65b826036f38f02ea264ad31ca2f86038c12851",
+      "mime": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "role": "Editable presentation starter, preview and source"
+    },
+    {
+      "path": "06_Presentation/VoltoShare_Presentation_Starter_Preview.pdf",
+      "bytes": 3294920,
+      "sha256": "4f93874a585c89f9b8d97cd48f4c30bfcde0d14f3b431e84ff55f26f5a6db122",
+      "mime": "application/pdf",
+      "role": "Editable presentation starter, preview and source",
+      "pages": 6
+    },
+    {
+      "path": "06_Presentation/previews/slide-01.png",
+      "bytes": 1278082,
+      "sha256": "256d7789b03bfcec15087337b245db78680bdb079c2b24b776c2ae97f0ecd0f2",
+      "mime": "image/png",
+      "role": "Editable presentation starter, preview and source",
+      "width": 1920,
+      "height": 1080,
+      "has_alpha": true
+    },
+    {
+      "path": "06_Presentation/previews/slide-02.png",
+      "bytes": 137999,
+      "sha256": "36d6b8a873515ec8e12fc03ba684253adcf2c520566b56473a607aed80c28855",
+      "mime": "image/png",
+      "role": "Editable presentation starter, preview and source",
+      "width": 1920,
+      "height": 1080,
+      "has_alpha": true
+    },
+    {
+      "path": "06_Presentation/previews/slide-03.png",
+      "bytes": 162299,
+      "sha256": "06794e87488a5bbba45964d8bfaf7f98961fda80be97cbef2d52318231fcac7a",
+      "mime": "image/png",
+      "role": "Editable presentation starter, preview and source",
+      "width": 1920,
+      "height": 1080,
+      "has_alpha": true
+    },
+    {
+      "path": "06_Presentation/previews/slide-04.png",
+      "bytes": 487706,
+      "sha256": "8233303c76ad11baeceb49b88121578985c5d956c307f9d3f3244c122aacfdba",
+      "mime": "image/png",
+      "role": "Editable presentation starter, preview and source",
+      "width": 1920,
+      "height": 1080,
+      "has_alpha": true
+    },
+    {
+      "path": "06_Presentation/previews/slide-05.png",
+      "bytes": 179970,
+      "sha256": "92deac29a65e93d8489f3e1fa7dd601d02f84a19c5d07363bfe480f9ded8f3d7",
+      "mime": "image/png",
+      "role": "Editable presentation starter, preview and source",
+      "width": 1920,
+      "height": 1080,
+      "has_alpha": true
+    },
+    {
+      "path": "06_Presentation/previews/slide-06.png",
+      "bytes": 141178,
+      "sha256": "d065c60f93f00d2269b9280903d86daf78ad6e1d215cdebab8007a170d96f44f",
+      "mime": "image/png",
+      "role": "Editable presentation starter, preview and source",
+      "width": 1920,
+      "height": 1080,
+      "has_alpha": true
+    },
+    {
+      "path": "06_Presentation/source/build-presentation.mjs",
+      "bytes": 10763,
+      "sha256": "dcc2ed8c0154dc9b5f730fd8574d1904a3843caeb477105da9bae6dc7f370edd",
+      "mime": "text/javascript",
+      "role": "Editable presentation starter, preview and source"
+    },
+    {
+      "path": "06_Presentation/source/create-preview-pdf.py",
+      "bytes": 538,
+      "sha256": "6f9ea85ea54164b0aea8eae89453bce0464ed74917dacb18e407450f9e81e17e",
+      "mime": "text/x-python",
+      "role": "Editable presentation starter, preview and source"
+    },
+    {
+      "path": "07_References/Gemini_Generated_Image_q1lwv6q1lwv6q1lw.jpg",
+      "bytes": 119268,
+      "sha256": "1c6073c1a12e0b4b6334264d69f7534a9c5134e654d34281d543b6e9e323dc15",
+      "mime": "image/jpeg",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "width": 2048,
+      "height": 1143,
+      "has_alpha": false
+    },
+    {
+      "path": "07_References/Gemini_Generated_Image_q1lwv6q1lwv6q1lw1.jpg",
+      "bytes": 282930,
+      "sha256": "7bb364c73f2d87d68a45599527ea24a8b9217ef56a64f7fb8aa74d65ef51b37c",
+      "mime": "image/jpeg",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "width": 2048,
+      "height": 2048,
+      "has_alpha": false
+    },
+    {
+      "path": "07_References/Gemini_Generated_Image_q1lwv6q1lwv6q1lw2.jpg",
+      "bytes": 919694,
+      "sha256": "9e75c6710174a64596ca194cf0bdb5e85db2e5e56aa088cf91bdf0ada54be0c9",
+      "mime": "image/jpeg",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "width": 2048,
+      "height": 2048,
+      "has_alpha": false
+    },
+    {
+      "path": "07_References/Gemini_Generated_Image_q1lwv6q1lwv6q1lw3.jpg",
+      "bytes": 318201,
+      "sha256": "82ceef4955267155a2ee41a4173f599d8336b3585a51a5ae7d53e45539df6626",
+      "mime": "image/jpeg",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "width": 2048,
+      "height": 2048,
+      "has_alpha": false
+    },
+    {
+      "path": "07_References/Gemini_Generated_Image_q1lwv6q1lwv6q1lw4.jpg",
+      "bytes": 713123,
+      "sha256": "c8fee18b15d66f1bbad11a1c02f2e127fae80346931d8789843f77f48530a764",
+      "mime": "image/jpeg",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "width": 2048,
+      "height": 2048,
+      "has_alpha": false
+    },
+    {
+      "path": "07_References/Gemini_Generated_Image_q1lwv6q1lwv6q1lw5.jpg",
+      "bytes": 194490,
+      "sha256": "55c7414a4633feebb8bb8eb9ddc57909cc53a17d435ef26291ce96c9d42860c7",
+      "mime": "image/jpeg",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "width": 2048,
+      "height": 1143,
+      "has_alpha": false
+    },
+    {
+      "path": "07_References/Gemini_Generated_Image_q1lwv6q1lwv6q1lw6.jpg",
+      "bytes": 491193,
+      "sha256": "d69d5c40afbc5cb16300e060ac61d93a5efcf6c69b68c9131e91d19a7c54efe2",
+      "mime": "image/jpeg",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "width": 2048,
+      "height": 1143,
+      "has_alpha": false
+    },
+    {
+      "path": "07_References/KI-generiert.png",
+      "bytes": 97684,
+      "sha256": "334ce3a683a862035ffad3bc432470a014d715ca435b13d6f90358d150cd5365",
+      "mime": "image/png",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "width": 1024,
+      "height": 572,
+      "has_alpha": false
+    },
+    {
+      "path": "07_References/VoltoShare_Expose_DE(1).pdf",
+      "bytes": 53884,
+      "sha256": "bc9f9819fd448d0f6fb6113fad3b512d1f2ad67a7c1042d142d43c304d8ba62f",
+      "mime": "application/pdf",
+      "role": "Unmodified supplied reference or supplied proposal",
+      "pages": 1
+    },
+    {
+      "path": "README.md",
+      "bytes": 5241,
+      "sha256": "18b09b94623c27c50df91e107f325387bd7aeb901856491ed37ff47e151794ba",
+      "mime": "text/markdown",
+      "role": "Package entry point"
+    }
+  ]
+}

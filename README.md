@@ -7,7 +7,11 @@ Proposal-stage project for shared EV charging infrastructure in rental apartment
 - Website: https://website-electromobility.mclement.ch/
 - Web app: https://app-electromobility.mclement.ch/
 
-Both are deliberately minimal placeholders. The actual design and product functionality await Mathis’s further instructions; no charging, billing or account features are implemented.
+Both are deliberately minimal placeholders. Functional implementation and any requested design adaptations await Mathis’s further instructions; no charging, billing or account features are implemented.
+
+## Design standard
+
+Use the supplied [brand kit](design/README.md) and [VoltoShare design skill](.agents/skills/voltoshare-design/SKILL.md) for every project design task. [AGENTS.md](AGENTS.md) applies this automatically. The kit has been saved; the live placeholders are unchanged.
 
 ## Project references
 

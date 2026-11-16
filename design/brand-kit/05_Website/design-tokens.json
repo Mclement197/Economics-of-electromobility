@@ -1,0 +1,114 @@
+{
+  "version": "2.0",
+  "font": {
+    "family": "Liberation Sans",
+    "fallback": [
+      "Arial",
+      "Helvetica",
+      "sans-serif"
+    ],
+    "weights": [
+      400,
+      700
+    ],
+    "note": "Arial-compatible companion. The original font cannot be identified with certainty from the supplied raster artwork. Preserve the supplied logo artwork."
+  },
+  "colors": {
+    "ink": "#1E2023",
+    "muted": "#58615C",
+    "primary": "#28563B",
+    "primary-hover": "#1E422E",
+    "graphite": "#23262B",
+    "canvas": "#F8F5F0",
+    "surface": "#FFFFFF",
+    "tint": "#EAF0EB",
+    "border": "#D9DFD9",
+    "border-strong": "#748178",
+    "accent": "#D6E5D6",
+    "info": "#1959A6",
+    "info-bg": "#EAF2FE",
+    "warning": "#8A5200",
+    "warning-bg": "#FFF3D6",
+    "danger": "#B42318",
+    "danger-bg": "#FDECE9",
+    "neutral": "#56645E",
+    "neutral-bg": "#EEF1EE"
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48,
+    64,
+    96
+  ],
+  "radii": {
+    "control": 8,
+    "card": 12,
+    "feature": 20,
+    "badge": 999
+  },
+  "breakpoints": [
+    640,
+    1024,
+    1280
+  ],
+  "layout": {
+    "publicMax": 1200,
+    "appMax": 1280,
+    "gutters": [
+      16,
+      24,
+      32
+    ]
+  },
+  "typography": {
+    "heroDesktop": [
+      56,
+      64
+    ],
+    "heroMobile": [
+      36,
+      42
+    ],
+    "sectionDesktop": [
+      40,
+      48
+    ],
+    "sectionMobile": [
+      28,
+      36
+    ],
+    "appTitle": [
+      28,
+      36
+    ],
+    "cardHeading": [
+      20,
+      28
+    ],
+    "body": [
+      16,
+      24
+    ],
+    "label": [
+      14,
+      20
+    ]
+  },
+  "controls": {
+    "height": 48,
+    "minimumTarget": 44,
+    "focusWidth": 2,
+    "focusOffset": 2
+  },
+  "identity": {
+    "logoProvenance": "Cleaned vector reconstructions from supplied raster artwork; not original editable brand files.",
+    "navigationAspectRatio": 5.81,
+    "primaryAspectRatio": 4.44,
+    "preserveAspectRatio": true
+  }
+}

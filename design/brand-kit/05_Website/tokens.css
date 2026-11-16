@@ -1,0 +1,28 @@
+/* VoltoShare identity v2.0. Fonts accompany this kit under SIL OFL 1.1. */
+@font-face { font-family: "Liberation Sans"; src: url("../04_Fonts/LiberationSans-Regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "Liberation Sans"; src: url("../04_Fonts/LiberationSans-Bold.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
+:root {
+  --color-ink: #1E2023;
+  --color-muted: #58615C;
+  --color-primary: #28563B;
+  --color-primary-hover: #1E422E;
+  --color-graphite: #23262B;
+  --color-canvas: #F8F5F0;
+  --color-surface: #FFFFFF;
+  --color-tint: #EAF0EB;
+  --color-border: #D9DFD9;
+  --color-border-strong: #748178;
+  --color-accent: #D6E5D6;
+  --color-info: #1959A6;
+  --color-info-bg: #EAF2FE;
+  --color-warning: #8A5200;
+  --color-warning-bg: #FFF3D6;
+  --color-danger: #B42318;
+  --color-danger-bg: #FDECE9;
+  --color-neutral: #56645E;
+  --color-neutral-bg: #EEF1EE;
+  --font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+  --radius-control: 8px; --radius-card: 12px; --radius-feature: 20px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px; --space-24: 96px;
+}

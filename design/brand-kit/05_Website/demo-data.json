@@ -1,0 +1,325 @@
+{
+  "version": 2,
+  "clock": "2026-11-16T14:30:00+01:00",
+  "timezone": "Europe/Zurich",
+  "currency": "CHF",
+  "building": {
+    "id": "lindenhof",
+    "name": "Lindenhof",
+    "apartments": 20,
+    "description": "Fictional demonstration building"
+  },
+  "household": {
+    "id": "A-12",
+    "userId": "alex"
+  },
+  "members": [
+    {
+      "id": "alex",
+      "name": "Alex",
+      "role": "Administrator",
+      "status": "Active"
+    },
+    {
+      "id": "sam",
+      "name": "Sam",
+      "role": "Member",
+      "status": "Active"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "city",
+      "name": "City EV",
+      "plate": "DEMO001"
+    },
+    {
+      "id": "family",
+      "name": "Family EV",
+      "plate": "DEMO002"
+    }
+  ],
+  "chargers": [
+    {
+      "id": "C01",
+      "bay": "P03",
+      "technical": "ready",
+      "occupancy": "unknown"
+    },
+    {
+      "id": "C02",
+      "bay": "P04",
+      "technical": "charging",
+      "occupancy": "unknown"
+    },
+    {
+      "id": "C03",
+      "bay": "P05",
+      "technical": "ready",
+      "occupancy": "unknown"
+    },
+    {
+      "id": "C04",
+      "bay": "P13",
+      "technical": "ready",
+      "occupancy": "unknown"
+    },
+    {
+      "id": "C05",
+      "bay": "P14",
+      "technical": "offline",
+      "occupancy": "unknown"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "B001",
+      "household": "A-12",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C01",
+      "start": "2026-11-03T18:00:00+01:00",
+      "end": "2026-11-03T20:00:00+01:00",
+      "status": "completed"
+    },
+    {
+      "id": "B002",
+      "household": "A-12",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C03",
+      "start": "2026-11-04T18:00:00+01:00",
+      "end": "2026-11-04T20:00:00+01:00",
+      "status": "completed"
+    },
+    {
+      "id": "B003",
+      "household": "A-12",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C01",
+      "start": "2026-11-06T18:00:00+01:00",
+      "end": "2026-11-06T20:00:00+01:00",
+      "status": "completed"
+    },
+    {
+      "id": "B004",
+      "household": "A-12",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C03",
+      "start": "2026-11-08T18:00:00+01:00",
+      "end": "2026-11-08T20:00:00+01:00",
+      "status": "completed"
+    },
+    {
+      "id": "B005",
+      "household": "A-12",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C01",
+      "start": "2026-11-10T18:00:00+01:00",
+      "end": "2026-11-10T20:00:00+01:00",
+      "status": "completed"
+    },
+    {
+      "id": "B006",
+      "household": "A-12",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C03",
+      "start": "2026-11-12T18:00:00+01:00",
+      "end": "2026-11-12T20:00:00+01:00",
+      "status": "completed"
+    },
+    {
+      "id": "B007",
+      "household": "A-12",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C01",
+      "start": "2026-11-14T18:00:00+01:00",
+      "end": "2026-11-14T20:00:00+01:00",
+      "status": "completed"
+    },
+    {
+      "id": "B008",
+      "household": "A-12",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C03",
+      "start": "2026-11-15T18:00:00+01:00",
+      "end": "2026-11-15T20:00:00+01:00",
+      "status": "completed"
+    },
+    {
+      "id": "B009",
+      "household": "A-12",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C03",
+      "start": "2026-11-16T18:00:00+01:00",
+      "end": "2026-11-16T20:00:00+01:00",
+      "status": "upcoming"
+    },
+    {
+      "id": "B010",
+      "household": "A-12",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C01",
+      "start": "2026-11-13T18:00:00+01:00",
+      "end": "2026-11-13T20:00:00+01:00",
+      "status": "cancelled"
+    },
+    {
+      "id": "EXT01",
+      "household": "external",
+      "vehicle": null,
+      "vehicleName": null,
+      "charger": "C02",
+      "start": "2026-11-16T14:00:00+01:00",
+      "end": "2026-11-16T16:00:00+01:00",
+      "status": "active"
+    },
+    {
+      "id": "EXT02",
+      "household": "external",
+      "vehicle": null,
+      "vehicleName": null,
+      "charger": "C04",
+      "start": "2026-11-16T14:00:00+01:00",
+      "end": "2026-11-16T16:00:00+01:00",
+      "status": "active"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "S001",
+      "booking": "B001",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C01",
+      "start": "2026-11-03T18:00:00+01:00",
+      "end": "2026-11-03T20:00:00+01:00",
+      "kwh": 12,
+      "costMinor": 384,
+      "status": "completed",
+      "invoice": null
+    },
+    {
+      "id": "S002",
+      "booking": "B002",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C03",
+      "start": "2026-11-04T18:00:00+01:00",
+      "end": "2026-11-04T20:00:00+01:00",
+      "kwh": 14,
+      "costMinor": 448,
+      "status": "completed",
+      "invoice": null
+    },
+    {
+      "id": "S003",
+      "booking": "B003",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C01",
+      "start": "2026-11-06T18:00:00+01:00",
+      "end": "2026-11-06T20:00:00+01:00",
+      "kwh": 10,
+      "costMinor": 320,
+      "status": "completed",
+      "invoice": null
+    },
+    {
+      "id": "S004",
+      "booking": "B004",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C03",
+      "start": "2026-11-08T18:00:00+01:00",
+      "end": "2026-11-08T20:00:00+01:00",
+      "kwh": 18,
+      "costMinor": 576,
+      "status": "completed",
+      "invoice": null
+    },
+    {
+      "id": "S005",
+      "booking": "B005",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C01",
+      "start": "2026-11-10T18:00:00+01:00",
+      "end": "2026-11-10T20:00:00+01:00",
+      "kwh": 16,
+      "costMinor": 512,
+      "status": "completed",
+      "invoice": null
+    },
+    {
+      "id": "S006",
+      "booking": "B006",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C03",
+      "start": "2026-11-12T18:00:00+01:00",
+      "end": "2026-11-12T20:00:00+01:00",
+      "kwh": 12,
+      "costMinor": 384,
+      "status": "completed",
+      "invoice": null
+    },
+    {
+      "id": "S007",
+      "booking": "B007",
+      "vehicle": "city",
+      "vehicleName": "City EV",
+      "charger": "C01",
+      "start": "2026-11-14T18:00:00+01:00",
+      "end": "2026-11-14T20:00:00+01:00",
+      "kwh": 14,
+      "costMinor": 448,
+      "status": "completed",
+      "invoice": null
+    },
+    {
+      "id": "S008",
+      "booking": "B008",
+      "vehicle": "family",
+      "vehicleName": "Family EV",
+      "charger": "C03",
+      "start": "2026-11-15T18:00:00+01:00",
+      "end": "2026-11-15T20:00:00+01:00",
+      "kwh": 16,
+      "costMinor": 512,
+      "status": "completed",
+      "invoice": null
+    }
+  ],
+  "invoices": [
+    {
+      "id": "INV-2026-09",
+      "period": "September 2026",
+      "amountMinor": 3120,
+      "paidMinor": 3120,
+      "due": "2026-10-10"
+    },
+    {
+      "id": "INV-2026-10",
+      "period": "October 2026",
+      "amountMinor": 2840,
+      "paidMinor": 0,
+      "due": "2026-11-10"
+    }
+  ],
+  "tariff": {
+    "energyMinorPerKwh": 28,
+    "markupMinorPerKwh": 4,
+    "taxMinor": 0,
+    "additionalFeeMinor": 0,
+    "illustrative": true
+  }
+}
