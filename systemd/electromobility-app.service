@@ -1,0 +1,13 @@
+[Unit]
+Description=VoltoShare app placeholder
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/mathis/openclaw-workspace/Economics-of-electromobility
+ExecStart=/usr/bin/python3 /home/mathis/openclaw-workspace/Economics-of-electromobility/scripts/serve.py --site app --port 18820
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

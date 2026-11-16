@@ -41,4 +41,4 @@ Do not silently choose a rule in marketing claims, calculators, billing logic or
 
 ## Work status
 
-The repository is cloned on the Pi. Mathis has supplied this proposal as future implementation context and will supply design guidelines. **Website/web-app implementation and deployment have not been requested yet.** No technology stack, visual identity, final pricing or additional product requirements should be inferred from this document.
+The repository is cloned on the Pi. Mathis has supplied this proposal as future implementation context and will supply design guidelines. On 16 November 2026 Mathis additionally authorized **blank placeholder deployment only** at `website-electromobility.mclement.ch` and `app-electromobility.mclement.ch`. The actual website/web-app design and functional implementation still await his further instructions. No technology stack, visual identity, final pricing or additional product requirements should be inferred from this document.
