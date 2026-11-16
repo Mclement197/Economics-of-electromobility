@@ -36,3 +36,17 @@ Seven focused Node tests pass these scenarios, P independence, blanks, zero/nega
 6. Building-specific capacity, usage rules and service commitments.
 
 The current form requests fictional inputs and only validates them in-page. It does not submit, persist, mail or queue an enquiry. Self-hosted fonts and assets; no application analytics/cookies/storage. Hosting access metadata may be processed by the Pi and Cloudflare, as disclosed. This preview makes no claim of legal/commercial launch readiness.
+
+## Completed release verification
+
+- 7/7 focused calculation tests passed.
+- 104 browser checks passed on local staging and 104 passed on the deployed public HTTPS URL.
+- All five pages checked at 320, 360, 768 and 1440px, including directly opened routes and assets. Desktop/mobile screenshots inspected; temporary screenshots removed after review.
+- Independent review confirmed enquiries create no network requests, correct app-placeholder labels, no invented operator information, keyboard FAQ/menu and invalid count preservation.
+- Enlarged-content checks passed at 768px with CSS zoom 2; large accepted currency outputs wrap instead of clipping.
+- Both services remain active. All six tenant-app files match their pre-release SHA-256 hashes. No Cloudflare, tunnel, DNS or service configuration changed.
+- Source proposal, design archive and Git paths return 404 from the local production origin and 403 to the external HTTP probe; none are served. An initial overly specific 404-only external assertion was corrected to recognise denied access, independently checked against origin 404s.
+- Rollback copy on Pi: `~/.local/state/voltoshare/releases/website-20261116T145558413652Z`.
+- Website implementation committed and pushed as `2bd4a30`; this verification record is a subsequent documentation-only commit.
+
+Browser checks ran through Chromium against the public HTTPS origin; this is not a claim of testing on a physical iPhone or a full WCAG/legal certification.
