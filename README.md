@@ -1,22 +1,78 @@
-# VoltoShare — Economics of Electromobility
+# VoltoShare
 
-Proposal-stage project for shared EV charging infrastructure in rental apartment buildings.
-
-## Live placeholders
+A German-language public concept website for shared charging in rental apartment buildings. Built with static HTML, shared brand CSS and small native ES modules; Python 3 builds the pages without frontend dependencies. The separate tenant app is still a placeholder.
 
 - Website: https://website-electromobility.mclement.ch/
-- Web app: https://app-electromobility.mclement.ch/
+- App placeholder: https://app-electromobility.mclement.ch/
+- [Project baseline](docs/PROJECT_BRIEF.md), [original proposal](docs/VoltoShare_Expose_DE.pdf), [current website brief](docs/WEBSITE_IMPLEMENTATION_BRIEF.md)
+- [Brand archive and provenance](design/README.md), [mandatory design skill](.agents/skills/voltoshare-design/SKILL.md)
+- [Deployment infrastructure](docs/DEPLOYMENT.md), [release verification and remaining decisions](docs/WEBSITE_RELEASE.md)
 
-Both are deliberately minimal placeholders. Functional implementation and any requested design adaptations await Mathis’s further instructions; no charging, billing or account features are implemented.
+## Build and preview
 
-## Design standard
+From the repository root:
 
-Use the supplied [brand kit](design/README.md) and [VoltoShare design skill](.agents/skills/voltoshare-design/SKILL.md) for every project design task. [AGENTS.md](AGENTS.md) applies this automatically. The kit has been saved; the live placeholders are unchanged.
+```sh
+python3 scripts/build-website.py
+python3 -m http.server 18929 --bind 127.0.0.1 --directory build/website
+```
 
-## Project references
+Visit `http://127.0.0.1:18929`. Direct routes have generated directory indexes: `/`, `/geschaeftsmodell/`, `/kontakt/`, `/impressum/`, `/datenschutz/`. Requests without trailing slashes redirect normally. HTML contains the content without JavaScript; JS adds menu, calculator and local enquiry validation. No CMS, database, authentication, analytics or external fonts.
 
-- [Project brief and open decisions](docs/PROJECT_BRIEF.md)
-- [Original German proposal (PDF)](docs/VoltoShare_Expose_DE.pdf)
-- [Pi and Cloudflare deployment details](docs/DEPLOYMENT.md)
+Build writes only into the staging output (default `build/website`, ignored by Git), never directly into the live root. Use `--out /absolute/staging/path` to choose another location. The builder mirrors responsive media layouts as container queries to preserve reflow under content zoom. All original kit files remain unchanged.
 
-The proposal is the baseline for the future website and web app, not a finalized specification.
+## Source organisation and configuration
+
+- `website-src/config.json`: canonical URL, language, project status, app URL/status, enquiry mode/destination, downloads, page metadata.
+- `website-src/pages/`: German content fragments; `faq.json`: reusable FAQ content.
+- `website-src/site.css`, `site.mjs`: shared presentation and navigation.
+- `website-src/calculator.mjs`, `calculator.css`: pure financial helpers plus accessible UI.
+- `website-src/contact.mjs`, `contact.css`: local-only demo enquiry.
+- `website-src/assets/`: only the public assets needed by this site.
+- `sites/website/`: generated deployed files, tracked for review; **do not hand-edit**.
+- `sites/app/`: separate, untouched placeholder.
+
+Only German is implemented; no incomplete English switch. Only `contactMode: "demo"`, `contactDestination: null`, and `appStatus: "placeholder"` are supported. The build rejects other modes to prevent accidental misrepresentation. Enabling real enquiries requires an explicitly configured receiving operator/backend, server validation and abuse protection, privacy updates, and delivery tests—not merely flipping a setting. No environment secrets or `.env` are needed. `downloads` is empty because no public document downloads have been approved.
+
+The visible app link is **App-Platzhalter**, never a live login or working demo. The landing-page interface is a clearly marked, noninteractive conceptual preview with fictional building/booking information. There is no current tenant tariff to reconcile; any later flat-rate app fixture must be labelled a simplification of the proposal's dynamic tariff plus provider markup.
+
+## Assets and brand sources
+
+Read `design/brand-kit/01_Guidelines/VoltoShare_Design_Guidelines.pdf`, `05_Website/OPENCLAW_IMPLEMENTATION_GUIDE.md`, `design-tokens.json` and `tokens.css`. The newer website brief determines website-only features and German routes.
+
+| Supplied source under `design/brand-kit/` | Website asset |
+| --- | --- |
+| `02_Logos/voltoshare-logo-navigation.svg` | `website-src/assets/logo-navigation.svg` |
+| `02_Logos/voltoshare-logo-white.svg` | `website-src/assets/logo-white.svg` |
+| `02_Logos/voltoshare-symbol-green.svg` | `website-src/assets/symbol.svg`, deployed `favicon.svg` |
+| `02_Logos/voltoshare-symbol-green.png` | Source for padded apple-touch/192/512 icons |
+| `02_Logos/voltoshare-logo-primary.png` | Centred unmodified logo on warm-white `assets/social.png` |
+| `03_Images/voltoshare-charger-garage.jpg` | `assets/garage.webp`, 1400 × 781 optimised concept visual |
+| `03_Images/icons/*.svg` | `assets/icons/*.svg` |
+| `04_Fonts/LiberationSans-Regular.ttf`, `LiberationSans-Bold.ttf` | `assets/fonts/`, self-hosted with original `LICENSE.txt` |
+| `05_Website/tokens.css` | `assets/tokens.css`, only font URLs adapted |
+
+No font is missing. Original logo proportions/colours are preserved; no redrawn wordmark or stock imagery. Concept photography is explicitly not a customer installation. Prepared asset files are checked in, so ordinary builds require only Python's standard library. Original images were resized with Pillow, originals preserved. Font licence accompanies the distributed fonts.
+
+## Focused verification
+
+```sh
+node --test website-src/calculator.test.mjs
+BASE_URL=http://127.0.0.1:18929 node tests/website-browser.mjs
+```
+
+Browser checks use the Pi's existing Playwright Core and Chromium. To run elsewhere, provide `PLAYWRIGHT_MODULE=/path/to/playwright-core` and `CHROMIUM_PATH=/path/to/chromium`; no browser dependency is added to the website. `SCREENSHOTS=1` writes temporary review images under `/tmp/volto-*`; inspect and remove them afterward.
+
+## Deploy on the existing Pi
+
+After building and passing checks:
+
+```sh
+python3 scripts/deploy-website.py build/website
+BASE_URL=https://website-electromobility.mclement.ch node tests/website-browser.mjs
+systemctl --user is-active electromobility-website.service electromobility-app.service
+```
+
+The deploy script stages and replaces **only** `sites/website`, preserves a dated rollback directory under `~/.local/state/voltoshare/releases/`, and restores the previous root if the replacement rename fails. Existing `scripts/serve.py` reads static files directly; no restart, tunnel, DNS, credentials or app changes are necessary. The replacement is two local directory renames; an in-flight request in that very short interval may need a retry. For rollback, copy the printed backup to a new staging directory and replace `sites/website` with that tree, retaining the failed release outside the public root. The initial blank placeholder backup has no subpages, so restore it directly rather than through the full-release validator.
+
+Public preview remains `noindex, nofollow`. This is not a commercial launch. Operator identity/contact details and commercial terms still need confirmation before real enquiries or operations.

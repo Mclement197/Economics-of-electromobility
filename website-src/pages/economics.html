@@ -1,0 +1,78 @@
+<section class="wrap page-intro econ-intro">
+  <p class="eyebrow">Das Geschäftsmodell</p>
+  <h1>Gemeinsam laden.<br>Die Rechnung verstehen.</h1>
+  <p class="lead">Eine Infrastruktur für das Haus. Zwei getrennte Zahlungsströme. Und Annahmen, die sichtbar bleiben.</p>
+  <a class="button" href="#modellrechnung">Modell selbst erkunden <span aria-hidden="true">↓</span></a>
+</section>
+
+<section class="wrap section" aria-labelledby="flows-title">
+  <div class="econ-heading"><p class="eyebrow">01 / Wer bezahlt was?</p><h2 id="flows-title">Ein klarer Leistungsaustausch.</h2></div>
+  <div class="grid-2 econ-flows">
+    <article class="card econ-flow"><span class="econ-index">A / Infrastruktur</span><h3>Vermieter &amp; Verwaltung</h3><div class="econ-arrow"><span>Zahlung an VoltoShare</span><span aria-hidden="true">→</span></div><p>Monatliches Abonnement <strong>pro abrechnungspflichtiger Wohnung</strong> — nicht pro Ladepunkt.</p><div class="econ-service"><strong>Leistung von VoltoShare</strong><p>Gemeinsame Ladeinfrastruktur und Plattform für die Liegenschaft.</p></div></article>
+    <article class="card econ-flow"><span class="econ-index">B / Stromverbrauch</span><h3>Bewohner</h3><div class="econ-arrow"><span>Zahlung an VoltoShare</span><span aria-hidden="true">→</span></div><p>Gemessener Ladestrom zu einem <strong>dynamischen Tarif plus kleinem Anbieteraufschlag</strong>.</p><div class="econ-service"><strong>Leistung von VoltoShare</strong><p>Reservierungsbasierter Ladezugang per App oder NFC-Karte, im vorgesehenen Modell.</p></div></article>
+  </div>
+  <div class="notice econ-note"><strong>Der Vertrag liegt bei Vermieter oder Verwaltung.</strong> Ein möglicher Aufschlag innerhalb der Miete gehört zu deren Kalkulation. Er ist kein zusätzliches direktes Bewohner-Abonnement bei VoltoShare.</div>
+  <div class="econ-table" role="region" aria-label="Leistungen und Gegenleistungen" tabindex="0"><table><thead><tr><th scope="col">Partei</th><th scope="col">Zahlt oder stellt bereit</th><th scope="col">Erhält</th></tr></thead><tbody><tr><th scope="row">Vermieter / Verwaltung</th><td>Abonnement je abrechnungspflichtiger Wohnung</td><td>Infrastruktur und Plattform</td></tr><tr><th scope="row">Bewohner</th><td>Gemessenen Strom: dynamischer Tarif + Aufschlag</td><td>Gemeinsam genutzten Ladezugang mit Reservierung</td></tr><tr><th scope="row">VoltoShare</th><td>Finanzierung, Installation, App, Betrieb und Wartung</td><td>Abonnementerlöse und Strommarge</td></tr></tbody></table></div>
+</section>
+
+<section class="econ-tint"><div class="wrap section">
+  <div class="econ-heading"><p class="eyebrow">02 / Drei Perspektiven</p><h2>Einnahmen sind noch kein Gewinn.</h2></div>
+  <div class="grid-3">
+    <article><h3>Für VoltoShare</h3><p>Abonnements und Strommarge tragen zur Finanzierung von Hardware, Installation, Finanzierungskosten, Wartung, Software und Betrieb bei. Diese Kosten sind von den Erlösen zu unterscheiden.</p></article>
+    <article><h3>Für die Liegenschaft</h3><p>Ladezugang kann einen Aufschlag innerhalb der Miete ermöglichen. Ob nach Abonnementkosten ein zusätzlicher Beitrag bleibt, hängt von Miethöhe, Belegung, Abopreis und weiteren Kosten ab.</p></article>
+    <article><h3>Für die Bewohner</h3><p>Der gemessene Strom wird separat abgerechnet. Ein dynamischer Tarif kann sich über die Zeit ändern; hinzu kommt der vereinbarte Anbieteraufschlag. Günstigere Rechnungen sind damit nicht garantiert.</p></article>
+  </div>
+  <p class="econ-source">Abonnementpreis, Stromaufschlag und Mietaufschlag sind im Projektvorschlag noch nicht festgelegt. Auch Tarifquelle und genaue Preisregeln bleiben offen.</p>
+</div></section>
+
+<section class="wrap section" id="leerstand" aria-labelledby="vacancy-title">
+  <div class="econ-heading"><p class="eyebrow">03 / Risikoverteilung</p><h2 id="vacancy-title">Noch offene Modellentscheidung: Leerstand</h2><p class="lead">Zwei mögliche Regeln. Keine davon ist bereits vereinbart.</p></div>
+  <div class="grid-2">
+    <article class="card scenario"><span class="econ-index">Szenario A</span><h3>Abonnements laufen weiter.</h3><p>Alle vertraglich erfassten Wohnungen bleiben abrechnungspflichtig, auch wenn einzelne leer stehen.</p><p><strong>Unmittelbarer Effekt:</strong> Der Vermieter bezahlt weiter, erhält für leer stehende Wohnungen aber keine Miete.</p></article>
+    <article class="card scenario"><span class="econ-index">Szenario B</span><h3>Bei Leerstand pausieren.</h3><p>Nur belegte Wohnungen werden abgerechnet. Die Anzahl Abonnements sinkt mit der Belegung.</p><p><strong>Unmittelbarer Effekt:</strong> VoltoShare erhält weniger Abonnementerlöse und trägt dieses Einnahmerisiko.</p></article>
+  </div>
+</section>
+
+<section class="wrap section econ-calculator-section" id="modellrechnung" aria-labelledby="calc-title">
+  <div class="econ-heading"><p class="eyebrow">04 / Ihre Annahmen, beide Szenarien</p><h2 id="calc-title">Was verändert sich bei Leerstand?</h2><p class="lead">Beginnen Sie mit dem Gebäude. Ergänzen Sie dann eigene Geldbeträge, um die beiden Regeln zu vergleichen.</p></div>
+  <div class="calculator" id="building-calculator">
+    <div class="calc-inputs">
+      <fieldset><legend>Das Gebäude</legend><div class="calc-count-fields">
+        <div class="field"><label for="calc-N">Vertraglich erfasste Wohnungen</label><input id="calc-N" name="N" type="number" inputmode="numeric" min="1" step="1" value="20" required aria-describedby="calc-N-error"><span class="calc-error" id="calc-N-error"></span></div>
+        <div class="field"><label for="calc-O">Davon belegt</label><input id="calc-O" name="O" type="number" inputmode="numeric" min="0" step="1" value="20" required aria-describedby="calc-O-error"><span class="calc-error" id="calc-O-error"></span></div>
+        <div class="field"><label for="calc-P">Geteilte Ladepunkte</label><input id="calc-P" name="P" type="number" inputmode="numeric" min="1" step="1" value="5" required aria-describedby="calc-P-error"><span class="calc-error" id="calc-P-error"></span></div>
+      </div></fieldset>
+      <div class="calc-building" aria-label="Illustratives Gebäudemodell"><div class="calc-building-line"><strong id="calc-building-count">20 Wohnungen · 20 belegt</strong><span id="calc-vacant-count">0 leer</span></div><div class="calc-apartments" id="calc-apartments" aria-hidden="true"></div><div class="calc-shared-label">Gemeinsamer Ladezugang <span aria-hidden="true">↓</span></div><div class="calc-chargers" id="calc-chargers" aria-hidden="true"></div><strong id="calc-charger-count">5 geteilte Ladepunkte</strong><p class="muted" id="calc-count-note">Beispiel bei Vollvermietung: 20 Wohnungen, 5 Ladepunkte, 20 Abonnements. Abonnements gelten pro abrechnungspflichtiger Wohnung, nicht pro Ladepunkt.</p></div>
+      <p class="muted calc-sizing">Die Ladepunktzahl ändert nur die Darstellung, nicht die Abonnementrechnung. Die tatsächliche Dimensionierung benötigt Angaben zu Nachfrage und Installation; das Beispiel ist keine Kapazitätszusage.</p>
+      <fieldset><legend>Ihre monatlichen Annahmen</legend><p class="calc-disclaimer">Illustrative Modellrechnung. Keine Preisofferte.</p><div class="grid-2">
+        <div class="field"><label for="calc-S">Abonnement pro abrechnungspflichtiger Wohnung (CHF)</label><input id="calc-S" name="S" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Eigenen Betrag eingeben" aria-describedby="calc-S-error"><span class="calc-error" id="calc-S-error"></span></div>
+        <div class="field"><label for="calc-R">Mietaufschlag pro belegter Wohnung (CHF)</label><input id="calc-R" name="R" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Eigenen Betrag eingeben" aria-describedby="calc-R-error"><span class="calc-error" id="calc-R-error"></span></div>
+      </div></fieldset>
+    </div>
+    <div class="calc-results" aria-live="polite" aria-atomic="true">
+      <p class="calc-result-intro" id="calc-status">Geben Sie beide Geldbeträge ein, um die monatlichen Ergebnisse zu sehen. Leere Felder zählen nicht als null.</p>
+      <div id="calc-financials" hidden>
+        <p class="calc-disclaimer">Illustrative Modellrechnung. Keine Preisofferte. Alle Ergebnisse pro Monat.</p>
+        <div class="calc-rent"><span>Angenommene zusätzliche Mieteinnahmen<br><small>Belegte Wohnungen × Mietaufschlag</small></span><strong id="calc-rental-income"></strong></div>
+        <div class="grid-2">
+          <article class="scenario calc-scenario"><p class="econ-index">Szenario A / Weiterlaufen</p><h3 id="calc-continue-count"></h3><p>Abonnementbetrag <strong id="calc-continue-subscription"></strong><small>Kosten für Vermieter = Erlös für VoltoShare</small></p><div class="calc-contribution"><span>Möglicher Mietbeitrag nach Abonnementkosten, vor weiteren Kosten</span><strong id="calc-continue-contribution"></strong></div></article>
+          <article class="scenario calc-scenario"><p class="econ-index">Szenario B / Pausieren</p><h3 id="calc-pause-count"></h3><p>Abonnementbetrag <strong id="calc-pause-subscription"></strong><small>Kosten für Vermieter = Erlös für VoltoShare</small></p><div class="calc-contribution"><span>Möglicher Mietbeitrag nach Abonnementkosten, vor weiteren Kosten</span><strong id="calc-pause-contribution"></strong></div></article>
+        </div>
+        <p class="calc-formula">Mietbeitrag = belegte Wohnungen × Mietaufschlag − abrechnungspflichtige Wohnungen × Abonnement.</p>
+      </div>
+      <p class="calc-exclusions">Nicht enthalten: weitere Vermieterkosten, Anfangszahlungen, Finanzierung und Steuereffekte. Der Mietbeitrag ist weder Nettogewinn noch eine garantierte Rendite. Stromzahlungen werden hier nicht mitgerechnet.</p>
+    </div>
+    <noscript><p class="notice">Die interaktive Berechnung benötigt JavaScript. Die beiden Regeln oben gelten unverändert: Szenario A berechnet alle vertraglich erfassten Wohnungen, Szenario B nur die belegten. Der Mietbeitrag ist die zusätzliche Miete abzüglich dieser Abonnements.</p></noscript>
+  </div>
+</section>
+
+<section class="wrap section" aria-labelledby="tradeoff-title">
+  <div class="econ-heading"><p class="eyebrow">05 / Der ökonomische Blick</p><h2 id="tradeoff-title">Weniger Infrastruktur.<br>Mehr Abstimmung.</h2></div>
+  <div class="grid-2">
+    <article><h3>Was gemeinsames Nutzen ermöglicht</h3><ul class="econ-list"><li>Weniger Ladepunkte als bei einer Wallbox pro Wohnung können ausreichen.</li><li>Fixkosten verteilen sich auf mehrere Haushalte.</li><li>Bewohner erhalten Ladezugang ohne eigenen Wallboxkauf oder eigene Installation.</li></ul></article>
+    <article><h3>Was in der Bewertung mitgezählt wird</h3><ul class="econ-list"><li>Wartezeiten, Umparkieren und Koordination sind Teil des gemeinsamen Nutzens.</li><li>Ladenachfrage, Auslastung, Installationskosten und Abonnementpreis bestimmen die Wirtschaftlichkeit.</li><li>Die Leerstandsregel verteilt das Einnahmerisiko zwischen Vermieter und VoltoShare.</li></ul></article>
+  </div>
+  <div class="notice econ-note"><strong>5 statt 20 Ladepunkte ist ein Ausstattungsbeispiel.</strong> Daraus folgen weder 75 % geringere Kosten noch gleiche Ladekapazität oder eine bestimmte Emissionsreduktion.</div>
+  <p class="econ-source">Quelle: VoltoShare-Projektexposé, Arbeitsentwurf vom 15. Oktober 2026, Seite 1, Abschnitte 1–5 und Leerstandsentscheidung. Die Modellrechnung veranschaulicht Annahmen; sie ersetzt keine technische oder wirtschaftliche Prüfung einer Liegenschaft.</p>
+  <a href="/kontakt/" class="button">Liegenschaft anfragen <span aria-hidden="true">↗</span></a>
+</section>

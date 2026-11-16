@@ -12,4 +12,4 @@ The canonical supplied kit is `design/brand-kit/`; the original archive is `desi
 
 ## Current delivery boundary
 
-Both public URLs currently serve blank placeholders. Receipt of this kit and creation of the design skill do not authorize building or publishing the full reference demo. Implement the actual website/app when Mathis asks; consult `docs/DEPLOYMENT.md` for existing routes and services. Keep source PDFs, the ZIP and private data outside the public site roots.
+On 16 November 2026 Mathis authorized implementation and deployment of the public German website using `docs/WEBSITE_IMPLEMENTATION_BRIEF.md`. Its source is `website-src/`; build and deploy instructions are in README. The separate tenant app remains a blank placeholder and must not be silently implemented or rewritten by website work. Keep source PDFs, the ZIP and private data outside the public site roots.

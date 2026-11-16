@@ -1,0 +1,81 @@
+<section class="wrap section contact-section">
+  <div class="page-intro">
+    <p class="eyebrow">Liegenschaft anfragen</p>
+    <h1>Der erste Schritt beginnt mit Ihrem Gebäude.</h1>
+    <p class="lead">Welche Möglichkeiten bietet gemeinsames Laden in Ihrer Liegenschaft? Diese Demo zeigt, welche Angaben ein erstes Gespräch erleichtern würden.</p>
+  </div>
+  <div class="contact-layout">
+    <aside class="contact-context" aria-label="Hinweise zur Anfrage">
+      <p class="eyebrow">Gemeinsam einordnen</p>
+      <h2>Ein Gebäude.<br>Ein gemeinsames System.</h2>
+      <p>VoltoShare richtet sich an Vermieter und Verwaltungen von Mehrfamilienhäusern. Ladebedarf und örtliche Voraussetzungen bestimmen die passende Auslegung.</p>
+      <ol class="contact-steps">
+        <li><span aria-hidden="true">01</span><div><strong>Liegenschaft beschreiben</strong><p>Ort, Wohnungszahl und eine kurze Nachricht reichen für einen ersten Überblick.</p></div></li>
+        <li><span aria-hidden="true">02</span><div><strong>Bedarf verstehen</strong><p>Garagensituation, verfügbare Leistung und erwartete Nutzung wären im nächsten Schritt zu klären.</p></div></li>
+        <li><span aria-hidden="true">03</span><div><strong>Modell besprechen</strong><p>Abonnement, Anfangszahlung und Leerstandsregel sind noch nicht festgelegt.</p></div></li>
+      </ol>
+      <a class="text-link" href="/geschaeftsmodell/">Geschäftsmodell kennenlernen <span aria-hidden="true">↗</span></a>
+    </aside>
+    <div class="card contact-card">
+      <div class="notice contact-demo" id="contact-demo-notice">
+        <strong>Demo-Anfrage · kein Versand</strong>
+        <p>Bitte verwenden Sie fiktive Angaben. Dieses Formular prüft Ihre Eingaben nur in dieser Seite. Es sendet keine Nachricht und speichert keine Anfrage. Ein Kontaktkanal für echte Anfragen ist noch nicht eingerichtet.</p>
+      </div>
+      <noscript><p class="notice">Für die lokale Formular-Demo ist JavaScript erforderlich. Ohne JavaScript werden keine Angaben versendet.</p></noscript>
+      <form id="contact-form" method="post" autocomplete="off" novalidate aria-describedby="contact-demo-notice">
+        <p class="muted contact-required">Mit * markierte Felder sind für die Demo erforderlich.</p>
+        <div class="grid-2 contact-fields">
+          <div class="field">
+            <label for="contact-name">Name *</label>
+            <input id="contact-name" type="text" maxlength="120" required aria-describedby="contact-name-error">
+            <span class="field-error" id="contact-name-error"></span>
+          </div>
+          <div class="field">
+            <label for="contact-email">E-Mail *</label>
+            <input id="contact-email" type="email" inputmode="email" maxlength="254" required spellcheck="false" aria-describedby="contact-email-error">
+            <span class="field-error" id="contact-email-error"></span>
+          </div>
+          <div class="field">
+            <label for="contact-role">Ihre Rolle *</label>
+            <select id="contact-role" required aria-describedby="contact-role-error">
+              <option value="">Bitte auswählen</option>
+              <option value="landlord">Vermieter/in</option>
+              <option value="manager">Immobilienverwaltung</option>
+              <option value="resident">Bewohner/in</option>
+              <option value="other">Andere</option>
+            </select>
+            <span class="field-error" id="contact-role-error"></span>
+          </div>
+          <div class="field">
+            <label for="contact-organisation">Organisation <span class="muted">(optional)</span></label>
+            <input id="contact-organisation" type="text" maxlength="160" aria-describedby="contact-organisation-error">
+            <span class="field-error" id="contact-organisation-error"></span>
+          </div>
+          <div class="field">
+            <label for="contact-location">Ort oder Postleitzahl <span class="muted">(optional)</span></label>
+            <input id="contact-location" type="text" maxlength="120" aria-describedby="contact-location-error">
+            <span class="field-error" id="contact-location-error"></span>
+          </div>
+          <div class="field">
+            <label for="contact-apartments">Anzahl Wohnungen <span class="muted">(optional)</span></label>
+            <input id="contact-apartments" type="number" min="1" step="1" inputmode="numeric" aria-describedby="contact-apartments-error">
+            <span class="field-error" id="contact-apartments-error"></span>
+          </div>
+          <div class="field contact-wide">
+            <label for="contact-message">Kurze Nachricht *</label>
+            <textarea id="contact-message" rows="4" maxlength="1500" required aria-describedby="contact-message-hint contact-message-error"></textarea>
+            <span class="muted" id="contact-message-hint">Keine Mieterdaten, Ausweisdokumente oder Fahrzeugdaten eingeben.</span>
+            <span class="field-error" id="contact-message-error"></span>
+          </div>
+        </div>
+        <p class="contact-error-summary" id="contact-errors" role="alert" hidden></p>
+        <button class="button contact-submit" id="contact-submit" type="submit" disabled>Demo-Anfrage prüfen <span aria-hidden="true">→</span></button>
+        <p class="muted contact-privacy">Ihre Angaben verlassen dieses Formular nicht. <a href="/datenschutz/">Hinweise zum Datenschutz</a></p>
+      </form>
+      <div id="contact-result" class="notice contact-result" role="status" tabindex="-1" hidden>
+        <strong>Demo: Ihre Anfrage wurde nicht versendet.</strong>
+        <p>Die Eingaben sind vollständig. Es wurden keine Daten übertragen oder als Anfrage gespeichert. Sie können die Angaben weiter bearbeiten.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -42,3 +42,8 @@ Do not silently choose a rule in marketing claims, calculators, billing logic or
 ## Work status
 
 The repository is cloned on the Pi. Mathis has supplied this proposal as future implementation context and supplied the VoltoShare Brand Kit v2.0 on 16 November 2026; see `design/README.md` and the mandatory project design skill. On 16 November 2026 Mathis additionally authorized **blank placeholder deployment only** at `website-electromobility.mclement.ch` and `app-electromobility.mclement.ch`. The actual website/web-app design and functional implementation still await his further instructions. Use the supplied brand kit for visual identity. No unprovided technology stack, final pricing or additional product requirements should be inferred from this proposal.
+
+
+## Website implementation update — 16 November 2026
+
+Mathis subsequently supplied `WEBSITE_IMPLEMENTATION_BRIEF.md` and explicitly authorized building and deploying the public website. The German site now implements that brief; the separate app remains unchanged. The latest website brief supersedes the older brand-kit reference for language, routes, calculator and website-only scope. See README and `WEBSITE_RELEASE.md`.

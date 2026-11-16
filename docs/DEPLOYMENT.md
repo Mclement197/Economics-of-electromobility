@@ -1,6 +1,10 @@
-# Placeholder deployment — Pi + Cloudflare
+# Pi + Cloudflare deployment
 
-These are neutral placeholders only. The visual identity, actual website and functional web app still await Mathis's further requirements and design guidelines.
+## Current public website — 16 November 2026
+
+The public website now serves the branded German project concept and interactive model. Build/deploy commands are in the root README; release checks and unresolved decisions are in `WEBSITE_RELEASE.md`. The tenant app remains an unchanged placeholder. The same existing origins, services and Cloudflare routing below are retained. Source PDFs, design ZIPs and private data are not served.
+
+The following records the original placeholder infrastructure; the website content has since been replaced independently.
 
 | Site | Public URL | Public directory | Local origin | User service |
 | --- | --- | --- | --- | --- |
