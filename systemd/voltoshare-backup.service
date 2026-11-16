@@ -1,0 +1,10 @@
+[Unit]
+Description=Private VoltoShare database backup
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/mathis/openclaw-workspace/Economics-of-electromobility/tenant-app
+EnvironmentFile=/home/mathis/.config/voltoshare/app.env
+ExecStart=/home/mathis/.local/share/voltoshare-venv/bin/python manage.py backup_db --directory /home/mathis/.local/state/voltoshare/backups
+UMask=0077
+NoNewPrivileges=true

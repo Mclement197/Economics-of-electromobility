@@ -2,16 +2,41 @@
   "language": "de-CH",
   "siteUrl": "https://website-electromobility.mclement.ch",
   "appUrl": "https://app-electromobility.mclement.ch/",
-  "appStatus": "placeholder",
+  "appStatus": "demo",
   "contactMode": "demo",
   "contactDestination": null,
   "projectStatus": "Projektkonzept | Ökonomie der Elektromobilität",
   "downloads": [],
   "pages": [
-    {"slug":"", "file":"home", "title":"Geteilte Ladepunkte für Ihr Mehrfamilienhaus", "description":"Das VoltoShare-Projektkonzept: gemeinsam genutzte Ladeinfrastruktur für Mehrfamilienhäuser. Finanzierung, Installation, Plattform und Betrieb aus einer Hand."},
-    {"slug":"geschaeftsmodell", "file":"economics", "title":"Geschäftsmodell & Modellrechnung", "description":"Wer bezahlt was? Entdecken Sie das VoltoShare-Abonnement pro Wohnung, die Stromabrechnung und zwei illustrative Leerstandsszenarien."},
-    {"slug":"kontakt", "file":"contact", "title":"Ihre Liegenschaft im Blick", "description":"Lernen Sie die geplante Liegenschaftsanfrage kennen. Klar gekennzeichneter Demo-Ablauf ohne Versand oder Speicherung Ihrer Angaben."},
-    {"slug":"impressum", "file":"imprint", "title":"Projekthinweise & Impressum", "description":"Status und noch offene Betreiberangaben zum akademischen VoltoShare-Projektkonzept."},
-    {"slug":"datenschutz", "file":"privacy", "title":"Datenschutzhinweise", "description":"Wie diese VoltoShare-Projektvorschau mit Formulareingaben und technischen Zugriffsdaten umgeht."}
+    {
+      "slug": "",
+      "file": "home",
+      "title": "Geteilte Ladepunkte für Ihr Mehrfamilienhaus",
+      "description": "Das VoltoShare-Projektkonzept: gemeinsam genutzte Ladeinfrastruktur für Mehrfamilienhäuser. Finanzierung, Installation, Plattform und Betrieb aus einer Hand."
+    },
+    {
+      "slug": "geschaeftsmodell",
+      "file": "economics",
+      "title": "Geschäftsmodell & Modellrechnung",
+      "description": "Wer bezahlt was? Entdecken Sie das VoltoShare-Abonnement pro Wohnung, die Stromabrechnung und zwei illustrative Leerstandsszenarien."
+    },
+    {
+      "slug": "kontakt",
+      "file": "contact",
+      "title": "Ihre Liegenschaft im Blick",
+      "description": "Lernen Sie die geplante Liegenschaftsanfrage kennen. Klar gekennzeichneter Demo-Ablauf ohne Versand oder Speicherung Ihrer Angaben."
+    },
+    {
+      "slug": "impressum",
+      "file": "imprint",
+      "title": "Projekthinweise & Impressum",
+      "description": "Status und noch offene Betreiberangaben zum akademischen VoltoShare-Projektkonzept."
+    },
+    {
+      "slug": "datenschutz",
+      "file": "privacy",
+      "title": "Datenschutzhinweise",
+      "description": "Wie diese VoltoShare-Projektvorschau mit Formulareingaben und technischen Zugriffsdaten umgeht."
+    }
   ]
 }

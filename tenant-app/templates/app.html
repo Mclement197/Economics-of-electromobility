@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VoltoShare · Your household charging</title>
+<meta name="description" content="Reserve a shared charger, manage your household and understand your charging activity.">
+<meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#F8F5F0">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" type="image/svg+xml" href="{% static 'brand/symbol.svg' %}">
+<link rel="apple-touch-icon" href="{% static 'brand/apple-touch-icon.png' %}">
+<link rel="manifest" href="{% static 'brand/site.webmanifest' %}">
+<link rel="stylesheet" href="{% static 'brand/tokens.css' %}">
+<link rel="stylesheet" href="{% static 'app/app.css' %}">
+<script type="module" src="{% static 'app/app.mjs' %}"></script>
+</head>
+<body>
+<a class="skip-link" href="#app-view">Skip to content</a>
+<div class="app-frame">
+<aside class="sidebar">
+<a class="app-brand" href="#dashboard" aria-label="VoltoShare dashboard"><img src="{% static 'brand/logo-navigation.svg' %}" alt="VoltoShare" width="200" height="35"></a>
+<div class="sidebar-property" id="sidebar-property"><span class="eyebrow">Your building</span><strong>Loading household…</strong></div>
+<nav class="desktop-nav" aria-label="Main navigation">
+<a href="#dashboard" data-route="dashboard"><img src="{% static 'brand/icons/icon-building.svg' %}" alt="" width="20" height="20">Dashboard</a>
+<a href="#parking" data-route="parking"><img src="{% static 'brand/icons/icon-charger.svg' %}" alt="" width="20" height="20">Parking &amp; reservations</a>
+<a href="#history" data-route="history"><img src="{% static 'brand/icons/icon-energy.svg' %}" alt="" width="20" height="20">Charging history</a>
+<a href="#household" data-route="household"><img src="{% static 'brand/icons/icon-household.svg' %}" alt="" width="20" height="20">Household &amp; vehicles</a>
+<a href="#billing" data-route="billing"><img src="{% static 'brand/icons/icon-invoice.svg' %}" alt="" width="20" height="20">Billing</a>
+</nav>
+<div class="sidebar-bottom"><a class="text-link" href="{{ site_url|default:'https://website-electromobility.mclement.ch/' }}">About VoltoShare <span aria-hidden="true">↗</span></a><form method="post" action="/logout/">{% csrf_token %}<button type="submit" class="logout-button">Sign out</button></form></div>
+</aside>
+<div class="app-content">
+<header class="mobile-header"><a href="#dashboard" aria-label="VoltoShare dashboard"><img src="{% static 'brand/logo-navigation.svg' %}" alt="VoltoShare" width="200" height="35"></a><button type="button" class="icon-button" data-action="account" aria-label="Account and sign out"><img src="{% static 'brand/icons/icon-household.svg' %}" width="24" height="24" alt=""></button></header>
+<div id="demo-banner" class="demo-banner" hidden><span><strong>Shared demo</strong> · Use fictional information only. Changes persist and are visible to other demo visitors. No real charging or payments.</span><span>Simulated chargers · no payments. <a href="{{ site_url|default:'https://website-electromobility.mclement.ch/' }}geschaeftsmodell/">Flat sample tariff; commercial model differs ↗</a></span></div>
+<div class="global-alert" id="global-alert" role="alert" hidden></div>
+<div id="live-status" class="toast" role="status" aria-live="polite" hidden></div>
+<main id="app-view" tabindex="-1"><div class="loading-state"><img src="{% static 'brand/symbol.svg' %}" width="48" height="48" alt=""><h1>Your charging, together.</h1><p>Loading your household…</p><noscript><p>This application needs JavaScript for reservations and household management. No form is submitted without it.</p></noscript></div></main>
+</div>
+</div>
+<nav class="mobile-nav" aria-label="Mobile navigation"><a href="#dashboard" data-route="dashboard"><img src="{% static 'brand/icons/icon-building.svg' %}" width="24" height="24" alt="">Home</a><a href="#parking" data-route="parking"><img src="{% static 'brand/icons/icon-charger.svg' %}" width="24" height="24" alt="">Parking</a><a href="#household" data-route="household"><img src="{% static 'brand/icons/icon-household.svg' %}" width="24" height="24" alt="">Household</a><button type="button" data-action="more"><span class="more-symbol" aria-hidden="true">···</span>More</button></nav>
+<dialog id="app-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+</body>
+</html>

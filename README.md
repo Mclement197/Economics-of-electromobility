@@ -1,12 +1,12 @@
 # VoltoShare
 
-A German-language public concept website for shared charging in rental apartment buildings. Built with static HTML, shared brand CSS and small native ES modules; Python 3 builds the pages without frontend dependencies. The separate tenant app is still a placeholder.
+A German-language public concept website for shared charging in rental apartment buildings. Built with static HTML, shared brand CSS and small native ES modules; Python 3 builds the pages without frontend dependencies. The separate tenant app is now an interactive, persistent fictional demo; see [tenant-app/README.md](tenant-app/README.md).
 
 - Website: https://website-electromobility.mclement.ch/
-- App placeholder: https://app-electromobility.mclement.ch/
+- Resident app demo: https://app-electromobility.mclement.ch/
 - [Project baseline](docs/PROJECT_BRIEF.md), [original proposal](docs/VoltoShare_Expose_DE.pdf), [current website brief](docs/WEBSITE_IMPLEMENTATION_BRIEF.md)
 - [Brand archive and provenance](design/README.md), [mandatory design skill](.agents/skills/voltoshare-design/SKILL.md)
-- [Deployment infrastructure](docs/DEPLOYMENT.md), [release verification and remaining decisions](docs/WEBSITE_RELEASE.md)
+- [Deployment infrastructure](docs/DEPLOYMENT.md), [website release verification](docs/WEBSITE_RELEASE.md), [app release verification and limitations](docs/APP_RELEASE.md)
 
 ## Build and preview
 
@@ -30,11 +30,11 @@ Build writes only into the staging output (default `build/website`, ignored by G
 - `website-src/contact.mjs`, `contact.css`: local-only demo enquiry.
 - `website-src/assets/`: only the public assets needed by this site.
 - `sites/website/`: generated deployed files, tracked for review; **do not hand-edit**.
-- `sites/app/`: separate, untouched placeholder.
+- `sites/app/`: retained original placeholder for rollback; the app service now runs `tenant-app/`.
 
-Only German is implemented; no incomplete English switch. Only `contactMode: "demo"`, `contactDestination: null`, and `appStatus: "placeholder"` are supported. The build rejects other modes to prevent accidental misrepresentation. Enabling real enquiries requires an explicitly configured receiving operator/backend, server validation and abuse protection, privacy updates, and delivery tests—not merely flipping a setting. No environment secrets or `.env` are needed. `downloads` is empty because no public document downloads have been approved.
+Only German is implemented; no incomplete English switch. Only `contactMode: "demo"`, `contactDestination: null`, and `appStatus: "placeholder"` or `"demo"` are supported. The build rejects other modes to prevent accidental misrepresentation. Enabling real enquiries requires an explicitly configured receiving operator/backend, server validation and abuse protection, privacy updates, and delivery tests—not merely flipping a setting. No environment secrets or `.env` are needed. `downloads` is empty because no public document downloads have been approved.
 
-The visible app link is **App-Platzhalter**, never a live login or working demo. The landing-page interface is a clearly marked, noninteractive conceptual preview with fictional building/booking information. There is no current tenant tariff to reconcile; any later flat-rate app fixture must be labelled a simplification of the proposal's dynamic tariff plus provider markup.
+The visible app link is **App-Demo**, pointing to the working, explicitly fictional resident demonstration. The landing-page interface is a clearly marked, noninteractive conceptual preview with fictional building/booking information. The app uses a labelled flat sample tariff as a first-version simplification of the proposal’s dynamic tariff plus provider markup.
 
 ## Assets and brand sources
 

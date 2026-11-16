@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily VoltoShare database backup
+
+[Timer]
+OnCalendar=*-*-* 04:15:00
+Persistent=true
+Unit=voltoshare-backup.service
+
+[Install]
+WantedBy=timers.target

@@ -15,8 +15,10 @@ out.mkdir(parents=True,exist_ok=True)
 cfg=json.loads((SRC/'config.json').read_text())
 if cfg['contactMode']!='demo' or cfg['contactDestination'] is not None:
     raise SystemExit('Only demo enquiry mode is implemented. Configure and verify a backend before enabling live mode.')
-if cfg['appStatus']!='placeholder':
-    raise SystemExit('Verify the app implementation and update labels/previews before changing appStatus.')
+if cfg['appStatus'] not in ['placeholder','demo']:
+    raise SystemExit('Only verified placeholder or demo app states are supported.')
+app_label='App-Demo öffnen' if cfg['appStatus']=='demo' else 'App-Platzhalter ansehen'
+app_copy=('Die separate Bewohner-App ist als interaktive Demo mit fiktiven Haushalten verfügbar. Reservierungen, Fahrzeuge und Abrechnungen bleiben gespeichert. Der feste Beispieltarif vereinfacht das geplante dynamische Tarifmodell. Die Darstellung hier bleibt eine illustrative Vorschau.' if cfg['appStatus']=='demo' else 'Die Bewohner-App ist eine separate Produktoberfläche. Aktuell liegt dort nur eine Platzhalterseite vor; die Darstellung hier ist eine illustrative Vorschau.')
 if cfg['language']!='de-CH':
     raise SystemExit('Only complete German content exists in this release.')
 for file in ['site.css','site.mjs','calculator.mjs','calculator.css','contact.mjs','contact.css']:
@@ -42,8 +44,12 @@ faq=json.loads((SRC/'faq.json').read_text())
 faq_html=''.join(f'<details><summary>{escape(q)}</summary><p>{a}</p></details>' for q,a in faq)
 header='''<a class="skip-link" href="#main">Zum Inhalt springen</a><div class="status-strip"><div class="wrap"><span>'''+escape(cfg['projectStatus'])+'''</span><span>Gemeinsam genutzte Ladeinfrastruktur</span></div></div><header class="site-header"><div class="header-inner wrap"><a class="brand" href="/" aria-label="VoltoShare – Startseite"><img src="/assets/logo-navigation.svg" alt="VoltoShare" width="200" height="35"></a><button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menü <span aria-hidden="true">☰</span></button><nav class="site-nav" id="site-nav" aria-label="Hauptnavigation"><a href="/#loesung">Lösung</a><a href="/#ablauf">So funktioniert’s</a><a href="/geschaeftsmodell/">Geschäftsmodell</a><a href="/#faq">FAQ</a><a class="button" href="/kontakt/">Kontakt <span aria-hidden="true">↗</span></a></nav></div></header>'''
 footer='''<footer class="site-footer"><div class="wrap"><div class="footer-top"><div class="footer-brand"><img src="/assets/logo-white.svg" alt="VoltoShare – Gemeinsam genutzte Ladeinfrastruktur" width="320" height="72"><p>Gemeinsam genutzte Ladeinfrastruktur<br>für Mietwohngebäude.</p></div><nav class="footer-nav" aria-label="Weitere Seiten"><div><strong>Das Konzept</strong><a href="/#loesung">Die Lösung</a><a href="/geschaeftsmodell/">Geschäftsmodell</a><a href="/kontakt/">Anfrage-Demo</a></div><div><strong>Projekt &amp; Hinweise</strong><a href="'''+escape(cfg['appUrl'])+'''">App-Platzhalter ↗</a><a href="/impressum/">Projekthinweise / Impressum</a><a href="/datenschutz/">Datenschutz</a></div></nav></div><div class="footer-bottom"><span>VoltoShare · Projektkonzept · Ökonomie der Elektromobilität</span><span>Grundlage: Exposé vom 15. Oktober 2026 · Arbeitsentwurf</span></div></div></footer>'''
+footer=footer.replace('App-Platzhalter ↗',app_label+' ↗')
+if cfg['appStatus']=='demo':
+    header=header.replace('<a class="button" href="/kontakt/">', '<a href="'+escape(cfg['appUrl'])+'">App-Demo ↗</a><a class="button" href="/kontakt/">')
 for page in cfg['pages']:
     content=(SRC/'pages'/f"{page['file']}.html").read_text()
+    content=content.replace('{{APP_LABEL}}',app_label).replace('{{APP_STATUS_COPY}}',app_copy)
     content=content.replace('{{APP_URL}}',escape(cfg['appUrl'])).replace('{{FAQ}}',faq_html).replace('{{WINDOWS}}','<i></i>'*20).replace('{{BAYS}}',''.join(f'<div class="bay"><img src="/assets/icons/icon-charger.svg" width="24" height="24" alt=""><span>{i:02}</span></div>' for i in range(1,6)))
     canonical=cfg['siteUrl']+'/'+(page['slug']+'/' if page['slug'] else '')
     title=escape(page['title']+' | VoltoShare')
