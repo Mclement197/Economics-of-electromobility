@@ -24,15 +24,18 @@ Build writes only into the staging output (default `build/website`, ignored by G
 ## Source organisation and configuration
 
 - `website-src/config.json`: canonical URL, language, project status, app URL/status, enquiry mode/destination, downloads, page metadata.
-- `website-src/pages/`: German content fragments; `faq.json`: reusable FAQ content.
+- `website-src/pages/`: German content fragments. The FAQ and closing enquiry panel were removed on 24 November 2026.
 - `website-src/site.css`, `site.mjs`: shared presentation and navigation.
 - `website-src/calculator.mjs`, `calculator.css`: pure financial helpers plus accessible UI.
 - `website-src/contact.mjs`, `contact.css`: local-only demo enquiry.
+- `website-src/finance-model.mjs`, `finance-ui.mjs`, `finance.css`: shared Zurich and Cham scenarios, local browser persistence, live charts.
+- `website-src/presentation-data.json`, `presentation.mjs`, `presentation.css`: 18-slide HTML presentation, keyboard/fullscreen modes and scenario-aware printing.
+- `website-src/downloads/`: approved baseline PDF and editable PPTX; build/source details in `docs/PRESENTATION_CONTENT.md`.
 - `website-src/assets/`: only the public assets needed by this site.
 - `sites/website/`: generated deployed files, tracked for review; **do not hand-edit**.
 - `sites/app/`: retained original placeholder for rollback; the app service now runs `tenant-app/`.
 
-Only German is implemented; no incomplete English switch. Only `contactMode: "demo"`, `contactDestination: null`, and `appStatus: "placeholder"` or `"demo"` are supported. The build rejects other modes to prevent accidental misrepresentation. Enabling real enquiries requires an explicitly configured receiving operator/backend, server validation and abuse protection, privacy updates, and delivery tests—not merely flipping a setting. No environment secrets or `.env` are needed. `downloads` is empty because no public document downloads have been approved.
+Only German is implemented; no incomplete English switch. Only `contactMode: "demo"`, `contactDestination: null`, and `appStatus: "placeholder"` or `"demo"` are supported. The build rejects other modes to prevent accidental misrepresentation. Enabling real enquiries requires an explicitly configured receiving operator/backend, server validation and abuse protection, privacy updates, and delivery tests—not merely flipping a setting. No environment secrets or `.env` are needed. The approved draft presentation is downloadable as PDF and editable PowerPoint; only generated public deliverables are exposed, not the original source deck or archive.
 
 The visible app link is **App-Demo**, pointing to the working, explicitly fictional resident demonstration. The landing-page interface is a clearly marked, noninteractive conceptual preview with fictional building/booking information. The app uses a labelled flat sample tariff as a first-version simplification of the proposal’s dynamic tariff plus provider markup.
 
@@ -76,3 +79,21 @@ systemctl --user is-active electromobility-website.service electromobility-app.s
 The deploy script stages and replaces **only** `sites/website`, preserves a dated rollback directory under `~/.local/state/voltoshare/releases/`, and restores the previous root if the replacement rename fails. Existing `scripts/serve.py` reads static files directly; no restart, tunnel, DNS, credentials or app changes are necessary. The replacement is two local directory renames; an in-flight request in that very short interval may need a retry. For rollback, copy the printed backup to a new staging directory and replace `sites/website` with that tree, retaining the failed release outside the public root. The initial blank placeholder backup has no subpages, so restore it directly rather than through the full-release validator.
 
 Public preview remains `noindex, nofollow`. This is not a commercial launch. Operator identity/contact details and commercial terms still need confirmation before real enquiries or operations.
+
+## Financial scenarios and presentation — 24 November 2026
+
+`/finanzen/` offers the supplied Zürich per-apartment case and separate Cham per-wallbox alternative. All source calculator controls are retained; scenario edits stay in this browser and do not affect app invoices. `/praesentation/` and the homepage's final section use one HTML slide player. The resident app links to these project tools under More and in the sidebar.
+
+The 17 VoltoShare slides plus a Cham appendix are retained; unrelated FlexRide/tourism material and student identifiers are not published. Fullscreen supports arrows/Home/End and Escape, with a viewport fallback on browsers lacking native fullscreen. Mobile slides reflow rather than shrinking unreadably. Downloads are baseline snapshots; “Aktuellen Stand als PDF drucken” captures locally saved finance scenarios in the two finance slides, while other slides are labelled source baselines.
+
+```sh
+node --test website-src/calculator.test.mjs website-src/finance-model.test.mjs
+python3 scripts/build-website.py
+# With staging preview running on port18929:
+node scripts/build-presentation-pdf.mjs
+python3 scripts/build-website.py
+node tests/interactive-presentation-browser.mjs
+node tests/website-browser.mjs
+```
+
+See `docs/FINANCIAL_MODEL.md` for model corrections and limitations. PPTX text/tables/charts are editable; native PowerPoint visual rendering was unavailable on this host (Impress not installed), so geometry/font-metric checks accompany the browser/PDF visual checks.

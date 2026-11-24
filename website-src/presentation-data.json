@@ -1,0 +1,811 @@
+{
+  "version": 1,
+  "title": "VoltoShare · Präsentationsentwurf",
+  "sourceNote": "Inhalt der 17 VoltoShare-Folien der gelieferten Präsentation; ergänzender Cham-Rechner als separater Anhang. Entwurf, keine kommerzielle Zusage.",
+  "exportNote": "PDF und PowerPoint zeigen die Basisszenarien; live veränderte Annahmen bleiben im interaktiven Web-Modell.",
+  "slides": [
+    {
+      "id": "auftakt",
+      "kind": "title",
+      "kicker": "Ökonomie der Elektromobilität · Arbeitsentwurf",
+      "title": "Laden teilen. Wohnen weiterdenken.",
+      "subtitle": "VoltoShare finanziert, installiert und betreibt gemeinsam genutzte Ladeinfrastruktur für Mietwohngebäude.",
+      "sections": [
+        {
+          "title": "Team VoltoShare",
+          "items": [
+            "Mathis Clement",
+            "Cyrill Gasser",
+            "Robin Vinzenz Gasser",
+            "Joel Frei",
+            "Yannic David Schnell"
+          ]
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 1. Die Nutzungs- und Finanzierungsangebote sind Projektkonzepte, keine laufenden kommerziellen Leistungen."
+      ]
+    },
+    {
+      "id": "agenda",
+      "kind": "agenda",
+      "kicker": "Orientierung",
+      "title": "Vom Bedarf zum Geschäftsmodell",
+      "sections": [
+        {
+          "title": "01 · Team",
+          "body": "Wer wir sind"
+        },
+        {
+          "title": "02 · Roadmap",
+          "body": "Von der Idee zum Marktplatz"
+        },
+        {
+          "title": "03 · Markt",
+          "body": "Deutschschweiz, Testgebiet Zürich"
+        },
+        {
+          "title": "04 · Produkt",
+          "body": "Hardware, Plattform, Ertragsmodell"
+        },
+        {
+          "title": "05 · Case",
+          "body": "Wohngebäude: Nutzung und Rechnung"
+        },
+        {
+          "title": "06 · Diskussion",
+          "body": "Fragen, Quellen und Annahmen"
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 2. Die tatsächliche Reihenfolge der Inhaltsfolien bleibt erhalten; Roadmap nach Markt."
+      ]
+    },
+    {
+      "id": "team",
+      "kind": "team",
+      "kicker": "Menschen hinter der Idee",
+      "title": "Das VoltoShare-Team",
+      "sections": [
+        {
+          "title": "Mathis Clement",
+          "body": "Projektteam"
+        },
+        {
+          "title": "Cyrill Gasser",
+          "body": "Projektteam"
+        },
+        {
+          "title": "Robin Vinzenz Gasser",
+          "body": "Projektteam"
+        },
+        {
+          "title": "Joel Frei",
+          "body": "Projektteam"
+        },
+        {
+          "title": "Yannic David Schnell",
+          "body": "Projektteam"
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 3. Studien-/Legitimationsnummern und leere Portrait-Platzhalter werden in der öffentlichen Fassung ausgelassen. Es wurden keine Portraits ergänzt."
+      ]
+    },
+    {
+      "id": "grundidee",
+      "kind": "model",
+      "kicker": "Grundidee & Geschäftsmodell",
+      "title": "Eine Infrastruktur. Gemeinsam genutzt.",
+      "subtitle": "VoltoShare unterstützt Mieter und Vermieter von Mehrfamilienhäusern: Hardware vorfinanzieren, installieren und über wiederkehrende Gebühren betreiben.",
+      "sections": [
+        {
+          "title": "Vermieter / Verwaltung",
+          "body": "Monatliches Abo pro abrechenbarer Wohnung; VoltoShare finanziert und betreibt die Ladeinfrastruktur."
+        },
+        {
+          "title": "Bewohner",
+          "body": "Geteilte Ladepunkte zuhause; das Fahrzeug bleibt privat. Strom wird nach Verbrauch bezahlt."
+        },
+        {
+          "title": "Intelligentes Laden",
+          "body": "Lastmanagement verteilt die verfügbare Leistung. App und NFC ermöglichen Zugang und Reservierung."
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 4; Projektexposé vom 15.10.2026. Die versehentliche Beschriftung «Gruppe 1 – FlexRide» wurde korrigiert. Die Vorlage zeigt Make/Buy, @home/@work/on the road und instant/smart unidirectional/smart bidirectional als Einordnungsoptionen. Daraus wird kein V2G-Angebot abgeleitet."
+      ]
+    },
+    {
+      "id": "markt-zuerich",
+      "kind": "market",
+      "kicker": "Markt · Testgebiet Zürich",
+      "title": "Viele Mietwohnungen. Hoher Ladebedarf.",
+      "stats": [
+        {
+          "value": "1.63 Mio",
+          "label": "Einwohner im Kanton · Ende 2025"
+        },
+        {
+          "value": "238’472",
+          "label": "Wohnungen in der Stadt · Ende 2025"
+        },
+        {
+          "value": "92 %",
+          "label": "Mietanteil · rund 219’000 Wohnungen"
+        },
+        {
+          "value": "750’000",
+          "label": "Personenwagen im Kanton · Sept. 2025"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Warum Zürich?",
+          "items": [
+            "Dichte Mietwohngebäude; viele Bewohner ohne eigene Lademöglichkeit.",
+            "0.1 % Leerstand (235 Wohnungen): geringes, aber nicht ausgeschlossenes Abo-Leerstandsrisiko.",
+            "Hoher E-Auto-Anteil bei Neuzulassungen; kurze Wege für Interviews und Support."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "Kanton Zürich; Statistik Stadt Zürich · Angaben aus der gelieferten Präsentation"
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 5. Die Vorlage bezeichnet Zürich als Kanton mit dem höchsten E-Auto-Anteil bei Neuzulassungen. Rund 219’000 = 238’472 × 92 %, eigene Rechnung des Teams. Statistikwerte wurden aus der Vorlage übernommen, nicht neu verifiziert."
+      ]
+    },
+    {
+      "id": "markt-elektro",
+      "kind": "metrics",
+      "kicker": "Markt · Elektromobilität",
+      "title": "Der Bestand wächst. Der Ladezugang fehlt.",
+      "stats": [
+        {
+          "value": "≈ 7 %",
+          "label": "Reine E-Autos im Zürcher Bestand · 2025"
+        },
+        {
+          "value": "30.5 %",
+          "label": "Reine E-Autos bei Neuzulassungen · 2025"
+        },
+        {
+          "value": "≈ 42 %",
+          "label": "Steckerfahrzeuge bei Neuzulassungen · 2025"
+        }
+      ],
+      "sections": [
+        {
+          "title": "40 % ohne privaten Ladeort",
+          "body": "Szenario 2035 für die Stadt Zürich: weder zuhause noch am Arbeitsplatz laden."
+        },
+        {
+          "title": "114’000 Parkplätze",
+          "body": "Vom kantonalen Förderprogramm aufgerüstet; seit Oktober 2026 geschlossen."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Kanton Zürich · electrive · INFRAS · BFE; siehe Quellen"
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 6. Steckerfahrzeuge = batterieelektrische Autos + Plug-in-Hybride. Der 40-%-Wert ist ein Szenario, keine heutige Messung. Quellenangaben und Förderprogrammzahlen aus der Vorlage, nicht neu verifiziert."
+      ]
+    },
+    {
+      "id": "markt-potenzial",
+      "kind": "marketSizing",
+      "kicker": "Markt · Modellannahmen",
+      "title": "Vom Gesamtmarkt zum Fünfjahresziel",
+      "stats": [
+        {
+          "value": "≈ 219’000",
+          "label": "Mietwohnungen · ≈ CHF 66 Mio Abo/Jahr"
+        },
+        {
+          "value": "≈ 66’000",
+          "label": "Erreichbar · ≈ CHF 20 Mio Abo/Jahr"
+        },
+        {
+          "value": "≈ 2’000",
+          "label": "Fünfjahresziel · ≈ CHF 0.6 Mio Abo/Jahr"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Annahmen des Teams",
+          "items": [
+            "CHF 25 pro Wohnung und Monat.",
+            "30 % in Gebäuden ab 20 Wohnungen mit Garage.",
+            "3 % des erreichbaren Markts nach fünf Jahren; rund 100 Gebäude."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "238’472 Wohnungen × 92 % Mietanteil; alle Marktanteile sind Teamannahmen."
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 7. Abo-Umsatz = Wohnungen × CHF 25 × 12. Diese Beträge sind Umsatzpotenzial, nicht Gewinn oder Prognosezusagen. Anteile und Zahlungsbereitschaft in Phase 1 validieren. Die rund 100 Gebäude folgen dem 20-Wohnungen-Beispiel, nicht dem späteren 60-Wohnungen-Case."
+      ]
+    },
+    {
+      "id": "roadmap",
+      "kind": "roadmap",
+      "kicker": "Entwicklung · Plan, keine erreichten Meilensteine",
+      "title": "Vom Pilotgebäude zur Plattform",
+      "sections": [
+        {
+          "title": "Q4 2026 · Idee",
+          "body": "Exposé, Teamstart und Marktanalyse."
+        },
+        {
+          "title": "Q1 2027 · Validierung",
+          "body": "Interviews mit Verwaltungen und Vermietern."
+        },
+        {
+          "title": "Q2 2027 · Prototyp",
+          "body": "App und Auswahl der Wallbox-Komponenten."
+        },
+        {
+          "title": "Q3–Q4 2027 · Pilot",
+          "body": "Ein Gebäude in Zug zur Produktoptimierung."
+        },
+        {
+          "title": "Q1 2028 · Produktlaunch",
+          "body": "Abo-Angebot und aktive Kundenakquise."
+        },
+        {
+          "title": "2029 · Plattform-Pilot",
+          "body": "Öffentliche Nutzung mit dem Kundenstamm testen."
+        },
+        {
+          "title": "2030 · Marktplatz",
+          "body": "Öffnung für Unternehmen und Privatkunden."
+        },
+        {
+          "title": "2030+ · Skalierung",
+          "body": "Ausbau Schweiz, möglicher DACH-Markteintritt."
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 8 (in der Quelle ausgeblendet, hier als Teil des Entwurfs aufgenommen). Phase 1: Shared Charging in grösseren Mietwohngebäuden, zunächst Markt Zürich. Zug steht in der Vorlage als geplanter Pilotstandort. Phase 2: Weiterentwicklung zu einem «Airbnb» für Ladestationen und Parkplätze. Marktplatz ist Zukunftsvision, kein heutiger Funktionsumfang."
+      ]
+    },
+    {
+      "id": "hardware",
+      "kind": "hardware",
+      "kicker": "Produkt · Physische Komponente",
+      "title": "Weniger Wallboxen. Geteilter Zugang.",
+      "stats": [
+        {
+          "value": "20",
+          "label": "Wohnungen im Beispiel"
+        },
+        {
+          "value": "5",
+          "label": "Geteilte Ladepunkte"
+        },
+        {
+          "value": "1",
+          "label": "Koordiniertes Lastmanagement"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Wallbox mit Zähler",
+          "body": "Verbrauch messen; Freigabe per App oder NFC-Karte."
+        },
+        {
+          "title": "Gebäudeleistung teilen",
+          "body": "Hausanschluss und Lastmanagement verteilen verfügbare Leistung."
+        },
+        {
+          "title": "Finanziert und betrieben",
+          "body": "VoltoShare übernimmt Installation, Wartung und Updates."
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 9 und Projektexposé. 20/5 ist ein illustratives Beispiel, kein allgemeingültiges Auslegungsverhältnis oder Nachweis einer realen Installation. Normale Parkplätze bleiben von Ladeplätzen getrennt."
+      ]
+    },
+    {
+      "id": "plattform",
+      "kind": "platform",
+      "kicker": "Produkt · Plattformkomponente",
+      "title": "Eine App. Drei Perspektiven.",
+      "sections": [
+        {
+          "title": "Bewohner",
+          "items": [
+            "Ladezeit reservieren",
+            "Per App oder NFC freischalten",
+            "Verbrauch und Abrechnung einsehen"
+          ]
+        },
+        {
+          "title": "Vermieter & Verwaltung",
+          "items": [
+            "Nutzer hinzufügen und entfernen",
+            "Zugangskarten ausgeben",
+            "Reservierungen auf Missbrauch prüfen"
+          ]
+        },
+        {
+          "title": "VoltoShare-Betrieb",
+          "items": [
+            "Lastmanagement und Softwareupdates",
+            "Wartung und Support",
+            "Dynamischer Stromtarif und Rechnungen"
+          ]
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 10. Produktziel; die aktuelle App ist eine fiktive Demo ohne reale Wallbox-Steuerung, NFC-Provisionierung oder Zahlungen."
+      ]
+    },
+    {
+      "id": "ertragsmodell",
+      "kind": "flows",
+      "kicker": "Produkt · Leistung und Zahlung",
+      "title": "Zwei Zahlungsströme. Klare Aufgaben.",
+      "sections": [
+        {
+          "title": "Vermieter → VoltoShare",
+          "body": "Abo pro Wohnung und Monat für Infrastruktur und Plattform."
+        },
+        {
+          "title": "Bewohner → VoltoShare",
+          "body": "Gemessener Strom zum dynamischen Tarif plus Aufschlag."
+        },
+        {
+          "title": "VoltoShare → Gebäude",
+          "body": "Hardware, Software, Wartung und Support aus einer Hand."
+        }
+      ],
+      "rows": [
+        [
+          "Vermieter",
+          "Geringe oder keine Anfangszahlung; mögliche Mehrmiete nach Abo."
+        ],
+        [
+          "Bewohner",
+          "Ladezugang ohne eigene Wallbox, Kauf oder Installation."
+        ],
+        [
+          "Offene Entscheidung",
+          "Abo bei Leerstand weiterführen oder pausieren?"
+        ]
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 11. Mehrmiete ist eine Teamannahme, kein garantierter Nutzen oder rechtlich zugesicherter Mietaufschlag. Ob bei Leerstand abgerechnet wird, bleibt offen. Die zwei Varianten werden im Finanzmodell getrennt gezeigt."
+      ]
+    },
+    {
+      "id": "case-annahmen",
+      "kind": "case",
+      "kicker": "Case · Zürich · Basisannahmen der Vorlage",
+      "title": "60 Wohnungen. 15 Ladepunkte.",
+      "stats": [
+        {
+          "value": "60",
+          "label": "Wohnungen"
+        },
+        {
+          "value": "15",
+          "label": "Ladepunkte · Verhältnis 4 : 1"
+        },
+        {
+          "value": "24",
+          "label": "E-Autos · 40 % der Haushalte"
+        }
+      ],
+      "rows": [
+        [
+          "Jährlicher Strombedarf je E-Auto",
+          "2’500 kWh"
+        ],
+        [
+          "Abo je Wohnung / Monat",
+          "CHF 25"
+        ],
+        [
+          "Angenommene Mehrmiete / Monat",
+          "CHF 40"
+        ],
+        [
+          "Leerstand Stadt Zürich",
+          "0.1 %"
+        ]
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 12. 24 E-Autos entsprechen dem Teamszenario 2030, keine beobachtete Belegung. Wohnungs-/Ladepunktzahl, Strombedarf, Abo und Mehrmiete sind Modellannahmen. Leerstand laut Statistik Stadt Zürich in der Vorlage."
+      ]
+    },
+    {
+      "id": "case-laden",
+      "kind": "charging",
+      "kicker": "Case · Nutzungssimulation",
+      "title": "Reservieren. Freischalten. Laden.",
+      "sections": [
+        {
+          "title": "01 · Reservieren",
+          "body": "Ladezeit in der App wählen."
+        },
+        {
+          "title": "02 · Freischalten",
+          "body": "App oder NFC-Karte nutzen."
+        },
+        {
+          "title": "03 · Laden",
+          "body": "Lastmanagement verteilt Leistung."
+        },
+        {
+          "title": "04 · Abrechnen",
+          "body": "Verbrauch dynamisch abrechnen."
+        }
+      ],
+      "stats": [
+        {
+          "value": "14",
+          "label": "Ladevorgänge pro Tag"
+        },
+        {
+          "value": "≈ 164 kWh",
+          "label": "Tagesbedarf · rund 60’000 kWh/Jahr"
+        },
+        {
+          "value": "45 kW",
+          "label": "Simulierte Lastmanagement-Grenze"
+        }
+      ],
+      "chart": {
+        "categories": [
+          "00",
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23"
+        ],
+        "unit": "kW",
+        "series": [
+          {
+            "name": "Ohne Lastmanagement",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3.7,
+              5.6,
+              0,
+              0,
+              0,
+              11.1,
+              48.1,
+              53.7,
+              37,
+              14.8,
+              1.9,
+              0
+            ]
+          },
+          {
+            "name": "Mit Lastmanagement",
+            "values": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3.7,
+              5.6,
+              0,
+              0,
+              0,
+              11.1,
+              42.9,
+              45,
+              41,
+              22.2,
+              1.9,
+              0
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 13 (dort ausgeblendet). Simulation: 14 Vorgänge × 11.7 kWh ≈ 164 kWh/Tag; 7.4 kW/Fahrzeug; laut Text 10 von 15 Ladepunkten gleichzeitig belegt. Quelleninkonsistenz: Folientext nennt Spitze 59→45 kW, eingebettete Diagrammdaten zeigen 53.7→45 kW. Diagrammdaten werden unverändert übernommen; kein Messnachweis. Die stündlichen Kurven summieren sich auf 175.9 bzw. 173.4 kWh und entsprechen daher nicht exakt dem textlichen Tagesbedarf; im Entwurf als separate illustrative Lastkurven kennzeichnen."
+      ]
+    },
+    {
+      "id": "case-finanzierung",
+      "kind": "finance",
+      "kicker": "Case · Wirtschaftlichkeit",
+      "title": "Die Rechnung für VoltoShare",
+      "subtitle": "Zürich-Basisszenario · Annahmen live im Web veränderbar",
+      "financePreset": "zurich",
+      "stats": [
+        {
+          "value": "CHF 60’000",
+          "label": "Anfangsinvestition"
+        },
+        {
+          "value": "CHF 15’900",
+          "label": "Jährlicher operativer Überschuss"
+        },
+        {
+          "value": "3.8 Jahre",
+          "label": "Einfache Amortisation"
+        }
+      ],
+      "rows": [
+        [
+          "Abo · 60 × CHF 25 × 12",
+          "CHF 18’000 / Jahr"
+        ],
+        [
+          "Strommarge · 60’000 kWh × CHF 0.06",
+          "CHF 3’600 / Jahr"
+        ],
+        [
+          "Plattform / Software",
+          "− CHF 1’800 / Jahr"
+        ],
+        [
+          "Wartung / Support · 4 % Investition",
+          "− CHF 2’400 / Jahr"
+        ],
+        [
+          "Messung / Zahlung / Versicherung",
+          "− CHF 1’500 / Jahr"
+        ]
+      ],
+      "chart": {
+        "categories": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "unit": "CHF",
+        "series": [
+          {
+            "name": "Kumulierter Cashflow",
+            "values": [
+              -60000,
+              -44100,
+              -28200,
+              -12300,
+              3600,
+              19500,
+              35400,
+              51300,
+              67200,
+              83100,
+              99000
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 14. Investition: 15 × CHF 3’000 pro Ladepunkt + CHF 15’000 Netzanschluss/Lastmanagement. Ohne Förderung, Steuern, Zinsen und Abschreibungen. Das Quellenwort «Ergebnis» wird präziser als operativer Überschuss bezeichnet, nicht als Nettogewinn. Alle 60 Wohnungen werden in dieser Basis abgerechnet; alternative Leerstandsregel im interaktiven Modell. Nominaler Cashflow ohne Ersatzinvestition, Preissteigerung oder Abzinsung."
+      ]
+    },
+    {
+      "id": "case-nutzen",
+      "kind": "benefits",
+      "kicker": "Case · Basisfall CHF 25 · Vermietersaldo vor Leerstand",
+      "title": "Wer profitiert – und unter welchen Annahmen?",
+      "sections": [
+        {
+          "title": "Vermieter pro Jahr",
+          "items": [
+            "Mehrmiete: 60 × CHF 40 × 12 = CHF 28’800",
+            "Abo an VoltoShare: − CHF 18’000",
+            "Saldo vor weiteren Kosten: + CHF 10’800"
+          ]
+        },
+        {
+          "title": "Bewohner",
+          "items": [
+            "Ladezugang ohne Kauf einer Wallbox",
+            "Dynamischer Tarif + 6 Rp./kWh",
+            "Mehrmiete trifft im Case alle 60 Wohnungen; 24 nutzen das Laden"
+          ]
+        }
+      ],
+      "rows": [
+        [
+          "Abo / Monat",
+          "Überschuss / Jahr",
+          "Amortisation"
+        ],
+        [
+          "CHF 15",
+          "CHF 8’700",
+          "6.9 Jahre"
+        ],
+        [
+          "CHF 25",
+          "CHF 15’900",
+          "3.8 Jahre"
+        ],
+        [
+          "CHF 35",
+          "CHF 23’100",
+          "2.6 Jahre"
+        ]
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 15. Rund 83 % der Erträge stammen im Basiscase aus dem Abo (18’000/21’600). Investition CHF 60’000. Vermietersaldo im Quellenbeispiel ohne Leerstand; Mehrmiete ist unvalidierte Annahme, nicht garantiert. Energietarif, Belegung und Kosten beeinflussen den Nutzen."
+      ]
+    },
+    {
+      "id": "diskussion",
+      "kind": "closing",
+      "kicker": "Diskussion",
+      "title": "Was muss der Pilot beantworten?",
+      "subtitle": "Vielen Dank für Ihre Aufmerksamkeit.",
+      "sections": [
+        {
+          "title": "Nachfrage",
+          "body": "Reichen geteilte Ladeplätze im Alltag?"
+        },
+        {
+          "title": "Zahlungsbereitschaft",
+          "body": "Welches Abo und welche Mehrmiete sind tragfähig?"
+        },
+        {
+          "title": "Betrieb",
+          "body": "Wie verteilen wir Leerstand, Wartezeit und Kosten?"
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 16 (Q&A, Dank, Team VoltoShare). Diskussionsfragen sind redaktionelle Leitfragen zu den offenen Annahmen des gelieferten Konzepts."
+      ]
+    },
+    {
+      "id": "quellen",
+      "kind": "sources",
+      "kicker": "Anhang · Quellen und Annahmen",
+      "title": "Daten, Szenarien und Teamannahmen trennen",
+      "sources": [
+        {
+          "label": "Bevölkerung: Kanton Zürich · Ende 2025, 1.63 Mio",
+          "url": "https://www.zh.ch/de/soziales/bevoelkerungszahlen"
+        },
+        {
+          "label": "Wohnungen / Mietanteil / Leerstand: Statistik Stadt Zürich",
+          "url": "https://www.stadt-zuerich.ch/"
+        },
+        {
+          "label": "Fahrzeugbestand / Dekarbonisierung: Kanton Zürich",
+          "url": "https://www.zh.ch/de/mobilitaet"
+        },
+        {
+          "label": "Neuzulassungen 2025 / Förderprogramm: electrive",
+          "url": "https://www.electrive.net/"
+        },
+        {
+          "label": "Steckerfahrzeuge / Hemmnisse: INFRAS für AWEL",
+          "url": "https://www.infras.ch/"
+        },
+        {
+          "label": "Ladebedarfsszenarien 2035: Bundesamt für Energie",
+          "url": "https://pubdb.bfe.admin.ch/"
+        },
+        {
+          "label": "Strompreis 2026: Bundesrat / ElCom, ewz",
+          "url": "https://www.ewz.ch/"
+        },
+        {
+          "label": "Projektgrundlage: VoltoShare-Exposé, 15. Oktober 2026"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Eigene Annahmen",
+          "body": "CHF 25 Abo, CHF 40 Mehrmiete, Marktanteile 30 % / 3 %, 24 E-Autos, CHF 3’000 je Ladepunkt, Betriebskosten und Roadmap."
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferte Präsentation, Folie 17; Quellenstand laut Vorlage November 2026. Referenzen wurden übernommen, nicht unabhängig neu recherchiert.",
+        "Bevölkerung: Kanton Zürich, Bestand und Struktur, Ende 2025 (1.63 Mio). Wohnungsbestand: Statistik Stadt Zürich, «Mehr Wohnungen trotz vieler Abbrüche in Zürich», Ende 2025 (238’472). Mietanteil: Eigentumsverhältnisse, rund 92 %. Leerstand Juni 2025: 0.1 % / 235 Wohnungen.",
+        "Fahrzeugbestand: Kanton Zürich «Autoflotte», September 2025, 750’000. Bestand reine E-Autos 2025 knapp 7 %. Neuzulassungen: electrive, Jahresbilanz vom 05.01.2026, 30.5 %. Steckerfahrzeuge: INFRAS / AWEL «Abbau von Hemmnissen für die Elektromobilität», rund 42 %.",
+        "BFE Ladebedarfsszenarien: Stadt Zürich, 40 % im Szenario «Geplant» 2035. Förderung: electrive 30.10.2026, 114’000 Parkplätze. Strompreis: Bundesrat/ElCom 2026, typischer Haushalt 27.7 Rp./kWh; ewz Tarife 2026/2027. Originalfolie nennt teils nur Domains; daraus wurden keine erfundenen Detailquellen ergänzt."
+      ]
+    },
+    {
+      "id": "cham-alternative",
+      "kind": "finance",
+      "kicker": "Anhang · Alternative aus dem Profitrechner",
+      "title": "Cham: ein anderes Abrechnungsmodell",
+      "subtitle": "Papieri-Areal · separater Team-Rechner, nicht das Zürcher Wohnungsabo",
+      "financePreset": "cham",
+      "stats": [
+        {
+          "value": "270",
+          "label": "Wohnungen · erste Etappe"
+        },
+        {
+          "value": "11.9 %",
+          "label": "E-Auto-Anteil als Eingabe"
+        },
+        {
+          "value": "CHF 55",
+          "label": "Je Wallbox / Monat"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Abweichende Zahlungseinheit",
+          "body": "Die Vermieterin zahlt pro Wallbox. Der Rechner verteilt diese Kosten auf ladende Mietparteien, nicht auf alle Wohnungen."
+        },
+        {
+          "title": "Nutzung und Kosten",
+          "body": "70 % Parkplatzquote, 4 Parteien je Box, 13’000 km/Jahr, 20 kWh/100 km, 75 % Heimladen."
+        },
+        {
+          "title": "Strom und Investition",
+          "body": "WWZ 2027: 21.15 Rp./kWh exkl. MwSt. + 7 Rp. Aufschlag. CHF 950 Hardware + CHF 1’950 Installation je Box."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Gelieferter «VoltoShare Profitrechner» · Cham, November 2026"
+        }
+      ],
+      "notes": [
+        "Quelle: gelieferter HTML-Profitrechner. Weitere Basisannahmen: 11 kW/Box, 60 kWh Batterie, 7 Tag- und 7 Nachtslots pro Woche, je 1 Tag-/Nachtslot je Partei, 10/12 Stunden Slotdauer; 2 % Leitungsverluste, 10 Jahre Nutzungsdauer, 2.5 % Zahlungsgebühr auf Stromumsatz, CHF 4 Backend/Box/Monat, CHF 80 Service/Box/Jahr, CHF 150 Overhead/Box/Jahr. Förderung 0. Optionale Akquise CHF 2’500 über 10 Jahre, in Basis aus. Öffentliches AC-Laden als Vergleich 50 Rp./kWh.",
+        "Die zwei Modelle werden nicht stillschweigend zusammengeführt. Vertrags-/Preismodell bleibt zu entscheiden. Lokale Tarif-/Rechts-/Marktquellen werden im separaten Finanzbereich aus dem gelieferten Rechner aufgeführt. Interaktivität findet im Browser statt; PowerPoint/PDF enthalten den statischen Basisszenario-Stand."
+      ]
+    }
+  ]
+}

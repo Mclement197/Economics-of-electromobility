@@ -6,7 +6,16 @@
   "contactMode": "demo",
   "contactDestination": null,
   "projectStatus": "Projektkonzept | Ökonomie der Elektromobilität",
-  "downloads": [],
+  "downloads": [
+    {
+      "label": "Präsentation als PDF",
+      "href": "/downloads/VoltoShare-Praesentation.pdf"
+    },
+    {
+      "label": "Präsentation als PowerPoint",
+      "href": "/downloads/VoltoShare-Praesentation.pptx"
+    }
+  ],
   "pages": [
     {
       "slug": "",
@@ -19,6 +28,18 @@
       "file": "economics",
       "title": "Geschäftsmodell & Modellrechnung",
       "description": "Wer bezahlt was? Entdecken Sie das VoltoShare-Abonnement pro Wohnung, die Stromabrechnung und zwei illustrative Leerstandsszenarien."
+    },
+    {
+      "slug": "finanzen",
+      "file": "finance",
+      "title": "Finanzen & interaktive Szenarien",
+      "description": "Annahmen, Erträge, Kosten und Cashflow von VoltoShare vergleichen. Interaktive Finanzmodelle für den Zürcher Gebäudefall und das alternative Cham-Szenario."
+    },
+    {
+      "slug": "praesentation",
+      "file": "presentation",
+      "title": "Projektpräsentation",
+      "description": "VoltoShare direkt im Browser präsentieren: Markt, Produkt, Geschäftsmodell und interaktive Finanzszenarien. Mit PDF- und PowerPoint-Download."
     },
     {
       "slug": "kontakt",
