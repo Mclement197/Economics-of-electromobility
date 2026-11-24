@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q, F
 from django.utils import timezone
@@ -57,10 +58,12 @@ class Vehicle(models.Model):
 class Bay(models.Model):
     property = models.ForeignKey(Property, on_delete=models.PROTECT, related_name='bays')
     label = models.CharField(max_length=20)
+    floor = models.CharField(max_length=40, default='UG1')
+    bookable = models.BooleanField(default=True)
     row = models.PositiveSmallIntegerField()
     column = models.PositiveSmallIntegerField()
     class Meta:
-        constraints = [models.UniqueConstraint(fields=['property','label'], name='unique_bay_label'), models.UniqueConstraint(fields=['property','row','column'], name='unique_bay_position')]
+        constraints = [models.UniqueConstraint(fields=['property','label'], name='unique_bay_label'), models.UniqueConstraint(fields=['property','floor','row','column'], name='unique_bay_floor_position')]
 
 
 class Charger(models.Model):
@@ -86,7 +89,8 @@ class Reservation(models.Model):
     household = models.ForeignKey(Household, on_delete=models.PROTECT, related_name='reservations')
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     vehicle = models.ForeignKey(Vehicle, on_delete=models.PROTECT, related_name='reservations')
-    charger = models.ForeignKey(Charger, on_delete=models.PROTECT, related_name='reservations')
+    bay = models.ForeignKey(Bay, on_delete=models.PROTECT, related_name='reservations')
+    charger = models.ForeignKey(Charger, on_delete=models.PROTECT, related_name='reservations', null=True, blank=True)
     start = models.DateTimeField(db_index=True)
     end = models.DateTimeField(db_index=True)
     status = models.CharField(max_length=12, choices=[('active','Active'),('cancelled','Cancelled')], default='active')
@@ -94,7 +98,20 @@ class Reservation(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     class Meta:
         constraints = [models.CheckConstraint(condition=Q(end__gt=F('start')), name='reservation_date_order')]
-        indexes = [models.Index(fields=['charger','status','start','end']), models.Index(fields=['vehicle','status','start','end'])]
+        indexes = [models.Index(fields=['charger','status','start','end']), models.Index(fields=['vehicle','status','start','end']), models.Index(fields=['bay','status','start','end'], name='reservation_bay_interval')]
+
+    def save(self, *args, **kwargs):
+        # Keep trusted charger-only fixture/import callers compatible. All public
+        # booking validation and conflict detection still live in services.book.
+        if self.charger_id:
+            charger_bay = self.charger.bay_id
+            if self.bay_id and self.bay_id != charger_bay:
+                raise ValidationError('Reservation bay must match its charger.')
+            if not self.bay_id:
+                self.bay_id = charger_bay
+                if kwargs.get('update_fields') is not None:
+                    kwargs['update_fields'] = set(kwargs['update_fields']) | {'bay'}
+        super().save(*args, **kwargs)
 
 
 class BookingMutation(models.Model):

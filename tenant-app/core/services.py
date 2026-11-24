@@ -14,7 +14,7 @@ from django.conf import settings
 from django.db import transaction
 from django.db.models import Q
 from django.utils import timezone
-from .models import (Property, Membership, Vehicle, Charger, Reservation, BookingMutation,
+from .models import (Property, Membership, Vehicle, Bay, Charger, Reservation, BookingMutation,
                      Tariff, ChargingSession, Invoice, InvoiceLine)
 
 
@@ -78,7 +78,7 @@ def _id(value):
             raise ValueError
         return result
     except (TypeError, ValueError):
-        raise DomainError('Choose a valid vehicle and charger.')
+        raise DomainError('Choose a valid vehicle and parking bay.')
 
 
 @transaction.atomic
@@ -90,6 +90,9 @@ def book(household, user, data, reservation_id=None):
         raise DomainError('A request ID is required. Refresh the booking form and try again.')
     operation = 'create' if reservation_id is None else f'edit:{reservation_id}'
     payload = {key:data.get(key) for key in ('vehicle_id','charger_id','start','end')}
+    # Existing charger-only requests retain their historical idempotency digest.
+    if data.get('bay_id') not in (None, ''):
+        payload['bay_id'] = data['bay_id']
     digest = hashlib.sha256(json.dumps(payload,sort_keys=True,default=str,separators=(',',':')).encode()).hexdigest()
     prior = BookingMutation.objects.filter(household=household,request_id=request_id).select_related('reservation').first()
     if prior:
@@ -105,11 +108,30 @@ def book(household, user, data, reservation_id=None):
         if reservation.status != 'active' or reservation.start <= now:
             raise DomainError('Only future, active reservations can be changed.')
     vehicle = Vehicle.objects.filter(pk=_id(data.get('vehicle_id')),household=household,archived=False).first()
-    charger = Charger.objects.filter(pk=_id(data.get('charger_id')),property=property).select_related('bay').first()
     if not vehicle:
         raise DomainError('Choose an active vehicle in your household.', {'vehicle_id':'Vehicle is unavailable.'})
-    if not charger:
-        raise DomainError('Choose a charger at your property.', {'charger_id':'Charger is unavailable.'})
+    supplied_charger = data.get('charger_id') not in (None, '')
+    supplied_bay = data.get('bay_id') not in (None, '')
+    charger = None
+    if supplied_charger:
+        charger = Charger.objects.filter(pk=_id(data['charger_id']),property=property).select_related('bay').first()
+        if not charger:
+            raise DomainError('Choose a charger at your property.', {'charger_id':'Charger is unavailable.'})
+    if supplied_bay:
+        bay = Bay.objects.filter(pk=_id(data['bay_id']),property=property).first()
+        if not bay:
+            raise DomainError('Choose a parking bay at your property.', {'bay_id':'Parking bay is unavailable.'})
+        if charger and charger.bay_id != bay.pk:
+            raise DomainError('The selected charger does not belong to this parking bay.', {'bay_id':'Bay and charger do not match.'})
+        # A charged bay is always a charging booking: passing only bay_id must
+        # never bypass connector, charger health or active-session checks.
+        charger = Charger.objects.filter(bay=bay,property=property).first()
+    elif charger:
+        bay = charger.bay
+    else:
+        raise DomainError('Choose a parking bay at your property.', {'bay_id':'Choose a parking bay.'})
+    if not bay.bookable:
+        raise DomainError('This parking bay is not available for reservations.', {'bay_id':'This bay is not bookable.'})
     start, end = parse_local(data.get('start'),property.timezone), parse_local(data.get('end'),property.timezone)
     if start <= now:
         raise DomainError('The reservation must start in the future.', {'start':'Choose a future time.'})
@@ -124,29 +146,31 @@ def book(household, user, data, reservation_id=None):
         raise DomainError(f'Bookings must last between {property.min_minutes} and {property.max_minutes} minutes.')
     if start > now + timedelta(days=property.horizon_days):
         raise DomainError(f'Book no more than {property.horizon_days} days ahead.')
-    if charger.status in ('offline','unknown'):
-        raise DomainError('This charger is offline or its status is unknown. Choose another charger.')
-    if not settings.DEMO_MODE and (now-charger.updated_at).total_seconds() > getattr(settings,'CHARGER_STALE_SECONDS',120):
-        raise DomainError('Charger status is stale. Try again after the operator refreshes it.')
-    if vehicle.connector.strip().casefold() != charger.connector.strip().casefold():
-        raise DomainError('This vehicle connector is not compatible with the selected charger.')
-    blocked_until = active_session_until(charger,now)
-    if blocked_until and start < blocked_until:
-        raise DomainError('Charging is still in progress. Its release time is unconfirmed; choose a later slot or another charger.')
+    if charger:
+        if charger.status in ('offline','unknown'):
+            raise DomainError('This charger is offline or its status is unknown. Choose another charger.')
+        if not settings.DEMO_MODE and (now-charger.updated_at).total_seconds() > getattr(settings,'CHARGER_STALE_SECONDS',120):
+            raise DomainError('Charger status is stale. Try again after the operator refreshes it.')
+        if vehicle.connector.strip().casefold() != charger.connector.strip().casefold():
+            raise DomainError('This vehicle connector is not compatible with the selected charger.')
+        blocked_until = active_session_until(charger,now)
+        if blocked_until and start < blocked_until:
+            raise DomainError('Charging is still in progress. Its release time is unconfirmed; choose a later slot or another charger.')
     overlaps = Reservation.objects.filter(status='active',start__lt=end,end__gt=start)
     if reservation:
         overlaps = overlaps.exclude(pk=reservation.pk)
-    if overlaps.filter(charger=charger).exists():
-        raise DomainError('Another reservation now occupies this charger interval. Choose another time or charger.')
+    if overlaps.filter(bay=bay).exists():
+        location = 'charger interval' if charger else 'parking bay interval'
+        raise DomainError(f'Another reservation now occupies this {location}. Choose another time or bay.')
     if overlaps.filter(vehicle=vehicle).exists():
         raise DomainError('This vehicle already has an overlapping reservation.')
     # A booking is not a session: no energy, charge or invoice is created here.
     if reservation:
-        reservation.vehicle, reservation.charger = vehicle, charger
+        reservation.vehicle, reservation.charger, reservation.bay = vehicle, charger, bay
         reservation.start, reservation.end = start, end
-        reservation.save(update_fields=['vehicle','charger','start','end'])
+        reservation.save(update_fields=['vehicle','charger','bay','start','end'])
     else:
-        reservation = Reservation.objects.create(household=household,creator=user,vehicle=vehicle,charger=charger,start=start,end=end,request_id=request_id)
+        reservation = Reservation.objects.create(household=household,creator=user,vehicle=vehicle,charger=charger,bay=bay,start=start,end=end,request_id=request_id)
     BookingMutation.objects.create(household=household,request_id=request_id,operation=operation,payload_hash=digest,reservation=reservation)
     return reservation
 

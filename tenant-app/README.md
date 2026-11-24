@@ -138,3 +138,9 @@ systemctl --user restart electromobility-app.service
 `voltoshare-backup.timer` runs a daily consistent SQLite online backup at 04:15 host time. Backups remain private outside the repository/web root, mode 0600, with an integrity check. Keep encrypted off-host backups as an operator follow-up; this implementation provides local backups, not a claim of complete disaster recovery. Retention is manual. To restore: stop the service, preserve the current DB, restore a verified backup to the configured DB path, ensure ownership/0600 and restart. Never publish a backup or SQLite file.
 
 Demo cookies are secure and HttpOnly for sessions, CSRF protected with SameSite=Lax; data responses are no-store. The application uses no third-party analytics. Hosting access metadata may still be processed by Cloudflare/the server. Invitation links are bearer secrets and should be shared privately.
+
+## Floor-aware parking update — 24 November 2026
+
+The parking tab now has an architectural, clickable garage view, cross-floor space search, zoom/list modes and ordinary-space as well as charger reservations. Bay/floor metadata and the historical-reservation backfill are in migration0002. API clients may send `bay_id` or legacy `charger_id`; an ordinary parking booking never creates energy or a bill. See [parking map boundary and implementation](../docs/PARKING_MAP.md).
+
+The deployed20-space fictional layout is not claimed as the real Papieri garage. Parking A/B selection and authoritative numbered floorplans remain pending; do not invent Papieri geometry or floor counts. Multi-floor tests use an isolated test fixture, not additional public spaces.

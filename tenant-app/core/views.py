@@ -67,7 +67,7 @@ def iso(d):return d.isoformat() if d else None
 def vehicle_json(v):
     return {'id':v.id,'name':v.name,'plate':v.plate,'make_model':v.make_model,'driver_id':v.driver_id,'driver_name':username(v.driver) if v.driver else '', 'connector':v.connector,'battery_kwh':str(v.battery_kwh) if v.battery_kwh is not None else None,'archived':v.archived}
 
-def reservation_json(r):return {'id':r.id,'charger_id':r.charger_id,'bay':r.charger.bay.label,'charger_name':r.charger.name,'vehicle_id':r.vehicle_id,'vehicle_name':r.vehicle.name,'creator_name':username(r.creator),'start':iso(r.start),'end':iso(r.end),'status':r.status}
+def reservation_json(r):return {'id':r.id,'charger_id':r.charger_id,'bay_id':r.bay_id,'bay':r.bay.label,'floor':r.bay.floor,'charger_name':r.charger.name if r.charger_id else 'Parking only','vehicle_id':r.vehicle_id,'vehicle_name':r.vehicle.name,'creator_name':username(r.creator),'start':iso(r.start),'end':iso(r.end),'status':r.status}
 
 def invoice_json(i,zone):
     lines=[{'id':l.id,'session_id':l.session_id,'date':iso(l.date),'vehicle':l.vehicle,'charger':l.charger,'bay':l.bay,'energy_kwh':str(l.energy_kwh),'tariff_chf':str(l.tariff_chf),'cost_cents':l.cost_cents} for l in i.lines.all()]
@@ -80,7 +80,7 @@ def state(request):
     h=request.household;p=h.property;now=timezone.now();z=ZoneInfo(p.timezone)
     tariff=current_tariff(p)
     vehicles=[vehicle_json(v) for v in Vehicle.objects.filter(household=h).select_related('driver')]
-    reservations=[reservation_json(r) for r in Reservation.objects.filter(household=h).select_related('charger__bay','vehicle','creator').order_by('-start')]
+    reservations=[reservation_json(r) for r in Reservation.objects.filter(household=h).select_related('charger','bay','vehicle','creator').order_by('-start')]
     invoices=list(Invoice.objects.filter(household=h).prefetch_related('lines').order_by('-period'))
     session_invoices={l.session_id:i.id for i in invoices for l in i.lines.all()}
     sessions=[{'id':s.id,'charger_id':s.charger_id,'bay':s.charger.bay.label,'vehicle_id':s.vehicle_id,'vehicle_name':s.vehicle_name,'driver_name':s.driver_name,'start':iso(s.start),'end':iso(s.end),'energy_kwh':str(s.energy_kwh),'tariff_chf':str(s.tariff_chf),'cost_cents':s.cost_cents,'status':s.status,'invoice_id':session_invoices.get(s.id)} for s in ChargingSession.objects.filter(household=h).select_related('charger__bay').order_by('-end','-start')]
@@ -89,13 +89,13 @@ def state(request):
         # Mock provider is explicitly simulated; each read is a fresh mock observation.
         observed=now if settings.DEMO_MODE else c.updated_at
         stale=not observed or (now-observed).total_seconds()>120
-        chargers.append({'id':c.id,'name':c.name,'bay':c.bay.label,'connector':c.connector,'max_power_kw':str(c.max_power_kw),'status':'unknown' if stale else c.status,'updated_at':iso(observed),'tariff_chf':str(tariff.rate_chf),'occupancy':'unknown','stale':stale})
-    bays=[{'id':b.id,'label':b.label,'row':b.row,'column':b.column,'charger_id':next((c['id'] for c in chargers if c['bay']==b.label),None)} for b in Bay.objects.filter(property=p).order_by('row','column')]
-    occupancy=[{'charger_id':r.charger_id,'start':iso(r.start),'end':iso(r.end),'kind':'reservation','own':r.household_id==h.id} for r in Reservation.objects.filter(charger__property=p,status='active',end__gt=now,start__lt=now+timedelta(days=p.horizon_days+1))]
+        chargers.append({'id':c.id,'name':c.name,'bay':c.bay.label,'bay_id':c.bay_id,'floor':c.bay.floor,'connector':c.connector,'max_power_kw':str(c.max_power_kw),'status':'unknown' if stale else c.status,'updated_at':iso(observed),'tariff_chf':str(tariff.rate_chf),'occupancy':'unknown','stale':stale})
+    bays=[{'id':b.id,'label':b.label,'floor':b.floor,'bookable':b.bookable,'row':b.row,'column':b.column,'charger_id':next((c['id'] for c in chargers if c['bay_id']==b.pk),None)} for b in Bay.objects.filter(property=p).order_by('floor','row','column')]
+    occupancy=[{'bay_id':r.bay_id,'charger_id':r.charger_id,'start':iso(r.start),'end':iso(r.end),'kind':'reservation','own':r.household_id==h.id} for r in Reservation.objects.filter(bay__property=p,status='active',end__gt=now,start__lt=now+timedelta(days=p.horizon_days+1))]
     for c in Charger.objects.filter(property=p):
         until=active_session_until(c,now)
         if until:
-            occupancy.append({'charger_id':c.id,'start':iso(now),'end':iso(until),'kind':'session','own':ChargingSession.objects.filter(charger=c,household=h,status='active').exists(),'estimated':True})
+            occupancy.append({'bay_id':c.bay_id,'charger_id':c.id,'start':iso(now),'end':iso(until),'kind':'session','own':ChargingSession.objects.filter(charger=c,household=h,status='active').exists(),'estimated':True})
     members=[{'id':m.id,'user_id':m.user_id,'name':username(m.user),'email':m.user.email,'role':m.role} for m in Membership.objects.filter(household=h,active=True).select_related('user')]
     invites=[{'id':i.id,'email':i.email,'expires_at':iso(i.expires_at),'used':bool(i.used_at),'revoked':i.revoked} for i in Invitation.objects.filter(household=h).order_by('-id')] if request.member.role=='owner' else []
     return success(user={'id':request.user.id,'name':username(request.user),'email':request.user.email},role=request.member.role,household={'id':h.id,'name':h.name,'apartment':h.apartment},property={'id':p.id,'name':p.name,'timezone':p.timezone,'currency':p.currency,'booking_increment':p.booking_increment,'min_minutes':p.min_minutes,'max_minutes':p.max_minutes,'horizon_days':p.horizon_days},demo=settings.DEMO_MODE,now=iso(now),vehicles=vehicles,members=members,reservations=reservations,sessions=sessions,invoices=[invoice_json(i,p.timezone) for i in invoices],chargers=chargers,bays=bays,occupancy=occupancy,invitations=invites)
@@ -120,7 +120,7 @@ def vehicles(request,vehicle_id=None):
         v.name=text(d,'name',100);v.plate=text(d,'plate',30);v.make_model=text(d,'make_model',120,False)
         connector=text(d,'connector',40)
         if connector not in ['Type 2','CCS','CHAdeMO','Type 1']:raise DomainError('Choose a supported connector type.')
-        if v.pk and connector!=v.connector and Reservation.objects.filter(vehicle=v,status='active',end__gt=timezone.now()).exists():raise DomainError('Cancel or reassign upcoming bookings before changing this vehicle’s connector.')
+        if v.pk and connector!=v.connector and Reservation.objects.filter(vehicle=v,charger__isnull=False,status='active',end__gt=timezone.now()).exists():raise DomainError('Cancel or reassign upcoming bookings before changing this vehicle’s connector.')
         v.connector=connector
         driver=d.get('driver_id')
         if driver:

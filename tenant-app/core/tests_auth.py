@@ -86,7 +86,7 @@ class HouseholdBoundaryTests(TestCase):
         foreign_occupancy=[o for o in state['occupancy'] if not o['own']]
         self.assertTrue(foreign_occupancy)
         for occupied in foreign_occupancy:
-            self.assertEqual(set(occupied),{'charger_id','start','end','kind','own'} | ({'estimated'} if occupied['kind']=='session' else set()))
+            self.assertEqual(set(occupied),{'bay_id','charger_id','start','end','kind','own'} | ({'estimated'} if occupied['kind']=='session' else set()))
         body=response.content.decode()
         for secret in [self.other.name, self.foreign_car.plate, self.jordan.email]:
             self.assertNotIn(secret,body)
