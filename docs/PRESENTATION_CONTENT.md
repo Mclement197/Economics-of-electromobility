@@ -1,70 +1,47 @@
-# VoltoShare presentation — 24 November 2026
+# Source-exact presentation — 24 November 2026 revision
 
-## Content and sources
+This revision supersedes the earlier editorial 18-slide version. Mathis explicitly requested **exactly the original content, with cosmetic changes only**. Do not shorten, correct, reinterpret, remove or add slide content in future visual revisions without a new instruction.
 
-`website-src/presentation-data.json` is the shared content source for the browser presentation and editable PowerPoint export. It uses the first **17 VoltoShare slides** of the received `Voltoshare_Slides_Final.pptx`, plus one clearly labelled appendix for the separately supplied Cham profit calculator.
+## Authoritative source
 
-The supplied file actually contains 51 slides. Slides 18–51 are unrelated FlexRide/tourism/urban-rent material and are not included in the VoltoShare presentation. The supplied source file is preserved in the inbound attachment store; it is not copied into the public root. Source slides 8 (roadmap) and 13 (charging simulation), although hidden in the source, are included because they contain relevant VoltoShare content. Student identifiers and empty portrait placeholders are omitted from the public deck; all five team names remain.
+Private original: `~/.local/state/voltoshare/source-2026-11-24/Voltoshare_Slides_Final.pptx`.
+SHA-256: `1acd77e02c611e7e8bff836a790a47de6334cbbf0c526c7fe9f057bcf0bb7202`.
 
-| Source slide | Presentation ID | Content |
-| --- | --- | --- |
-| 1 | auftakt | Cover and five team members |
-| 2 | agenda | Team, roadmap, market, product, case, discussion |
-| 3 | team | Team names |
-| 4 | grundidee | Financing, installation and recurring charges; home/shared charging |
-| 5 | markt-zuerich | Population, apartments, rental share, vehicle fleet, vacancy, rationale |
-| 6 | markt-elektro | EV stock, registrations, charging gap scenario, closed subsidy programme |
-| 7 | markt-potenzial | Total/addressable/target market and subscription assumptions |
-| 8 | roadmap | 2026–2030+ development phases, Zug pilot, marketplace vision |
-| 9 | hardware | 20/5 illustrative configuration, metering, NFC and load management |
-| 10 | plattform | Resident, landlord and operator product roles |
-| 11 | ertragsmodell | Service promises, two payment flows and open vacancy decision |
-| 12 | case-annahmen | 60 apartments, 15 points, 24 EVs, price/energy/vacancy assumptions |
-| 13 | case-laden | Four-step journey and supplied native load curves |
-| 14 | case-finanzierung | CHF 60,000 capex, CHF 15,900 operating surplus, cashflow |
-| 15 | case-nutzen | Landlord/resident economics and CHF 15/25/35 sensitivity |
-| 16 | diskussion | Q&A and thanks, with editorial discussion prompts |
-| 17 | quellen | Original references and explicit team assumptions |
-| HTML calculator | cham-alternative | Separate per-wallbox fee model; no silent change to the apartment model |
+- All **51 original slides**, in source order, are retained. Slides 1–17 form the VoltoShare presentation; 18–51 contain additional FlexRide/tourism material. Navigation labels these groups outside the actual slides.
+- The source's hidden flags (8, 13, 23) remain in editable PowerPoint. The browser and PDF include these pages so all content can be inspected.
+- Original wording, capitalization, typos, team details, student identifiers, placeholders, financial labels, source references, images, native chart data and notes are retained. No editorial corrections are applied—even where the old slides are inconsistent with the project brief.
+- Charging chart includes all **three** source series, including the constant 45 kW limit. Original financial charts and their data are retained.
+- The extra Cham slide and editorial discussion prompts from the previous output are removed. The separately supplied calculator remains available as a **separate interactive tool**, not inserted into the original deck.
 
-## Editorial precision
+## One visual source
 
-- Accidental “FlexRide” labelling on the VoltoShare business-model slide is corrected.
-- Potential additional rent is explicitly an assumption, not a guaranteed outcome.
-- The original “Ergebnis” of CHF 15,900 is described as an **operating cash surplus**: the source excludes tax, financing and depreciation. Revenue, energy margin, accounting earnings and cashflow must not be conflated.
-- The roadmap remains a plan. A Zug pilot is retained alongside the Zürich market analysis; neither is a completed installation claim.
-- The source includes charger-control categories as classification options, including bidirectional charging. The new deck does not infer a live V2G service from those labels.
-- Slide 13 has inconsistent data: its text states a 59→45 kW peak, but the embedded chart is 53.7→45 kW. The source chart values are retained. Its hourly curves also do not sum to the textual 164 kWh/day; notes identify the curves as separate illustrative simulations. The source text and discrepancy are retained in speaker notes.
-- The provided references are reproduced as source attributions, not independently reverified current statistics. Where the original supplies only a domain or publication name, no new article title or fabricated deep link is introduced.
-- The optional Cham appendix is not a replacement for the core per-apartment contract model: its fixed fee is **per wallbox**, and its original calculator allocates that fee among charging users.
+`scripts/build-presentation.py` styles the original editable PPTX without replacing its content. The brand starter remains a visual reference; preserving the original object content takes precedence over importing those objects into a new starter.
 
-## Exports
+`scripts/export-presentation.py` renders the redesigned PPTX through native LibreOffice Impress with `ExportHiddenSlides=true`, producing:
+
+1. The downloadable, selectable-text 51-page PDF.
+2. A vector SVG render per page in `website-src/assets/slides/` for the browser player.
+3. `presentation-data.json`: exact source text, notes, chart tables and page metadata for the accessible reading mode.
+
+The same render powers PDF and website; the editable PPTX retains original pictures, native text and charts. Browser SVGs are display artifacts, not the PowerPoint source. Fonts and the supplied brand files remain unchanged. A content hash versions artwork URLs.
+
+## Interaction boundaries
+
+- Keyboard navigation, slide overview and fullscreen operate on all 51 pages.
+- Reading mode exposes the original text and chart data at readable phone sizes. The artwork itself remains fixed 16:9 to preserve the composition.
+- The **Finanzlabor** is a separate overlay, available during the presentation, using the existing financial model and browser-local saved assumptions. It does not overwrite source slide values, PDF or PPTX. The financial page and tenant application data are unchanged.
+- Original notes remain separate from reading text. No editorial qualifications are inserted into the slide content.
+
+## Build
 
 ```sh
-# Build environment example (outside the repository):
-python3 -m venv --system-site-packages /tmp/voltoshare-pptx-venv
-/tmp/voltoshare-pptx-venv/bin/pip install python-pptx==1.0.2
-/tmp/voltoshare-pptx-venv/bin/python scripts/build-presentation.py
-
-# Optional native presentation render for PDF and review:
-libreoffice -env:UserInstallation=file:///tmp/voltoshare-lo-profile \
-  --headless --convert-to pdf --outdir /tmp/voltoshare-render \
-  website-src/downloads/VoltoShare-Praesentation.pptx
+# python-pptx and Pillow authoring environment; native Impress + pdftocairo required
+python scripts/build-presentation.py
+python scripts/export-presentation.py --office /path/to/libreoffice
+python3 scripts/build-website.py
+BASE_URL=http://127.0.0.1:18929 node tests/interactive-presentation-browser.mjs
 ```
 
-The PowerPoint uses the supplied starter's masters/layouts, supplied logo assets and Liberation Sans. Text, shapes, tables and charts remain editable; it is not a slideshow of screenshots. Sources and detailed qualifications appear in speaker notes. The original brand starter and kit remain unchanged.
+An isolated local Impress runtime may be used via `LIBREOFFICE`; the export wrapper `scripts/build-presentation-pdf.mjs` accepts `PRESENTATION_PYTHON` and forwards arguments to the Python exporter. There is no browser-CDN or office-runtime dependency in the deployed static site.
 
-The downloadable PDF and PPTX are **baseline snapshots**, not exports of a visitor's unsaved interactive scenario. The browser presentation and finance page provide live assumptions and calculations. This distinction is visible in the shared data export note and finance-slide notes.
-
-## Source preservation
-
-Exact supplied originals are retained outside public site roots at `/home/mathis/.local/state/voltoshare/source-2026-11-24/`:
-
-- `Voltoshare_Slides_Final.pptx`: SHA-256 `1acd77e02c611e7e8bff836a790a47de6334cbbf0c526c7fe9f057bcf0bb7202`.
-- `VoltoShare_Profitrechner.zip`: SHA-256 `0d4723d76af8009400768ba43c25fbea31993c1cfb0af53446d60b1f851fc2ea`.
-
-## Export checks
-
-The generated PPTX reopens with python-pptx: 18 slides, 363 editable shapes (including table/chart containers), two native charts, valid ZIP members, and no shape outside the 16:9 slide bounds. All populated text boxes and table cells passed a Liberation Sans font-metric wrapping/height check after fixing short roadmap title boxes, charging-step text, finance value widths and source-note layout.
-
-Native PowerPoint/Impress visual rendering was **not verified** on this host: LibreOffice is present, but its Impress component is not installed; even the unchanged supplied starter fails to load. No system package installation was performed. The downloadable PDF is generated and visually inspected separately using the shared browser presentation, so it is not represented as a native PowerPoint-rendered PDF.
+The original source is kept private; only the requested redesigned presentation and its display assets are published. The brand archive and unrelated application state are not published or changed.

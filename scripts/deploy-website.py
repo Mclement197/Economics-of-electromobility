@@ -7,6 +7,7 @@ p=argparse.ArgumentParser()
 p.add_argument('build',type=Path)
 a=p.parse_args(); source=a.build.resolve(); live=ROOT/'sites/website'
 required=['finanzen/index.html','praesentation/index.html','finance-model.mjs','finance-ui.mjs','finance.css','presentation.mjs','presentation.css','presentation-data.json','downloads/VoltoShare-Praesentation.pdf','downloads/VoltoShare-Praesentation.pptx','index.html','geschaeftsmodell/index.html','kontakt/index.html','impressum/index.html','datenschutz/index.html','site.css','site.mjs','assets/logo-navigation.svg','assets/fonts/LiberationSans-Regular.ttf','favicon.svg','site.webmanifest']
+required += [f'assets/slides/slide-{i:02d}.svg' for i in range(1,52)]
 for f in required:
     if not (source/f).is_file():p.error(f'Missing build file: {f}')
 if source==live or source in live.parents:p.error('Use a separate, verified build folder.')

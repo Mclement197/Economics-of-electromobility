@@ -1,811 +1,1288 @@
 {
-  "version": 1,
-  "title": "VoltoShare · Präsentationsentwurf",
-  "sourceNote": "Inhalt der 17 VoltoShare-Folien der gelieferten Präsentation; ergänzender Cham-Rechner als separater Anhang. Entwurf, keine kommerzielle Zusage.",
-  "exportNote": "PDF und PowerPoint zeigen die Basisszenarien; live veränderte Annahmen bleiben im interaktiven Web-Modell.",
+  "title": "VoltoShare",
+  "revision": "afb18798e918",
+  "sourceSha256": "1acd77e02c611e7e8bff836a790a47de6334cbbf0c526c7fe9f057bcf0bb7202",
   "slides": [
     {
-      "id": "auftakt",
-      "kind": "title",
-      "kicker": "Ökonomie der Elektromobilität · Arbeitsentwurf",
-      "title": "Laden teilen. Wohnen weiterdenken.",
-      "subtitle": "VoltoShare finanziert, installiert und betreibt gemeinsam genutzte Ladeinfrastruktur für Mietwohngebäude.",
-      "sections": [
+      "number": 1,
+      "title": "VoltoShare",
+      "hidden": false,
+      "image": "/assets/slides/slide-01.svg?v=afb18798e918",
+      "text": [
+        "VoltoShare",
+        "Team VoltoShare: Mathis Clement, Cyrill Gasser, Robin Vinzenz Gasser, Joel Frei, Yannic David Schnell"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 2,
+      "title": "Agenda",
+      "hidden": false,
+      "image": "/assets/slides/slide-02.svg?v=afb18798e918",
+      "text": [
+        "Agenda",
+        "VoltoShare",
+        "2",
+        "01",
+        "Das Team",
+        "Wer wir sind",
+        "02",
+        "Roadmap",
+        "Von der Idee zum Marktplatz",
+        "03",
+        "Deutschschweiz als Markt",
+        "Testgebiet und Potenzial",
+        "04",
+        "Produkt",
+        "Hardware, Plattform, Ertragsmodell",
+        "05",
+        "Case Wohngebäude",
+        "Rechnung und Produktnutzung",
+        "06",
+        "Q&A",
+        "Ihre Fragen",
+        "Anhang: Quellen und Annahmen"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 3,
+      "title": "Das Voltoshare-Team",
+      "hidden": false,
+      "image": "/assets/slides/slide-03.svg?v=afb18798e918",
+      "text": [
+        "Das Voltoshare-Team",
+        "VoltoShare",
+        "3",
+        "Team VoltoShare",
+        "Bild",
+        "Mathis Clement",
+        "Legi-Nr.",
+        "XX-XXX-XXX",
+        "Bild",
+        "Cyrill Gasser",
+        "Legi-Nr.",
+        "XX-XXX-XXX",
+        "Robin Vinzenz Gasser",
+        "Legi-Nr.",
+        "24-616-393",
+        "Bild",
+        "Joel Frei",
+        "Legi-Nr.",
+        "XX-XXX-XXX",
+        "Bild",
+        "Yannic David Schnell",
+        "Legi-Nr.",
+        "24-624-520"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 4,
+      "title": "Grundidee & Geschäftsmodell",
+      "hidden": false,
+      "image": "/assets/slides/slide-04.svg?v=afb18798e918",
+      "text": [
+        "Grundidee & Geschäftsmodell",
+        "Gruppe 1 - FlexRide",
+        "4",
+        "Voltoshare unterstützt Mieter und Vermieter von Mehrfamilienhäusern bei der Installation von Ladeinfrastruktur indem sie die Hardware vorfinanziert, installiert und anschliessend eine monatliche Gebühr erhebt",
+        "Asset Ownership (Energy)",
+        "Charging Location",
+        "Charging Mode",
+        "Control",
+        "Revenue Model",
+        "Asset Ownership (Car)",
+        "Make",
+        "Buy",
+        "@ home",
+        "@ work",
+        "on the road",
+        "instant",
+        "smart unidirectional",
+        "smart bidirectional"
+      ],
+      "charts": [],
+      "notes": "Joel – WIP"
+    },
+    {
+      "number": 5,
+      "title": "Markt: Testgebiet Zürich",
+      "hidden": false,
+      "image": "/assets/slides/slide-05.svg?v=afb18798e918",
+      "text": [
+        "Markt: Testgebiet Zürich",
+        "VoltoShare",
+        "5",
+        "Daten als Grundlage für die Auswahl des Testmarktes",
+        "1.63 Mio",
+        "Einwohner im Kanton Zürich (Ende 2025)",
+        "238’472",
+        "Wohnungen in der Stadt Zürich (Ende 2025)",
+        "92 %",
+        "Mietwohnungsanteil in der Stadt, rund 219’000 Mietwohnungen",
+        "750’000",
+        "Personenwagen im Kanton Zürich (Sept. 2025)",
+        "Warum Zürich als Testgebiet?",
+        "Dichte Mietwohnungen: viele Bewohner ohne eigene Lademöglichkeit\nLeerstand nur 0.1 % (235 Wohnungen): Abo-Risiko für Vermieter minimal",
+        "Höchster E-Auto-Anteil bei Neuzulassungen aller Kantone\nKurze Wege für Pilotgebäude, Interviews und Support",
+        "Quellen: Kanton Zürich, Statistik Stadt Zürich, siehe Anhang. Rund 219’000 = 238’472 × 92 % (eigene Rechnung)."
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 6,
+      "title": "Markt: Elektromobilität wächst",
+      "hidden": false,
+      "image": "/assets/slides/slide-06.svg?v=afb18798e918",
+      "text": [
+        "Markt: Elektromobilität wächst",
+        "VoltoShare",
+        "6",
+        "E-Autos im Kanton Zürich",
+        "Anteil am Fahrzeugbestand 2025",
+        "≈ 7 %",
+        "Anteil reiner E-Autos an Neuzulassungen 2025",
+        "30.5 %",
+        "Anteil Steckerfahrzeuge an Neuzulassungen 2025",
+        "≈ 42 %",
+        "Steckerfahrzeuge = reine E-Autos und Plug-in-Hybride",
+        "40 %",
+        "der E-Autos in der Stadt Zürich könnten (Szenario 2035) weder zuhause noch am Arbeitsplatz laden",
+        "114’000",
+        "Parkplätze rüstete das Förderprogramm des Kantons auf. Es ist seit Oktober 2026 geschlossen.",
+        "Quellen: Kanton Zürich, electrive, INFRAS, BFE (siehe Anhang)"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 7,
+      "title": "Markt: Potenzial in der Stadt Zürich",
+      "hidden": false,
+      "image": "/assets/slides/slide-07.svg?v=afb18798e918",
+      "text": [
+        "Markt: Potenzial in der Stadt Zürich",
+        "VoltoShare",
+        "7",
+        "Vom Gesamtmarkt zum Ziel nach fünf Jahren",
+        "Gesamtmarkt",
+        "≈ 219’000 Mietwohnungen",
+        "238’472 Wohnungen × 92 % Mietanteil",
+        "Abo-Umsatz pro Jahr",
+        "≈ CHF 66 Mio",
+        "Erreichbarer Markt",
+        "≈ 66’000 Wohnungen",
+        "Mehrfamilienhäuser ab 20 Wohnungen mit Garage (Annahme: 30 %)",
+        "Abo-Umsatz pro Jahr",
+        "≈ CHF 20 Mio",
+        "Ziel nach 5 Jahren",
+        "≈ 2’000 Wohnungen",
+        "rund 100 Gebäude (Annahme: 3 % des erreichbaren Markts)",
+        "Abo-Umsatz pro Jahr",
+        "≈ CHF 0.6 Mio",
+        "Annahmen",
+        "Abo CHF 25 pro Wohnung und Monat\nAnteil Garage und ab 20 Wohnungen: 30 %\nMarktanteil nach 5 Jahren: 3 %\nAuf Phase 1 hin zu validieren",
+        "Abo-Umsatz = Wohnungen × CHF 25 × 12 Monate. Annahmen sind Schätzungen des Teams, keine Statistik."
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 8,
+      "title": "Roadmap",
+      "hidden": true,
+      "image": "/assets/slides/slide-08.svg?v=afb18798e918",
+      "text": [
+        "Roadmap",
+        "VoltoShare",
+        "8",
+        "Zeitliche Planung zur Entwicklung von Voltoshare",
+        "Phase 1  |  Ideenfindung bis Produktlaunch (Fokusbereich)",
+        "Shared Charging für Mehrfamilienhäuser in der Stadt Zürich",
+        "Phase 2  |Weiterentwicklung des Produktes",
+        "Das «Airbnb» für Ladestationen und Parkplätze",
+        "Q4 2026",
+        "Ideenfindung",
+        "Exposé, Teamstart und erste Marktanalyse",
+        "Q1 2027",
+        "Validierung",
+        "Interviews mit Verwaltungen und Vermietern (Bedarfanalyse)",
+        "Q2 2027",
+        "Prototyp",
+        "Entwicklung der App und Auswahl der Wallbox Komponenten",
+        "Q3–Q4 2027",
+        "Pilot",
+        "1 Gebäude in der Stadt Zug funktionieren als Pilotprojekt zur Produktoptimierung",
+        "Q1 2028",
+        "Produktlaunch",
+        "Start des Abo-Angebots und aktive Kundenaquise",
+        "2029",
+        "Plattform-Pilot",
+        "Pilot zur öffentlichen Nutzung mit aktuellem Kundenstamm",
+        "2030",
+        "Marktplatz live",
+        "VS-Marktplatz wird für Unternehmen und Privatkunden zugänglich",
+        "2030+",
+        "Skalierung",
+        "Weiterer Ausbau des Schweizer Markt und Market Entry im DACH-Raum",
+        "Generelle Vision: Markteintritt über das Sharing Angebot in grösseren Immobilienprojekten, Möglichkeit zur Weiterentwicklung und Skalierung über eine Marktplatzplattform"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 9,
+      "title": "Produkt: Die physische Komponente",
+      "hidden": false,
+      "image": "/assets/slides/slide-09.svg?v=afb18798e918",
+      "text": [
+        "Produkt: Die physische Komponente",
+        "VoltoShare",
+        "9",
+        "Geteilte Ladepunkte in der Garage",
+        "Beispiel: Mehrfamilienhaus mit 20 Wohnungen",
+        "Laden",
+        "Laden",
+        "Laden",
+        "Laden",
+        "Laden",
+        "Parken",
+        "Parken",
+        "Parken",
+        "Ladeplätze mit Wallbox  |  normale Parkplätze",
+        "Lastmanagement",
+        "Hausanschluss",
+        "Wallbox mit Zähler",
+        "Jeder Ladepunkt misst den Verbrauch und gibt per App oder NFC-Karte frei.",
+        "Intelligentes Lastmanagement",
+        "Die verfügbare Gebäudeleistung wird auf alle Ladenden verteilt.",
+        "Finanziert und betrieben",
+        "VoltoShare installiert, wartet und aktualisiert die Hardware."
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 10,
+      "title": "Produkt: Die Plattformkomponente",
+      "hidden": false,
+      "image": "/assets/slides/slide-10.svg?v=afb18798e918",
+      "text": [
+        "Produkt: Die Plattformkomponente",
+        "VoltoShare",
+        "10",
+        "Eine App für Bewohner, Vermieter und Betrieb",
+        "1",
+        "Bewohner",
+        "Ladezeit in der App reservieren\nLadepunkt per App oder NFC freischalten\nVerbrauch und Abrechnung einsehen",
+        "2",
+        "Vermieter und Verwaltung",
+        "Nutzer hinzufügen und entfernen\nZugangskarten ausgeben\nReservierungen auf Missbrauch prüfen",
+        "3",
+        "Betrieb durch VoltoShare",
+        "Lastmanagement und Softwareupdates\nWartung und Support\nDynamischer Stromtarif und Rechnungen"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 11,
+      "title": "Produkt: Leistungsversprechen und Ertragsmodell",
+      "hidden": false,
+      "image": "/assets/slides/slide-11.svg?v=afb18798e918",
+      "text": [
+        "Produkt: Leistungsversprechen und Ertragsmodell",
+        "VoltoShare",
+        "11",
+        "Wer bekommt was, und wer bezahlt wen",
+        "Leistungsversprechen",
+        "Für Vermieter",
+        "Ladeinfrastruktur ohne oder mit geringer Anfangszahlung und zusätzliche Mieteinnahmen nach Abzug des Abos.",
+        "Für Bewohner",
+        "Ladezugang ohne eigene Wallbox, ohne Kauf und ohne Installation.",
+        "Für die Verwaltung",
+        "Hardware, Software, Wartung und Support aus einer Hand.",
+        "Ertragsmodell",
+        "Vermieter",
+        "VoltoShare",
+        "Bewohner",
+        "Abo\npro Wohnung und Monat für Infrastruktur und Plattform",
+        "Strom\nVerbrauch zum dynamischen Tarif plus kleiner Aufschlag",
+        "Offen: Abo bei Leerstand weiterlaufen lassen oder pausieren?"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 12,
+      "title": "Case: Grosses Wohngebäude in der Stadt Zürich",
+      "hidden": false,
+      "image": "/assets/slides/slide-12.svg?v=afb18798e918",
+      "text": [
+        "Case: Grosses Wohngebäude in der Stadt Zürich",
+        "VoltoShare",
+        "12",
+        "Ausgangslage und Annahmen",
+        "Tiefgarage mit Ladepunkten",
+        "60\nWohnungen",
+        "15\nLadepunkte",
+        "Annahmen",
+        "Wohnungen im Gebäude",
+        "60",
+        "Geteilte Ladepunkte (4 : 1)",
+        "15",
+        "E-Autos der Bewohner",
+        "24",
+        "Strombedarf pro E-Auto und Jahr",
+        "2’500 kWh",
+        "Abo pro Wohnung und Monat",
+        "CHF 25",
+        "Mietaufschlag pro Wohnung und Monat",
+        "CHF 40",
+        "Leerstand in der Stadt Zürich",
+        "0.1 %",
+        "Annahmen des Teams: Anzahl E-Autos (40 % der Haushalte, Szenario 2030), Abo und Aufschlag. Leerstand: Statistik Stadt Zürich."
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 13,
+      "title": "Case: So wird geladen",
+      "hidden": true,
+      "image": "/assets/slides/slide-13.svg?v=afb18798e918",
+      "text": [
+        "Case: So wird geladen",
+        "VoltoShare",
+        "13",
+        "Ein typischer Tag im Gebäude",
+        "01",
+        "Reservieren",
+        "Ladezeit in der App wählen",
+        "02",
+        "Freischalten",
+        "Per App oder NFC-Karte",
+        "03",
+        "Laden",
+        "Lastmanagement verteilt die Leistung",
+        "04",
+        "Abrechnen",
+        "Verbrauch zum dynamischen Tarif",
+        "10 von 15 Ladepunkten gleichzeitig belegt. Die Spitze sinkt von 59 auf 45 kW.",
+        "Simulation: 14 Ladevorgänge pro Tag, im Schnitt 11.7 kWh (164 kWh pro Tag, rund 60’000 kWh pro Jahr), 7.4 kW pro Fahrzeug."
+      ],
+      "charts": [
         {
-          "title": "Team VoltoShare",
-          "items": [
-            "Mathis Clement",
-            "Cyrill Gasser",
-            "Robin Vinzenz Gasser",
-            "Joel Frei",
-            "Yannic David Schnell"
+          "title": "",
+          "categories": [
+            "00",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23"
+          ],
+          "series": [
+            {
+              "name": "Ohne Lastmanagement",
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                3.7,
+                5.6,
+                0.0,
+                0.0,
+                0.0,
+                11.1,
+                48.1,
+                53.7,
+                37.0,
+                14.8,
+                1.9,
+                0.0
+              ]
+            },
+            {
+              "name": "Mit Lastmanagement",
+              "values": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                3.7,
+                5.6,
+                0.0,
+                0.0,
+                0.0,
+                11.1,
+                42.9,
+                45.0,
+                41.0,
+                22.2,
+                1.9,
+                0.0
+              ]
+            },
+            {
+              "name": "Grenze Gebäude (45 kW)",
+              "values": [
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0,
+                45.0
+              ]
+            }
           ]
         }
       ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 1. Die Nutzungs- und Finanzierungsangebote sind Projektkonzepte, keine laufenden kommerziellen Leistungen."
-      ]
+      "notes": ""
     },
     {
-      "id": "agenda",
-      "kind": "agenda",
-      "kicker": "Orientierung",
-      "title": "Vom Bedarf zum Geschäftsmodell",
-      "sections": [
-        {
-          "title": "01 · Team",
-          "body": "Wer wir sind"
-        },
-        {
-          "title": "02 · Roadmap",
-          "body": "Von der Idee zum Marktplatz"
-        },
-        {
-          "title": "03 · Markt",
-          "body": "Deutschschweiz, Testgebiet Zürich"
-        },
-        {
-          "title": "04 · Produkt",
-          "body": "Hardware, Plattform, Ertragsmodell"
-        },
-        {
-          "title": "05 · Case",
-          "body": "Wohngebäude: Nutzung und Rechnung"
-        },
-        {
-          "title": "06 · Diskussion",
-          "body": "Fragen, Quellen und Annahmen"
-        }
+      "number": 14,
+      "title": "Case: Die Rechnung für VoltoShare",
+      "hidden": false,
+      "image": "/assets/slides/slide-14.svg?v=afb18798e918",
+      "text": [
+        "Case: Die Rechnung für VoltoShare",
+        "VoltoShare",
+        "14",
+        "Pro Gebäude mit 60 Wohnungen und 15 Ladepunkten",
+        "CHF 60’000",
+        "Investition",
+        "CHF 15’900",
+        "Ergebnis pro Jahr",
+        "3.8 Jahre",
+        "Amortisation",
+        "Erträge pro Jahr",
+        "Abo: 60 × CHF 25 × 12",
+        "CHF 18’000",
+        "Strommarge: 60’000 kWh × 6 Rp.",
+        "CHF 3’600",
+        "Kosten pro Jahr",
+        "Plattform und Software",
+        "CHF 1’800",
+        "Wartung und Support (4 % der Investition)",
+        "CHF 2’400",
+        "Messung, Zahlung, Versicherung",
+        "CHF 1’500",
+        "Kumulierter Cashflow pro Gebäude",
+        "Jahre seit Installation",
+        "Annahmen: Investition 15 × CHF 3’000 Ladepunkt plus CHF 15’000 Netzanschluss und Lastmanagement. Ohne Förderung, Steuern und Zinsen."
       ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 2. Die tatsächliche Reihenfolge der Inhaltsfolien bleibt erhalten; Roadmap nach Markt."
-      ]
-    },
-    {
-      "id": "team",
-      "kind": "team",
-      "kicker": "Menschen hinter der Idee",
-      "title": "Das VoltoShare-Team",
-      "sections": [
+      "charts": [
         {
-          "title": "Mathis Clement",
-          "body": "Projektteam"
-        },
-        {
-          "title": "Cyrill Gasser",
-          "body": "Projektteam"
-        },
-        {
-          "title": "Robin Vinzenz Gasser",
-          "body": "Projektteam"
-        },
-        {
-          "title": "Joel Frei",
-          "body": "Projektteam"
-        },
-        {
-          "title": "Yannic David Schnell",
-          "body": "Projektteam"
-        }
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 3. Studien-/Legitimationsnummern und leere Portrait-Platzhalter werden in der öffentlichen Fassung ausgelassen. Es wurden keine Portraits ergänzt."
-      ]
-    },
-    {
-      "id": "grundidee",
-      "kind": "model",
-      "kicker": "Grundidee & Geschäftsmodell",
-      "title": "Eine Infrastruktur. Gemeinsam genutzt.",
-      "subtitle": "VoltoShare unterstützt Mieter und Vermieter von Mehrfamilienhäusern: Hardware vorfinanzieren, installieren und über wiederkehrende Gebühren betreiben.",
-      "sections": [
-        {
-          "title": "Vermieter / Verwaltung",
-          "body": "Monatliches Abo pro abrechenbarer Wohnung; VoltoShare finanziert und betreibt die Ladeinfrastruktur."
-        },
-        {
-          "title": "Bewohner",
-          "body": "Geteilte Ladepunkte zuhause; das Fahrzeug bleibt privat. Strom wird nach Verbrauch bezahlt."
-        },
-        {
-          "title": "Intelligentes Laden",
-          "body": "Lastmanagement verteilt die verfügbare Leistung. App und NFC ermöglichen Zugang und Reservierung."
-        }
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 4; Projektexposé vom 15.10.2026. Die versehentliche Beschriftung «Gruppe 1 – FlexRide» wurde korrigiert. Die Vorlage zeigt Make/Buy, @home/@work/on the road und instant/smart unidirectional/smart bidirectional als Einordnungsoptionen. Daraus wird kein V2G-Angebot abgeleitet."
-      ]
-    },
-    {
-      "id": "markt-zuerich",
-      "kind": "market",
-      "kicker": "Markt · Testgebiet Zürich",
-      "title": "Viele Mietwohnungen. Hoher Ladebedarf.",
-      "stats": [
-        {
-          "value": "1.63 Mio",
-          "label": "Einwohner im Kanton · Ende 2025"
-        },
-        {
-          "value": "238’472",
-          "label": "Wohnungen in der Stadt · Ende 2025"
-        },
-        {
-          "value": "92 %",
-          "label": "Mietanteil · rund 219’000 Wohnungen"
-        },
-        {
-          "value": "750’000",
-          "label": "Personenwagen im Kanton · Sept. 2025"
-        }
-      ],
-      "sections": [
-        {
-          "title": "Warum Zürich?",
-          "items": [
-            "Dichte Mietwohngebäude; viele Bewohner ohne eigene Lademöglichkeit.",
-            "0.1 % Leerstand (235 Wohnungen): geringes, aber nicht ausgeschlossenes Abo-Leerstandsrisiko.",
-            "Hoher E-Auto-Anteil bei Neuzulassungen; kurze Wege für Interviews und Support."
+          "title": "",
+          "categories": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "series": [
+            {
+              "name": "Kumuliert in CHF",
+              "values": [
+                -60000.0,
+                -44100.0,
+                -28200.0,
+                -12300.0,
+                3600.0,
+                19500.0,
+                35400.0,
+                51300.0,
+                67200.0,
+                83100.0,
+                99000.0
+              ]
+            }
           ]
         }
       ],
-      "sources": [
-        {
-          "label": "Kanton Zürich; Statistik Stadt Zürich · Angaben aus der gelieferten Präsentation"
-        }
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 5. Die Vorlage bezeichnet Zürich als Kanton mit dem höchsten E-Auto-Anteil bei Neuzulassungen. Rund 219’000 = 238’472 × 92 %, eigene Rechnung des Teams. Statistikwerte wurden aus der Vorlage übernommen, nicht neu verifiziert."
-      ]
+      "notes": ""
     },
     {
-      "id": "markt-elektro",
-      "kind": "metrics",
-      "kicker": "Markt · Elektromobilität",
-      "title": "Der Bestand wächst. Der Ladezugang fehlt.",
-      "stats": [
-        {
-          "value": "≈ 7 %",
-          "label": "Reine E-Autos im Zürcher Bestand · 2025"
-        },
-        {
-          "value": "30.5 %",
-          "label": "Reine E-Autos bei Neuzulassungen · 2025"
-        },
-        {
-          "value": "≈ 42 %",
-          "label": "Steckerfahrzeuge bei Neuzulassungen · 2025"
-        }
+      "number": 15,
+      "title": "Case: Wer profitiert?",
+      "hidden": false,
+      "image": "/assets/slides/slide-15.svg?v=afb18798e918",
+      "text": [
+        "Case: Wer profitiert?",
+        "VoltoShare",
+        "15",
+        "Vermieter, Bewohner und die Preissensitivität des Abos",
+        "Vermieter pro Jahr",
+        "Mehrmiete: 60 × CHF 40 × 12",
+        "+ CHF 28’800",
+        "Abo an VoltoShare",
+        "– CHF 18’000",
+        "Netto, ohne Investition",
+        "+ CHF 10’800",
+        "Bewohner",
+        "Ladezugang ohne Kauf einer eigenen Wallbox\nStrom zum dynamischen Tarif plus 6 Rp. Aufschlag pro kWh\nMietaufschlag trifft alle 60 Wohnungen, nutzen werden ihn 24",
+        "Amortisation je nach Abo-Preis",
+        "Abo pro Wohnung und Monat. Das Abo macht rund 83 % der Erträge aus.",
+        "Ergebnis pro Jahr bei CHF 15 / 25 / 35: CHF 8’700 / 15’900 / 23’100 bei CHF 60’000 Investition."
       ],
-      "sections": [
+      "charts": [
         {
-          "title": "40 % ohne privaten Ladeort",
-          "body": "Szenario 2035 für die Stadt Zürich: weder zuhause noch am Arbeitsplatz laden."
-        },
-        {
-          "title": "114’000 Parkplätze",
-          "body": "Vom kantonalen Förderprogramm aufgerüstet; seit Oktober 2026 geschlossen."
-        }
-      ],
-      "sources": [
-        {
-          "label": "Kanton Zürich · electrive · INFRAS · BFE; siehe Quellen"
-        }
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 6. Steckerfahrzeuge = batterieelektrische Autos + Plug-in-Hybride. Der 40-%-Wert ist ein Szenario, keine heutige Messung. Quellenangaben und Förderprogrammzahlen aus der Vorlage, nicht neu verifiziert."
-      ]
-    },
-    {
-      "id": "markt-potenzial",
-      "kind": "marketSizing",
-      "kicker": "Markt · Modellannahmen",
-      "title": "Vom Gesamtmarkt zum Fünfjahresziel",
-      "stats": [
-        {
-          "value": "≈ 219’000",
-          "label": "Mietwohnungen · ≈ CHF 66 Mio Abo/Jahr"
-        },
-        {
-          "value": "≈ 66’000",
-          "label": "Erreichbar · ≈ CHF 20 Mio Abo/Jahr"
-        },
-        {
-          "value": "≈ 2’000",
-          "label": "Fünfjahresziel · ≈ CHF 0.6 Mio Abo/Jahr"
-        }
-      ],
-      "sections": [
-        {
-          "title": "Annahmen des Teams",
-          "items": [
-            "CHF 25 pro Wohnung und Monat.",
-            "30 % in Gebäuden ab 20 Wohnungen mit Garage.",
-            "3 % des erreichbaren Markts nach fünf Jahren; rund 100 Gebäude."
+          "title": "",
+          "categories": [
+            "CHF 15",
+            "CHF 25",
+            "CHF 35"
+          ],
+          "series": [
+            {
+              "name": "Jahre bis zur Amortisation",
+              "values": [
+                6.9,
+                3.8,
+                2.6
+              ]
+            }
           ]
         }
       ],
-      "sources": [
-        {
-          "label": "238’472 Wohnungen × 92 % Mietanteil; alle Marktanteile sind Teamannahmen."
-        }
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 7. Abo-Umsatz = Wohnungen × CHF 25 × 12. Diese Beträge sind Umsatzpotenzial, nicht Gewinn oder Prognosezusagen. Anteile und Zahlungsbereitschaft in Phase 1 validieren. Die rund 100 Gebäude folgen dem 20-Wohnungen-Beispiel, nicht dem späteren 60-Wohnungen-Case."
-      ]
+      "notes": ""
     },
     {
-      "id": "roadmap",
-      "kind": "roadmap",
-      "kicker": "Entwicklung · Plan, keine erreichten Meilensteine",
-      "title": "Vom Pilotgebäude zur Plattform",
-      "sections": [
-        {
-          "title": "Q4 2026 · Idee",
-          "body": "Exposé, Teamstart und Marktanalyse."
-        },
-        {
-          "title": "Q1 2027 · Validierung",
-          "body": "Interviews mit Verwaltungen und Vermietern."
-        },
-        {
-          "title": "Q2 2027 · Prototyp",
-          "body": "App und Auswahl der Wallbox-Komponenten."
-        },
-        {
-          "title": "Q3–Q4 2027 · Pilot",
-          "body": "Ein Gebäude in Zug zur Produktoptimierung."
-        },
-        {
-          "title": "Q1 2028 · Produktlaunch",
-          "body": "Abo-Angebot und aktive Kundenakquise."
-        },
-        {
-          "title": "2029 · Plattform-Pilot",
-          "body": "Öffentliche Nutzung mit dem Kundenstamm testen."
-        },
-        {
-          "title": "2030 · Marktplatz",
-          "body": "Öffnung für Unternehmen und Privatkunden."
-        },
-        {
-          "title": "2030+ · Skalierung",
-          "body": "Ausbau Schweiz, möglicher DACH-Markteintritt."
-        }
+      "number": 16,
+      "title": "Q&A",
+      "hidden": false,
+      "image": "/assets/slides/slide-16.svg?v=afb18798e918",
+      "text": [
+        "Q&A",
+        "Vielen Dank für Ihre Aufmerksamkeit",
+        "Team VoltoShare"
       ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 8 (in der Quelle ausgeblendet, hier als Teil des Entwurfs aufgenommen). Phase 1: Shared Charging in grösseren Mietwohngebäuden, zunächst Markt Zürich. Zug steht in der Vorlage als geplanter Pilotstandort. Phase 2: Weiterentwicklung zu einem «Airbnb» für Ladestationen und Parkplätze. Marktplatz ist Zukunftsvision, kein heutiger Funktionsumfang."
-      ]
+      "charts": [],
+      "notes": ""
     },
     {
-      "id": "hardware",
-      "kind": "hardware",
-      "kicker": "Produkt · Physische Komponente",
-      "title": "Weniger Wallboxen. Geteilter Zugang.",
-      "stats": [
-        {
-          "value": "20",
-          "label": "Wohnungen im Beispiel"
-        },
-        {
-          "value": "5",
-          "label": "Geteilte Ladepunkte"
-        },
-        {
-          "value": "1",
-          "label": "Koordiniertes Lastmanagement"
-        }
+      "number": 17,
+      "title": "Anhang: Quellen und Annahmen",
+      "hidden": false,
+      "image": "/assets/slides/slide-17.svg?v=afb18798e918",
+      "text": [
+        "Anhang: Quellen und Annahmen",
+        "VoltoShare",
+        "17",
+        "Abgerufen im November 2026",
+        "Bevölkerung",
+        "Kanton Zürich: Bestand und Struktur der Bevölkerung (Ende 2025, 1.63 Mio.). zh.ch/de/soziales/bevoelkerungszahlen",
+        "Wohnungsbestand",
+        "Statistik Stadt Zürich: Mehr Wohnungen trotz vieler Abbrüche in Zürich (238’472 Wohnungen, Ende 2025). stadt-zuerich.ch",
+        "Mietanteil",
+        "Statistik Stadt Zürich: Eigentumsverhältnisse (rund 92 % Mietwohnungen). stadt-zuerich.ch",
+        "Leerstand",
+        "Stadt Zürich: Leerwohnungsziffer 0.1 % (235 Wohnungen, Juni 2025). stadt-zuerich.ch",
+        "Fahrzeugbestand",
+        "Kanton Zürich: Autoflotte (750’000 Personenwagen, Sept. 2025). zh.ch/de/mobilitaet",
+        "E-Auto-Anteil Bestand",
+        "Kanton Zürich: Dekarbonisierung Mobilität (knapp 7 % reine E-Autos, 2025). zh.ch",
+        "Neuzulassungen",
+        "electrive: Jahresbilanz 2025, Kanton Zürich 30.5 % E-Autos. electrive.net/2026/01/05",
+        "Steckerfahrzeuge",
+        "INFRAS im Auftrag des AWEL: Abbau von Hemmnissen für die Elektromobilität (rund 42 %, 2025). infras.ch",
+        "Laden ohne Privatplatz",
+        "BFE: Ladebedarfsszenarien (Stadt Zürich: 40 % «Geplant», 2035). pubdb.bfe.admin.ch",
+        "Förderprogramm",
+        "electrive: 114’000 Parkplätze erhalten Ladestation (30.10.2026). electrive.net",
+        "Strompreis",
+        "Bundesrat/ElCom: typischer Haushalt 27.7 Rp./kWh (2026). admin.ch; ewz: Tarife 2026/2027. ewz.ch",
+        "Projektgrundlage",
+        "VoltoShare: Projektexposé, 15. Oktober 2026 (Produkt, Ertragsmodell, Beispiel 20 Wohnungen / 5 Ladepunkte)",
+        "Eigene Annahmen: Abo CHF 25, Mietaufschlag CHF 40, Marktanteile 30 % und 3 %, 24 E-Autos, CHF 3’000 pro Ladepunkt, Betriebskosten, Roadmap. Nicht aus Statistiken."
       ],
-      "sections": [
-        {
-          "title": "Wallbox mit Zähler",
-          "body": "Verbrauch messen; Freigabe per App oder NFC-Karte."
-        },
-        {
-          "title": "Gebäudeleistung teilen",
-          "body": "Hausanschluss und Lastmanagement verteilen verfügbare Leistung."
-        },
-        {
-          "title": "Finanziert und betrieben",
-          "body": "VoltoShare übernimmt Installation, Wartung und Updates."
-        }
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 9 und Projektexposé. 20/5 ist ein illustratives Beispiel, kein allgemeingültiges Auslegungsverhältnis oder Nachweis einer realen Installation. Normale Parkplätze bleiben von Ladeplätzen getrennt."
-      ]
+      "charts": [],
+      "notes": ""
     },
     {
-      "id": "plattform",
-      "kind": "platform",
-      "kicker": "Produkt · Plattformkomponente",
-      "title": "Eine App. Drei Perspektiven.",
-      "sections": [
-        {
-          "title": "Bewohner",
-          "items": [
-            "Ladezeit reservieren",
-            "Per App oder NFC freischalten",
-            "Verbrauch und Abrechnung einsehen"
-          ]
-        },
-        {
-          "title": "Vermieter & Verwaltung",
-          "items": [
-            "Nutzer hinzufügen und entfernen",
-            "Zugangskarten ausgeben",
-            "Reservierungen auf Missbrauch prüfen"
-          ]
-        },
-        {
-          "title": "VoltoShare-Betrieb",
-          "items": [
-            "Lastmanagement und Softwareupdates",
-            "Wartung und Support",
-            "Dynamischer Stromtarif und Rechnungen"
-          ]
-        }
+      "number": 18,
+      "title": "FlexRide - Übersicht",
+      "hidden": false,
+      "image": "/assets/slides/slide-18.svg?v=afb18798e918",
+      "text": [
+        "FlexRide - Übersicht",
+        "Was ist VoltoShare?\n",
+        "Was macht VoltoShare?\n",
+        "Q&A\n",
+        "- Infosys",
+        "Wieso VoltoShare?",
+        "Gruppe 1 - FlexRide",
+        "18",
+        "Marktanalyse\nCustomer Insight\n",
+        "Value Proposition\nProduktdesign\n",
+        "Produktmanagement\nMarketing\n"
       ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 10. Produktziel; die aktuelle App ist eine fiktive Demo ohne reale Wallbox-Steuerung, NFC-Provisionierung oder Zahlungen."
-      ]
+      "charts": [],
+      "notes": ""
     },
     {
-      "id": "ertragsmodell",
-      "kind": "flows",
-      "kicker": "Produkt · Leistung und Zahlung",
-      "title": "Zwei Zahlungsströme. Klare Aufgaben.",
-      "sections": [
-        {
-          "title": "Vermieter → VoltoShare",
-          "body": "Abo pro Wohnung und Monat für Infrastruktur und Plattform."
-        },
-        {
-          "title": "Bewohner → VoltoShare",
-          "body": "Gemessener Strom zum dynamischen Tarif plus Aufschlag."
-        },
-        {
-          "title": "VoltoShare → Gebäude",
-          "body": "Hardware, Software, Wartung und Support aus einer Hand."
-        }
+      "number": 19,
+      "title": "Agglomerationstheorie",
+      "hidden": false,
+      "image": "/assets/slides/slide-19.svg?v=afb18798e918",
+      "text": [
+        "Agglomerationstheorie",
+        "\nWissenspillovers\nSpezialisierte Arbeitsmärkte\nExterne Skaleneffekte\nSteigert Produktivität\n",
+        "Geografische Konzentration verbundener Akteure\nFörderung Innovation, Spezialisierung, Wettbewerbsfähigkeit\n\n\n",
+        " Komplementäres Zusammenwirken\n  Hotels, Gastronomie, Kultur, Einzelhandel, Verkehr\n",
+        "Räumliche Nähe",
+        "Clusteransatz",
+        "Tourismus",
+        "19"
       ],
-      "rows": [
-        [
-          "Vermieter",
-          "Geringe oder keine Anfangszahlung; mögliche Mehrmiete nach Abo."
-        ],
-        [
-          "Bewohner",
-          "Ladezugang ohne eigene Wallbox, Kauf oder Installation."
-        ],
-        [
-          "Offene Entscheidung",
-          "Abo bei Leerstand weiterführen oder pausieren?"
-        ]
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 11. Mehrmiete ist eine Teamannahme, kein garantierter Nutzen oder rechtlich zugesicherter Mietaufschlag. Ob bei Leerstand abgerechnet wird, bleibt offen. Die zwei Varianten werden im Finanzmodell getrennt gezeigt."
-      ]
+      "charts": [],
+      "notes": ""
     },
     {
-      "id": "case-annahmen",
-      "kind": "case",
-      "kicker": "Case · Zürich · Basisannahmen der Vorlage",
-      "title": "60 Wohnungen. 15 Ladepunkte.",
-      "stats": [
-        {
-          "value": "60",
-          "label": "Wohnungen"
-        },
-        {
-          "value": "15",
-          "label": "Ladepunkte · Verhältnis 4 : 1"
-        },
-        {
-          "value": "24",
-          "label": "E-Autos · 40 % der Haushalte"
-        }
+      "number": 20,
+      "title": "Besucherströme",
+      "hidden": false,
+      "image": "/assets/slides/slide-20.svg?v=afb18798e918",
+      "text": [
+        "Besucherströme",
+        "Aufenthaltsdauer\n",
+        "Wie lange bleiben die Touristen?",
+        "Attraktion\n",
+        "Was zieht die Besucher an?",
+        "Erreichbarkeit",
+        "Wie kommt man hin",
+        "Infrastruktur",
+        "Was ermöglicht den Betrieb?",
+        "20"
       ],
-      "rows": [
-        [
-          "Jährlicher Strombedarf je E-Auto",
-          "2’500 kWh"
-        ],
-        [
-          "Abo je Wohnung / Monat",
-          "CHF 25"
-        ],
-        [
-          "Angenommene Mehrmiete / Monat",
-          "CHF 40"
-        ],
-        [
-          "Leerstand Stadt Zürich",
-          "0.1 %"
-        ]
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 12. 24 E-Autos entsprechen dem Teamszenario 2030, keine beobachtete Belegung. Wohnungs-/Ladepunktzahl, Strombedarf, Abo und Mehrmiete sind Modellannahmen. Leerstand laut Statistik Stadt Zürich in der Vorlage."
-      ]
+      "charts": [],
+      "notes": ""
     },
     {
-      "id": "case-laden",
-      "kind": "charging",
-      "kicker": "Case · Nutzungssimulation",
-      "title": "Reservieren. Freischalten. Laden.",
-      "sections": [
-        {
-          "title": "01 · Reservieren",
-          "body": "Ladezeit in der App wählen."
-        },
-        {
-          "title": "02 · Freischalten",
-          "body": "App oder NFC-Karte nutzen."
-        },
-        {
-          "title": "03 · Laden",
-          "body": "Lastmanagement verteilt Leistung."
-        },
-        {
-          "title": "04 · Abrechnen",
-          "body": "Verbrauch dynamisch abrechnen."
-        }
+      "number": 21,
+      "title": "Zürich-Case",
+      "hidden": false,
+      "image": "/assets/slides/slide-21.svg?v=afb18798e918",
+      "text": [
+        "Gruppe 1 - FlexRide",
+        "21",
+        "Zürich-Case"
       ],
-      "stats": [
-        {
-          "value": "14",
-          "label": "Ladevorgänge pro Tag"
-        },
-        {
-          "value": "≈ 164 kWh",
-          "label": "Tagesbedarf · rund 60’000 kWh/Jahr"
-        },
-        {
-          "value": "45 kW",
-          "label": "Simulierte Lastmanagement-Grenze"
-        }
-      ],
-      "chart": {
-        "categories": [
-          "00",
-          "01",
-          "02",
-          "03",
-          "04",
-          "05",
-          "06",
-          "07",
-          "08",
-          "09",
-          "10",
-          "11",
-          "12",
-          "13",
-          "14",
-          "15",
-          "16",
-          "17",
-          "18",
-          "19",
-          "20",
-          "21",
-          "22",
-          "23"
-        ],
-        "unit": "kW",
-        "series": [
-          {
-            "name": "Ohne Lastmanagement",
-            "values": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              3.7,
-              5.6,
-              0,
-              0,
-              0,
-              11.1,
-              48.1,
-              53.7,
-              37,
-              14.8,
-              1.9,
-              0
-            ]
-          },
-          {
-            "name": "Mit Lastmanagement",
-            "values": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              3.7,
-              5.6,
-              0,
-              0,
-              0,
-              11.1,
-              42.9,
-              45,
-              41,
-              22.2,
-              1.9,
-              0
-            ]
-          }
-        ]
-      },
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 13 (dort ausgeblendet). Simulation: 14 Vorgänge × 11.7 kWh ≈ 164 kWh/Tag; 7.4 kW/Fahrzeug; laut Text 10 von 15 Ladepunkten gleichzeitig belegt. Quelleninkonsistenz: Folientext nennt Spitze 59→45 kW, eingebettete Diagrammdaten zeigen 53.7→45 kW. Diagrammdaten werden unverändert übernommen; kein Messnachweis. Die stündlichen Kurven summieren sich auf 175.9 bzw. 173.4 kWh und entsprechen daher nicht exakt dem textlichen Tagesbedarf; im Entwurf als separate illustrative Lastkurven kennzeichnen."
-      ]
+      "charts": [],
+      "notes": ""
     },
     {
-      "id": "case-finanzierung",
-      "kind": "finance",
-      "kicker": "Case · Wirtschaftlichkeit",
-      "title": "Die Rechnung für VoltoShare",
-      "subtitle": "Zürich-Basisszenario · Annahmen live im Web veränderbar",
-      "financePreset": "zurich",
-      "stats": [
-        {
-          "value": "CHF 60’000",
-          "label": "Anfangsinvestition"
-        },
-        {
-          "value": "CHF 15’900",
-          "label": "Jährlicher operativer Überschuss"
-        },
-        {
-          "value": "3.8 Jahre",
-          "label": "Einfache Amortisation"
-        }
+      "number": 22,
+      "title": "Analyse - Methodik",
+      "hidden": false,
+      "image": "/assets/slides/slide-22.svg?v=afb18798e918",
+      "text": [
+        "Analyse - Methodik",
+        "Übernachtungen\n",
+        "Angebotsmieten\n",
+        "- Infosys",
+        "Tourismus-Hotspots",
+        "Gruppe 1 - FlexRide",
+        "22",
+        "Nach Bezirk\n2025\n",
+        "Pro m² nach Bezirk\n",
+        "Top 30 Sehenswürdigkeiten",
+        "🏨",
+        "💶",
+        "📍"
       ],
-      "rows": [
-        [
-          "Abo · 60 × CHF 25 × 12",
-          "CHF 18’000 / Jahr"
-        ],
-        [
-          "Strommarge · 60’000 kWh × CHF 0.06",
-          "CHF 3’600 / Jahr"
-        ],
-        [
-          "Plattform / Software",
-          "− CHF 1’800 / Jahr"
-        ],
-        [
-          "Wartung / Support · 4 % Investition",
-          "− CHF 2’400 / Jahr"
-        ],
-        [
-          "Messung / Zahlung / Versicherung",
-          "− CHF 1’500 / Jahr"
-        ]
-      ],
-      "chart": {
-        "categories": [
-          "0",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10"
-        ],
-        "unit": "CHF",
-        "series": [
-          {
-            "name": "Kumulierter Cashflow",
-            "values": [
-              -60000,
-              -44100,
-              -28200,
-              -12300,
-              3600,
-              19500,
-              35400,
-              51300,
-              67200,
-              83100,
-              99000
-            ]
-          }
-        ]
-      },
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 14. Investition: 15 × CHF 3’000 pro Ladepunkt + CHF 15’000 Netzanschluss/Lastmanagement. Ohne Förderung, Steuern, Zinsen und Abschreibungen. Das Quellenwort «Ergebnis» wird präziser als operativer Überschuss bezeichnet, nicht als Nettogewinn. Alle 60 Wohnungen werden in dieser Basis abgerechnet; alternative Leerstandsregel im interaktiven Modell. Nominaler Cashflow ohne Ersatzinvestition, Preissteigerung oder Abzinsung."
-      ]
+      "charts": [],
+      "notes": ""
     },
     {
-      "id": "case-nutzen",
-      "kind": "benefits",
-      "kicker": "Case · Basisfall CHF 25 · Vermietersaldo vor Leerstand",
-      "title": "Wer profitiert – und unter welchen Annahmen?",
-      "sections": [
-        {
-          "title": "Vermieter pro Jahr",
-          "items": [
-            "Mehrmiete: 60 × CHF 40 × 12 = CHF 28’800",
-            "Abo an VoltoShare: − CHF 18’000",
-            "Saldo vor weiteren Kosten: + CHF 10’800"
-          ]
-        },
-        {
-          "title": "Bewohner",
-          "items": [
-            "Ladezugang ohne Kauf einer Wallbox",
-            "Dynamischer Tarif + 6 Rp./kWh",
-            "Mehrmiete trifft im Case alle 60 Wohnungen; 24 nutzen das Laden"
-          ]
-        }
+      "number": 23,
+      "title": "Tourismus-intensität",
+      "hidden": true,
+      "image": "/assets/slides/slide-23.svg?v=afb18798e918",
+      "text": [
+        "Tourismus-intensität",
+        "Gruppe 1 - FlexRide",
+        "23",
+        "Konzentration im inneren Raum\n2.76 Mio  1. Bezirk\n3-Fache von 23. Bezirk"
       ],
-      "rows": [
-        [
-          "Abo / Monat",
-          "Überschuss / Jahr",
-          "Amortisation"
-        ],
-        [
-          "CHF 15",
-          "CHF 8’700",
-          "6.9 Jahre"
-        ],
-        [
-          "CHF 25",
-          "CHF 15’900",
-          "3.8 Jahre"
-        ],
-        [
-          "CHF 35",
-          "CHF 23’100",
-          "2.6 Jahre"
-        ]
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 15. Rund 83 % der Erträge stammen im Basiscase aus dem Abo (18’000/21’600). Investition CHF 60’000. Vermietersaldo im Quellenbeispiel ohne Leerstand; Mehrmiete ist unvalidierte Annahme, nicht garantiert. Energietarif, Belegung und Kosten beeinflussen den Nutzen."
-      ]
+      "charts": [],
+      "notes": "\u000b"
     },
     {
-      "id": "diskussion",
-      "kind": "closing",
-      "kicker": "Diskussion",
-      "title": "Was muss der Pilot beantworten?",
-      "subtitle": "Vielen Dank für Ihre Aufmerksamkeit.",
-      "sections": [
-        {
-          "title": "Nachfrage",
-          "body": "Reichen geteilte Ladeplätze im Alltag?"
-        },
-        {
-          "title": "Zahlungsbereitschaft",
-          "body": "Welches Abo und welche Mehrmiete sind tragfähig?"
-        },
-        {
-          "title": "Betrieb",
-          "body": "Wie verteilen wir Leerstand, Wartezeit und Kosten?"
-        }
+      "number": 24,
+      "title": "Tourismus-intensität",
+      "hidden": false,
+      "image": "/assets/slides/slide-24.svg?v=afb18798e918",
+      "text": [
+        "Tourismus-intensität",
+        "Gruppe 1 - FlexRide",
+        "24",
+        "Konzentration im inneren Raum\n2.76 Mio  1. Bezirk\n3-Fache von 23. Bezirk"
       ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 16 (Q&A, Dank, Team VoltoShare). Diskussionsfragen sind redaktionelle Leitfragen zu den offenen Annahmen des gelieferten Konzepts."
-      ]
+      "charts": [],
+      "notes": "\u000b"
     },
     {
-      "id": "quellen",
-      "kind": "sources",
-      "kicker": "Anhang · Quellen und Annahmen",
-      "title": "Daten, Szenarien und Teamannahmen trennen",
-      "sources": [
-        {
-          "label": "Bevölkerung: Kanton Zürich · Ende 2025, 1.63 Mio",
-          "url": "https://www.zh.ch/de/soziales/bevoelkerungszahlen"
-        },
-        {
-          "label": "Wohnungen / Mietanteil / Leerstand: Statistik Stadt Zürich",
-          "url": "https://www.stadt-zuerich.ch/"
-        },
-        {
-          "label": "Fahrzeugbestand / Dekarbonisierung: Kanton Zürich",
-          "url": "https://www.zh.ch/de/mobilitaet"
-        },
-        {
-          "label": "Neuzulassungen 2025 / Förderprogramm: electrive",
-          "url": "https://www.electrive.net/"
-        },
-        {
-          "label": "Steckerfahrzeuge / Hemmnisse: INFRAS für AWEL",
-          "url": "https://www.infras.ch/"
-        },
-        {
-          "label": "Ladebedarfsszenarien 2035: Bundesamt für Energie",
-          "url": "https://pubdb.bfe.admin.ch/"
-        },
-        {
-          "label": "Strompreis 2026: Bundesrat / ElCom, ewz",
-          "url": "https://www.ewz.ch/"
-        },
-        {
-          "label": "Projektgrundlage: VoltoShare-Exposé, 15. Oktober 2026"
-        }
+      "number": 25,
+      "title": "Wohnungsmarkt",
+      "hidden": false,
+      "image": "/assets/slides/slide-25.svg?v=afb18798e918",
+      "text": [
+        "Wohnungsmarkt",
+        "Tourismus als Verstäker",
+        "1. Bezrik\n",
+        "23. Bezirk\n",
+        "Gruppe 1 - FlexRide",
+        "25",
+        "€ 26.98 / m²\n",
+        "€ 18.36 / m²\n"
       ],
-      "sections": [
-        {
-          "title": "Eigene Annahmen",
-          "body": "CHF 25 Abo, CHF 40 Mehrmiete, Marktanteile 30 % / 3 %, 24 E-Autos, CHF 3’000 je Ladepunkt, Betriebskosten und Roadmap."
-        }
-      ],
-      "notes": [
-        "Quelle: gelieferte Präsentation, Folie 17; Quellenstand laut Vorlage November 2026. Referenzen wurden übernommen, nicht unabhängig neu recherchiert.",
-        "Bevölkerung: Kanton Zürich, Bestand und Struktur, Ende 2025 (1.63 Mio). Wohnungsbestand: Statistik Stadt Zürich, «Mehr Wohnungen trotz vieler Abbrüche in Zürich», Ende 2025 (238’472). Mietanteil: Eigentumsverhältnisse, rund 92 %. Leerstand Juni 2025: 0.1 % / 235 Wohnungen.",
-        "Fahrzeugbestand: Kanton Zürich «Autoflotte», September 2025, 750’000. Bestand reine E-Autos 2025 knapp 7 %. Neuzulassungen: electrive, Jahresbilanz vom 05.01.2026, 30.5 %. Steckerfahrzeuge: INFRAS / AWEL «Abbau von Hemmnissen für die Elektromobilität», rund 42 %.",
-        "BFE Ladebedarfsszenarien: Stadt Zürich, 40 % im Szenario «Geplant» 2035. Förderung: electrive 30.10.2026, 114’000 Parkplätze. Strompreis: Bundesrat/ElCom 2026, typischer Haushalt 27.7 Rp./kWh; ewz Tarife 2026/2027. Originalfolie nennt teils nur Domains; daraus wurden keine erfundenen Detailquellen ergänzt."
-      ]
+      "charts": [],
+      "notes": ""
     },
     {
-      "id": "cham-alternative",
-      "kind": "finance",
-      "kicker": "Anhang · Alternative aus dem Profitrechner",
-      "title": "Cham: ein anderes Abrechnungsmodell",
-      "subtitle": "Papieri-Areal · separater Team-Rechner, nicht das Zürcher Wohnungsabo",
-      "financePreset": "cham",
-      "stats": [
-        {
-          "value": "270",
-          "label": "Wohnungen · erste Etappe"
-        },
-        {
-          "value": "11.9 %",
-          "label": "E-Auto-Anteil als Eingabe"
-        },
-        {
-          "value": "CHF 55",
-          "label": "Je Wallbox / Monat"
-        }
+      "number": 26,
+      "title": "Einflussfaktoren auf Mitpreise",
+      "hidden": false,
+      "image": "/assets/slides/slide-26.svg?v=afb18798e918",
+      "text": [
+        "Einflussfaktoren auf Mitpreise",
+        "Prestige\n",
+        "Neubau\n",
+        "Kaufkraft\n",
+        "Tourismus\n",
+        "Regulierungen\n",
+        "Lagequalität\n",
+        "Gruppe 1 - FlexRide",
+        "26"
       ],
-      "sections": [
-        {
-          "title": "Abweichende Zahlungseinheit",
-          "body": "Die Vermieterin zahlt pro Wallbox. Der Rechner verteilt diese Kosten auf ladende Mietparteien, nicht auf alle Wohnungen."
-        },
-        {
-          "title": "Nutzung und Kosten",
-          "body": "70 % Parkplatzquote, 4 Parteien je Box, 13’000 km/Jahr, 20 kWh/100 km, 75 % Heimladen."
-        },
-        {
-          "title": "Strom und Investition",
-          "body": "WWZ 2027: 21.15 Rp./kWh exkl. MwSt. + 7 Rp. Aufschlag. CHF 950 Hardware + CHF 1’950 Installation je Box."
-        }
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 27,
+      "title": "Hotspots: 10\nÜbernachtungen: 2.7 Mio\nDurchsch. Miete pro m²: € 26.98",
+      "hidden": false,
+      "image": "/assets/slides/slide-27.svg?v=afb18798e918",
+      "text": [
+        "27",
+        "Hotspots: 10\nÜbernachtungen: 2.7 Mio\nDurchsch. Miete pro m²: € 26.98",
+        "13: Hietzing",
+        "1: Innere Stadt",
+        "23: Liesing",
+        "Hotspots: 3\nÜbernachtungen: 223’005\nDurchsch. Miete pro m²: € 22.73",
+        "Hotspots: 0\nÜbernachtungen: 97’042\nDurchsch. Miete pro m²: € 18.36"
       ],
-      "sources": [
-        {
-          "label": "Gelieferter «VoltoShare Profitrechner» · Cham, November 2026"
-        }
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 28,
+      "title": "Wer ist FlexRide?\n",
+      "hidden": false,
+      "image": "/assets/slides/slide-28.svg?v=afb18798e918",
+      "text": [
+        "Wer ist FlexRide?\n",
+        "Gruppe 1 - FlexRide",
+        "28",
+        "Marktanalyse\nCustomer Insight\n"
       ],
-      "notes": [
-        "Quelle: gelieferter HTML-Profitrechner. Weitere Basisannahmen: 11 kW/Box, 60 kWh Batterie, 7 Tag- und 7 Nachtslots pro Woche, je 1 Tag-/Nachtslot je Partei, 10/12 Stunden Slotdauer; 2 % Leitungsverluste, 10 Jahre Nutzungsdauer, 2.5 % Zahlungsgebühr auf Stromumsatz, CHF 4 Backend/Box/Monat, CHF 80 Service/Box/Jahr, CHF 150 Overhead/Box/Jahr. Förderung 0. Optionale Akquise CHF 2’500 über 10 Jahre, in Basis aus. Öffentliches AC-Laden als Vergleich 50 Rp./kWh.",
-        "Die zwei Modelle werden nicht stillschweigend zusammengeführt. Vertrags-/Preismodell bleibt zu entscheiden. Lokale Tarif-/Rechts-/Marktquellen werden im separaten Finanzbereich aus dem gelieferten Rechner aufgeführt. Interaktivität findet im Browser statt; PowerPoint/PDF enthalten den statischen Basisszenario-Stand."
-      ]
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 29,
+      "title": "Unsere Persönlichkeit",
+      "hidden": false,
+      "image": "/assets/slides/slide-29.svg?v=afb18798e918",
+      "text": [
+        "Unsere Persönlichkeit",
+        "Wer ist FlexRide?",
+        "Zuverlässig\n",
+        "Innovativ\n",
+        "Individuell\n",
+        "Effizient\n",
+        "Vernetzt\n",
+        "Sicher\n",
+        "Flexibel\n",
+        "Nutzerfreundlich\n",
+        "Gruppe 1 - FlexRide",
+        "29"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 30,
+      "title": "Konkurrenz",
+      "hidden": false,
+      "image": "/assets/slides/slide-30.svg?v=afb18798e918",
+      "text": [
+        "Öffentliche Verkehrsmittel\n",
+        "Taxi\n",
+        "Invia\n",
+        "CHF 9.50\nSBB EasyRide\nNur ausserhalb des ÖV-Fahrplans",
+        "Konkurrenz",
+        "Wer ist FlexRide?",
+        "Startgebühr von CHF 5 + CHF 2.30/km",
+        "Tageskarte 3-Zonen CHF 15.60 \nEinzelfahrkarte 3-Zonen CHF 7.80 ",
+        "Gruppe 1 - FlexRide",
+        "30"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 31,
+      "title": "Unsere Zielgruppen",
+      "hidden": false,
+      "image": "/assets/slides/slide-31.svg?v=afb18798e918",
+      "text": [
+        "Unsere Zielgruppen",
+        "Wer ist FlexRide?",
+        "One-Stop-Shop-Solution \nSicherheit \nConvenience \nEffizienz ",
+        "Sicherheit \nVertrauen \nInnovation Experience \nKompetitive Preise ",
+        "Eventveranstalter\n",
+        "Eventgäste\n",
+        "Gruppe 1 - FlexRide",
+        "31"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 32,
+      "title": "Pain Points und Bedürfnisse",
+      "hidden": false,
+      "image": "/assets/slides/slide-32.svg?v=afb18798e918",
+      "text": [
+        "Pain Points und Bedürfnisse",
+        "Wer ist FlexRide?",
+        "Unzuverlässige Event- und Transportlogistik\n",
+        "Ineffiziente Routen- und Auslastungsplanung\n",
+        "Intransparente und schwankende Transportpreise\n",
+        "Schlechte Planbarkeit und Koordination bei Grossveranstaltungen\n",
+        "Komplexe und teure Aufbauarbeiten für temporäre Eventlogistik\n",
+        "Sicherheitsbedenken der Gäste\n",
+        "Hoher Fixkosten- und Personalaufwand für den Shuttle-Betrieb\n",
+        "Schwankende Qualität in der Personenbeförderung\n",
+        "05",
+        "06",
+        "07",
+        "08",
+        "01",
+        "02",
+        "03",
+        "04",
+        "Gruppe 1 - FlexRide",
+        "32"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 33,
+      "title": "FlexRide - Übersicht",
+      "hidden": false,
+      "image": "/assets/slides/slide-33.svg?v=afb18798e918",
+      "text": [
+        "FlexRide - Übersicht",
+        "Was macht FlexRide?\n",
+        "Gruppe 1 - FlexRide",
+        "33",
+        "Value Proposition\nProduktdesign\n"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 34,
+      "title": "Unser Leistungsversprechen – Value Proposition",
+      "hidden": false,
+      "image": "/assets/slides/slide-34.svg?v=afb18798e918",
+      "text": [
+        "Unser Leistungsversprechen – Value Proposition",
+        "Was macht FlexRide?",
+        "Entlastung der Eventlogistik\nAutomatisierte Flottensteuerung",
+        "Einsatzfähig für kleine und grosse Events\nFlotten flexibel erweiterbar",
+        "Hohe Sicherheitsstandards  \n\nGeringere Unfallquoten \n\nModerne und innovationsorientierte  Lösung \n\n\n",
+        "Reibungslose Eventmobilität",
+        "Innovation und Sicherheit",
+        "Nachhaltigkeit",
+        "Skalierbarkeit",
+        "Emissionsfreie, elektrische Shuttleflotte\nNachhaltigkeitsvorteil für das Event\n",
+        "Gruppe 1 - FlexRide",
+        "34"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 35,
+      "title": "Besucherströme",
+      "hidden": false,
+      "image": "/assets/slides/slide-35.svg?v=afb18798e918",
+      "text": [
+        "Reporting für Veranstalter",
+        "CO₂ Reduktion\nAuslastung und Heatmaps\nAfter-Sales-Experience",
+        "Autonome Fahrt und Echtzeit-Steuerung",
+        "Dynamische Routenoptimierung",
+        "Automatische Shuttlezuweisung",
+        "\nKI wählt bestes Shuttle\nFahrzeug fährt autonom vor",
+        "Gäste buchen via App",
+        "Start- und Zielwahl\nLive Wartezeiten sichtbar\nIntegration in Event-App",
+        "Einrichtung durch FlexRide",
+        "\nAutonome Shuttles vor Ort\nKI-Routenplanung, Genehmigungen\n.",
+        "Eventdaten, Standorte, Zeitfenster\nShuttle-Zonen und Kapazität definieren",
+        "Veranstalter bucht FlexRide",
+        "Gruppe 1 - FlexRide",
+        "35",
+        "Besucherströme"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 36,
+      "title": "Unsere USP",
+      "hidden": false,
+      "image": "/assets/slides/slide-36.svg?v=afb18798e918",
+      "text": [
+        "Unsere USP",
+        "Gruppe 1 - FlexRide",
+        "Der One-Stop-Shop für autonome Mobilität mit maximaler Effizienz & Sicherheit – skalierbar für jedes Event\n",
+        "36",
+        "Gruppe 1 - FlexRide"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 37,
+      "title": "Business Model Canvas – Kosten und Erträge im B2B2C-Modell",
+      "hidden": false,
+      "image": "/assets/slides/slide-37.svg?v=afb18798e918",
+      "text": [
+        "Business Model Canvas – Kosten und Erträge im B2B2C-Modell",
+        "Gruppe 1 - FlexRide",
+        "37",
+        "Kosten",
+        "Leasing & Systemkosten pro Fahrzeug\nVersicherung\nGenehmigungen, Support & Schulung\nSoftwareentwicklung & Serverinfrastruktur \nPersonal",
+        "Ertragsmodell",
+        "B2B -  Eventspezifische Pauschale\nSonderwünsche\nFlottengrösse\nBetreuungs- und Supportintensität\nBranding auf Shuttles\nB2C\nKilometerbasierte Bezahlung\n\n "
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 38,
+      "title": "FlexRide - Übersicht",
+      "hidden": false,
+      "image": "/assets/slides/slide-38.svg?v=afb18798e918",
+      "text": [
+        "FlexRide - Übersicht",
+        "Gruppe 1 - FlexRide",
+        "38",
+        "Wieso FlexRide?",
+        "Produktmanagement\nMarketing\n"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 39,
+      "title": "Application",
+      "hidden": false,
+      "image": "/assets/slides/slide-39.svg?v=afb18798e918",
+      "text": [
+        "Application",
+        "Wieso FlexRide?",
+        "Gruppe 1 - FlexRide",
+        "39"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 40,
+      "title": "LinkedIn",
+      "hidden": false,
+      "image": "/assets/slides/slide-40.svg?v=afb18798e918",
+      "text": [
+        "LinkedIn",
+        "Wieso FlexRide?",
+        "Gruppe 1 - FlexRide",
+        "40"
+      ],
+      "charts": [],
+      "notes": "\u000b"
+    },
+    {
+      "number": 41,
+      "title": "Instagram",
+      "hidden": false,
+      "image": "/assets/slides/slide-41.svg?v=afb18798e918",
+      "text": [
+        "Instagram",
+        "Wieso FlexRide?",
+        "Gruppe 1 - FlexRide",
+        "41"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 42,
+      "title": "Offline-Kampagne",
+      "hidden": false,
+      "image": "/assets/slides/slide-42.svg?v=afb18798e918",
+      "text": [
+        "Offline-Kampagne",
+        "Gruppe 1 - FlexRide",
+        "42",
+        "Wieso FlexRide?"
+      ],
+      "charts": [],
+      "notes": "\n"
+    },
+    {
+      "number": 43,
+      "title": "Broschüre",
+      "hidden": false,
+      "image": "/assets/slides/slide-43.svg?v=afb18798e918",
+      "text": [
+        "Broschüre",
+        "Wieso FlexRide?",
+        "Gruppe 1 - FlexRide",
+        "43"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 44,
+      "title": "Originalfolie 44",
+      "hidden": false,
+      "image": "/assets/slides/slide-44.svg?v=afb18798e918",
+      "text": [
+        "Gruppe 1 - FlexRide",
+        "44"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 45,
+      "title": "FlexRide – Your ride into the future.",
+      "hidden": false,
+      "image": "/assets/slides/slide-45.svg?v=afb18798e918",
+      "text": [
+        "FlexRide – Your ride into the future.",
+        "Gruppe 1 - FlexRide",
+        "Q & A\n",
+        "45"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 46,
+      "title": "FlexRide – Your ride into the future.",
+      "hidden": false,
+      "image": "/assets/slides/slide-46.svg?v=afb18798e918",
+      "text": [
+        "FlexRide – Your ride into the future.",
+        "Gruppe 1 - FlexRide",
+        "Anhang\n",
+        "46"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 47,
+      "title": "Unser Business Model Canvas",
+      "hidden": false,
+      "image": "/assets/slides/slide-47.svg?v=afb18798e918",
+      "text": [
+        "Unser Business Model Canvas",
+        "Gruppe 1 - FlexRide",
+        "47",
+        "Partners",
+        "Fahrzeughersteller (z. B. VW, EasyMile, Navya)",
+        "Activities",
+        "Betrieb autonomer Shuttle-Flotte",
+        "Resources",
+        "Flotte autonomer Fahrzeuge (geleast)\n\nEigenentwickelte oder lizenzierte App & Backend",
+        "Values",
+        "Reibungsloser autonomer Premium-Shuttleservice ohne Personalaufwand im Eventbereich",
+        "Relationships",
+        "Persönliche Betreuung von Veranstaltern ",
+        "Channels",
+        "Direktvertrieb an Eventveranstalter (B2B) ",
+        "Customer\nSegments",
+        "Eventveranstalter (WEF, Symposium, Kongresse, Messen)",
+        "Costs",
+        "Leasing & Systemkosten pro Fahrzeug ",
+        "Revenues",
+        "Pauschalpreise pro Event / pro Fahrzeug ",
+        "Technologiepartner für Autonomie & Flottensteuerung",
+        "Eventveranstalter & Locations \u000b",
+        "Skalierbar, nachhaltig & appgesteuert ",
+        "Städte / Gemeinden / Behörden (z. B. Davos, Genf) \u000b",
+        "Businesshotels / Partnerstandorte ",
+        "Versicherung & Leasingbanken",
+        "App- & Plattformbetrieb (Buchung, Routing, Monitoring)",
+        "App-Nutzerführung mit Fokus auf Komfort & Sicherheit",
+        "Softwareentwicklung & Serverinfrastruktur ",
+        "Versicherung, Genehmigungen, Support & Schulung ",
+        "Partnerbuchung über Event-Apps / Plattformintegration ",
+        "km-basierte Endkundentarife",
+        "Sponsoring (Branding der Fahrzeuge) \u000b"
+      ],
+      "charts": [],
+      "notes": "Wichtigste 2 Auswählen: Meiner Meinung nach Costs und Revenues"
+    },
+    {
+      "number": 48,
+      "title": "Marktsegmentierungsanalyse",
+      "hidden": false,
+      "image": "/assets/slides/slide-48.svg?v=afb18798e918",
+      "text": [
+        "Marktsegmentierungsanalyse",
+        "Gruppe 1 - FlexRide",
+        "48",
+        "B2B-Strukturmerkmale\nGrossunternehmen\nEventagenturen\nLuxushotels und –ressorts\n\n\n",
+        "Psychografisch\nInnovationsorientiert\nNachhaltigkeits- & Effizienzfokus\nPrestigeorientierte Unternehmen\n\n",
+        "Geografisch\nBallungsräume (Zürich, Genf, Basel, Bern)\nTourismusregionen (Davos, St. Moritz, Luzern)\nCorporate, Kultur-Events,  \n\tKongresse, Festivals",
+        "Verhaltensbezogen\nEventbezogene Nutzung\nCorporate Events\nHospitality Services\nKundentransfers\n\n",
+        "1. Mittlere bis grosse Organisationen mit eigenem Hospitality- oder Event-Budget ",
+        "2. Fokusregionen Zürich, Basel, \n   Genf, Davos -> hohe \n   Eventdichte und internationale \n   Gäste",
+        "3. Werteorientierung auf    \n   Nachhaltigkeit, Innovation, \n   Imagepflege",
+        "4. Starke saisonale Schwankungen, \n    hohe Serviceerwartung bei \n    Events mit \n    Repräsentationscharakter"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 49,
+      "title": "Theoretische Grundlagen",
+      "hidden": false,
+      "image": "/assets/slides/slide-49.svg?v=afb18798e918",
+      "text": [
+        "Theoretische Grundlagen",
+        "Gruppe 1 - FlexRide",
+        "Agglomeration",
+        "Clusteransatz",
+        "Miteinbeziehung bei der Buchung\nKombinierte Event- und Transportpakete\nTages- und Wochenkarten für Gäste\n",
+        "Eventpartner",
+        "Organisierte Shuttle-Routen zwischen Eventstandorten\nUnterstützung bei Besucherströmen und VIP-Transport",
+        "Sponsor",
+        "Shuttle-Branding für Corporate Partner \nIntegration in Nachhaltigkeits- und ESG-Berichte ",
+        "Räumliche Nähe fördert:\nWissenspillovers\nArbeitskräfte\nExterne Skaleneffekte\n\n",
+        "49"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 50,
+      "title": "Wo man uns findet",
+      "hidden": false,
+      "image": "/assets/slides/slide-50.svg?v=afb18798e918",
+      "text": [
+        "Sonstiges",
+        "20%",
+        "Partnerhotels\nEventgebiete",
+        "Events",
+        "20%",
+        "Wirtschaftsforen",
+        "30%",
+        "30%",
+        "Grosse Kongresse",
+        "Wo man uns findet",
+        "50"
+      ],
+      "charts": [],
+      "notes": ""
+    },
+    {
+      "number": 51,
+      "title": "Originalfolie 51",
+      "hidden": false,
+      "image": "/assets/slides/slide-51.svg?v=afb18798e918",
+      "text": [
+        "Gruppe 1 - FlexRide",
+        "51"
+      ],
+      "charts": [],
+      "notes": "Als zweiten Teil unserer Offline-Kampagne wollen wir grosse Billboards in relevanten Regionen mit grossen Events, wie zum Beispiel Davos während des WEF nutzen, um die internationalen Gäste anzusprechen. \nEventgäste kommen vor Ort in Konkat mit unserem Mobilitätsangebot und können dies ausprobieren.\n\n"
     }
   ]
 }

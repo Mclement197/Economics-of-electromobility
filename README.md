@@ -29,7 +29,7 @@ Build writes only into the staging output (default `build/website`, ignored by G
 - `website-src/calculator.mjs`, `calculator.css`: pure financial helpers plus accessible UI.
 - `website-src/contact.mjs`, `contact.css`: local-only demo enquiry.
 - `website-src/finance-model.mjs`, `finance-ui.mjs`, `finance.css`: shared Zurich and Cham scenarios, local browser persistence, live charts.
-- `website-src/presentation-data.json`, `presentation.mjs`, `presentation.css`: 18-slide HTML presentation, keyboard/fullscreen modes and scenario-aware printing.
+- `website-src/presentation-data.json`, `presentation.mjs`, `presentation.css`: 51-slide source-exact presentation, keyboard/fullscreen controls, accessible reading mode and separate financial lab.
 - `website-src/downloads/`: approved baseline PDF and editable PPTX; build/source details in `docs/PRESENTATION_CONTENT.md`.
 - `website-src/assets/`: only the public assets needed by this site.
 - `sites/website/`: generated deployed files, tracked for review; **do not hand-edit**.
@@ -84,7 +84,7 @@ Public preview remains `noindex, nofollow`. This is not a commercial launch. Ope
 
 `/finanzen/` offers the supplied Zürich per-apartment case and separate Cham per-wallbox alternative. All source calculator controls are retained; scenario edits stay in this browser and do not affect app invoices. `/praesentation/` and the homepage's final section use one HTML slide player. The resident app links to these project tools under More and in the sidebar.
 
-The 17 VoltoShare slides plus a Cham appendix are retained; unrelated FlexRide/tourism material and student identifiers are not published. Fullscreen supports arrows/Home/End and Escape, with a viewport fallback on browsers lacking native fullscreen. Mobile slides reflow rather than shrinking unreadably. Downloads are baseline snapshots; “Aktuellen Stand als PDF drucken” captures locally saved finance scenarios in the two finance slides, while other slides are labelled source baselines.
+At Mathis’s explicit request, the redesigned deck now retains all 51 source slides and all original content, including the later FlexRide/tourism slides. Original slide values are never replaced by scenarios. Fullscreen supports arrows/Home/End and Escape, with a viewport fallback. Mobile reading mode exposes original text and chart tables; a separate Finanzlabor provides live assumptions without altering slide content. PDF and browser artwork share a native Impress render of the editable PowerPoint.
 
 ```sh
 node --test website-src/calculator.test.mjs website-src/finance-model.test.mjs
@@ -96,4 +96,4 @@ node tests/interactive-presentation-browser.mjs
 node tests/website-browser.mjs
 ```
 
-See `docs/FINANCIAL_MODEL.md` for model corrections and limitations. PPTX text/tables/charts are editable; native PowerPoint visual rendering was unavailable on this host (Impress not installed), so geometry/font-metric checks accompany the browser/PDF visual checks.
+See `docs/FINANCIAL_MODEL.md` for model corrections and limitations. PPTX text/tables/charts remain editable. The revised deck is rendered through an isolated native Impress runtime for PDF and browser artwork; Microsoft PowerPoint itself is not available on this host. See `docs/PRESENTATION_CONTENT.md` for the source-exact contract and export procedure.
