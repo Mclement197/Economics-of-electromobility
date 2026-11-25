@@ -22,7 +22,7 @@ try{
  await page.locator('[data-finance-key="subscription"]').fill('-1');ok(await page.locator('[data-finance-key="subscription"]').getAttribute('aria-invalid')==='true','negative subscription rejected');
  await page.locator('[data-finance-key="subscription"]').fill('35');await page.reload();await page.waitForSelector('[data-finance-key="subscription"]');ok(await page.locator('[data-finance-key="subscription"]').inputValue()==='35','scenario persists');
  await page.goto(base+'/praesentation/');await page.waitForFunction(()=>window.voltoPresentationReady);
- ok(await page.locator('.deck-overview button').count()===51,'all 51 slides selectable');
+ ok(await page.locator('.deck-overview [data-slide-jump]').count()===51,'all 51 slides selectable');
  assert.deepEqual(await page.locator('.deck-overview-group').evaluateAll(groups=>groups.map(g=>g.querySelectorAll('button').length)),[17,34]);checks++;
  ok(await page.locator('.deck-overview small').count()===3,'original hidden slides are labelled');
  for(let i=0;i<data.slides.length;i++){
@@ -47,21 +47,19 @@ try{
  await page.locator('[data-action="read"]').click();ok(!(await page.locator('.deck-reading').isVisible()),'read mode closes');
  await jump(13);const originalArtwork=await page.locator('.deck-artwork').getAttribute('src');
  await page.locator('[data-action="finance"]').click();
- ok(await page.locator('.deck-lab').isVisible(),'separate finance lab opens');
+ ok(await page.locator('.deck-lab').isVisible(),'in-presentation live scenario opens');
  ok(await page.locator('[data-finance-key="subscription"]').inputValue()==='35','financial page shares saved assumptions with lab');
- ok((await page.locator('.deck-lab-heading').innerText()).includes('verändern weder die Originalfolien'),'lab distinguishes experiments from original slides');
+ ok((await page.locator('.deck-lab-heading').innerText()).includes('ERGÄNZUNG ZUR ORIGINALFOLIE'),'lab distinguishes experiments from original slides');
  await page.locator('[data-finance-key="subscription"]').focus();await page.keyboard.press('ArrowRight');ok(await page.locator('.deck-slide').getAttribute('data-slide')==='13','input arrows do not navigate slides');
  const labChart=await page.locator('.deck-lab .finance-chart').innerHTML();
  await page.locator('[data-finance-key="subscription"]').fill('15');
  ok((await page.locator('.deck-lab .finance-kpis').innerText()).includes('8’700'),'lab recalculates financial output');
  ok(labChart!==await page.locator('.deck-lab .finance-chart').innerHTML(),'lab chart updates live');
  ok(await page.locator('.deck-artwork').getAttribute('src')===originalArtwork,'experiments leave source slide unchanged');
- await page.locator('[data-action="finance-close"]').focus();await page.keyboard.press('Shift+Tab');
- ok(await page.locator('.deck-lab').evaluate(e=>e.contains(document.activeElement)),'lab backward tab stays inside');
- await page.keyboard.press('Tab');ok(await page.locator('[data-action="finance-close"]').evaluate(e=>e===document.activeElement),'lab forward tab wraps');
+ ok(await page.locator('[data-action="finance-close"]').isVisible(),'live scenario has return control');
  await page.locator('[data-finance-reset]').click();ok(await page.locator('[data-finance-key="subscription"]').inputValue()==='25','reset restores original assumptions');
  await page.keyboard.press('Escape');ok(!(await page.locator('.deck-lab').isVisible()),'escape closes lab');
- ok(await page.locator('[data-action="finance"]').evaluate(e=>e===document.activeElement),'lab close returns focus');
+ ok(await page.locator('.deck-stage').evaluate(e=>e===document.activeElement),'lab close returns focus to original slide');
  await page.locator('[data-action="fullscreen"]').click();ok(await page.locator('.deck').evaluate(e=>e.classList.contains('deck-expanded')),'fullscreen enters');
  await page.locator('.deck-stage').focus();await page.keyboard.press('ArrowLeft');ok(await page.locator('.deck-slide').getAttribute('data-slide')==='12','fullscreen keyboard navigates');
  await page.keyboard.press('Home');ok(await page.locator('.deck-slide').getAttribute('data-slide')==='0','Home selects first slide');

@@ -70,3 +70,8 @@ Zürich additionally exposes occupied/billable apartments, rent, landlordNet and
 ## Checks
 
 `node --test website-src/finance-model.test.mjs` covers source baselines, sensitivity, vacancy units, zero demand, losses, acquisition double-count prevention, subsidy bounds, technical infeasibility, invalid inputs and finite outputs. Browser checks should additionally verify immediate chart updates, scoped controls with two instances, local persistence per preset, reset, keyboard access, compact layout and mobile 360/768/1440px. Exact chart data is also available as an HTML table; colour is not the only representation.
+
+
+## Presenter interaction — 25 November 2026
+
+The shared compact UI now occupies an integrated Live-Szenario step after original slide 14. Open it anytime with the player toolbar or **F**; `/praesentation/?live=1` opens it directly. Four slider/number levers offer rapid discussion, with every remaining assumption accessible below. The original 51 slides and static PDF/PPTX remain unchanged. See `FINANCE_LIVE_RELEASE_2026-11-25.md`.

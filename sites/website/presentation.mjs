@@ -1,22 +1,91 @@
 import {mountFinance} from './finance-ui.mjs';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const printMode=new URLSearchParams(location.search).has('print');
+const params=new URLSearchParams(location.search);
+const printMode=params.has('print');
 function transcript(s){return s.text.map(t=>`<p>${esc(t)}</p>`).join('')+(s.charts||[]).map(c=>`<div class="deck-chart-table"><table><caption>${esc(c.title||'Diagrammdaten der Originalfolie')}</caption><thead><tr><th></th>${c.categories.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${c.series.map(x=>`<tr><th>${esc(x.name)}</th>${x.values.map(v=>`<td>${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`).join('');}
 function slideHTML(s,i){return `<article class="deck-slide" data-slide="${i}" aria-label="Folie ${s.number}: ${esc(s.title)}"><img class="deck-artwork" src="${esc(s.image)}" width="1600" height="900" alt="${esc(s.title)} – vollständiger Folieninhalt im Lesemodus" ${i?'loading="lazy"':''}></article>`;}
 function mountDeck(root,data){
- const slides=data.slides;let index=0,expanded=false,previousFocus=null,finance=null;
+ const slides=data.slides;
+ let index=0,expanded=false,previousFocus=null,finance=null,live=false;
  root.classList.add('deck');root.setAttribute('aria-label','VoltoShare-Präsentation');
  if(printMode){root.innerHTML=slides.map((s,i)=>`<div class="deck-stage">${slideHTML(s,i)}</div>`).join('');root.querySelectorAll('img').forEach(x=>x.loading='eager');document.body.classList.add('deck-print');return;}
- root.innerHTML=`<div class="deck-toolbar"><div class="deck-label">TEAM VOLTOSHARE <span class="deck-count" aria-live="polite"></span></div><div class="deck-tools"><button type="button" data-action="overview" aria-expanded="false">Folienübersicht</button><button type="button" data-action="fullscreen">Vollbild ↗</button></div></div><div class="deck-overview" hidden><p>Vollständige Originaldatei · einschließlich ursprünglich ausgeblendeter Folien</p><h3>VoltoShare · 01–17</h3><div class="deck-overview-group">${slides.slice(0,17).map(s=>overviewButton(s)).join('')}</div><h3>Weitere Originalfolien · 18–51</h3><div class="deck-overview-group">${slides.slice(17).map(s=>overviewButton(s)).join('')}</div></div><div class="deck-stage" tabindex="0" aria-label="Präsentation. Mit Pfeiltasten blättern."></div><div class="deck-controls"><button type="button" data-action="prev" aria-label="Vorherige Folie">←</button><div class="deck-current-title"></div><button type="button" data-action="next" aria-label="Nächste Folie">→</button></div><div class="deck-utility"><button type="button" data-action="read" aria-expanded="false">Lesemodus</button><button type="button" data-action="finance" aria-expanded="false">Finanzlabor öffnen ↗</button><span>← → blättern · Esc schliessen</span></div><div class="deck-reading" hidden></div><div class="deck-lab" role="dialog" aria-modal="true" aria-label="Finanzlabor" hidden><div class="deck-lab-heading"><div><p>INTERAKTIVES ZUSATZWERKZEUG</p><h3>Finanzlabor</h3><span>Eigene Szenarien verändern weder die Originalfolien noch die Downloads.</span></div><button type="button" data-action="finance-close">Zurück zur Folie ×</button></div><div class="deck-live-finance"></div></div><details class="deck-notes"><summary>Originalnotizen</summary><div></div></details><div class="deck-downloads"><a href="/downloads/VoltoShare-Praesentation.pdf?v=${esc(data.revision)}" download>PDF herunterladen ↓</a><a href="/downloads/VoltoShare-Praesentation.pptx?v=${esc(data.revision)}" download>Editierbares PowerPoint ↓</a><p>51 Originalfolien in gleicher Reihenfolge. Texte, Zahlen, Abbildungen und Diagrammdaten bleiben unverändert. Nur die Gestaltung wurde überarbeitet.</p></div>`;
- const stage=root.querySelector('.deck-stage'),overview=root.querySelector('.deck-overview'),lab=root.querySelector('.deck-lab'),reading=root.querySelector('.deck-reading');
  function overviewButton(s){return `<button type="button" data-slide-jump="${s.number-1}"><span>${String(s.number).padStart(2,'0')}</span>${esc(s.title)}${s.hidden?'<small>Original: ausgeblendet</small>':''}</button>`;}
- function render(){const s=slides[index];stage.innerHTML=slideHTML(s,index);root.querySelector('.deck-count').textContent=`${String(index+1).padStart(2,'0')} / ${slides.length}`;root.querySelector('.deck-current-title').textContent=s.title;root.querySelector('[data-action="prev"]').disabled=index===0;root.querySelector('[data-action="next"]').disabled=index===slides.length-1;root.querySelectorAll('[data-slide-jump]').forEach(b=>b.setAttribute('aria-current',String(+b.dataset.slideJump===index)));reading.innerHTML=`<h3>${esc(s.title)}</h3>${transcript(s)}`;root.querySelector('.deck-notes>div').innerHTML=(s.notes?`<p>${esc(s.notes)}</p>`:'<p>Keine Originalnotizen zu dieser Folie.</p>');if(slides[index+1]){const next=new Image();next.src=slides[index+1].image;}}
- function go(n){index=Math.max(0,Math.min(slides.length-1,n));render();}
- function closeLab(){lab.hidden=true;[...root.children].filter(x=>x!==lab).forEach(x=>x.inert=false);root.querySelector('[data-action="finance"]').setAttribute('aria-expanded','false');finance?.destroy();finance=null;root.querySelector('[data-action="finance"]').focus();}
+ root.innerHTML=`<div class="deck-toolbar"><div class="deck-label">TEAM VOLTOSHARE <span class="deck-count" aria-live="polite"></span></div><div class="deck-tools"><button type="button" data-action="finance" aria-expanded="false"><span class="deck-live-dot" aria-hidden="true"></span>Live-Szenario</button><button type="button" data-action="overview" aria-expanded="false">Folienübersicht</button><button type="button" data-action="fullscreen">Vollbild ↗</button></div></div>
+ <div class="deck-overview" hidden><p>51 Originalfolien · mit einem zusätzlichen Live-Szenario nach Folie 14</p><button type="button" class="deck-live-jump" data-action="finance-jump">LIVE · Annahmen verändern & Wirkung zeigen →</button><h3>VoltoShare · 01–17</h3><div class="deck-overview-group">${slides.slice(0,17).map(overviewButton).join('')}</div><h3>Weitere Originalfolien · 18–51</h3><div class="deck-overview-group">${slides.slice(17).map(overviewButton).join('')}</div></div>
+ <div class="deck-stage" tabindex="0" aria-label="Präsentation. Mit Pfeiltasten blättern."></div>
+ <section class="deck-lab" aria-label="Live-Szenario: Annahmen und Wirkung" hidden><div class="deck-lab-heading"><div><p>LIVE-SZENARIO · ERGÄNZUNG ZUR ORIGINALFOLIE</p><h2>Was wäre, wenn?</h2><span>Annahmen verändern. Die Wirkung direkt vergleichen.</span></div><button type="button" data-action="finance-close">Zurück zur Originalfolie</button></div><div class="deck-live-finance"></div></section>
+ <div class="deck-controls"><button type="button" data-action="prev" aria-label="Vorherige Folie">←</button><div class="deck-current-title"></div><button type="button" data-action="next" aria-label="Nächste Folie">→</button></div>
+ <div class="deck-finance-cue" hidden><div><strong>Jetzt die Annahmen hinterfragen.</strong><span>Zum Beispiel: Wie wirkt ein anderes Abo auf den Cashflow?</span></div><button type="button" data-action="finance-open">Live ausprobieren →</button></div>
+ <div class="deck-utility"><button type="button" data-action="read" aria-expanded="false">Lesemodus</button><span>← → blättern · F: Live-Szenario · Esc: zurück</span></div><div class="deck-reading" hidden></div><details class="deck-notes"><summary>Originalnotizen</summary><div></div></details><div class="deck-downloads"><a href="/downloads/VoltoShare-Praesentation.pdf?v=${esc(data.revision)}" download>PDF herunterladen ↓</a><a href="/downloads/VoltoShare-Praesentation.pptx?v=${esc(data.revision)}" download>Editierbares PowerPoint ↓</a><p>51 Originalfolien mit unveränderten Inhalten. Das zusätzliche Live-Szenario funktioniert im Browser, auch im Vollbild. PDF und PowerPoint bleiben unveränderte Momentaufnahmen.</p></div>`;
+ const stage=root.querySelector('.deck-stage'),overview=root.querySelector('.deck-overview'),lab=root.querySelector('.deck-lab'),reading=root.querySelector('.deck-reading');
+ function hideOverview(){overview.hidden=true;root.querySelector('[data-action="overview"]').setAttribute('aria-expanded','false');}
+ function updateChrome(){
+  root.classList.toggle('deck-live-active',live);stage.hidden=live;lab.hidden=!live;
+  root.querySelector('.deck-count').textContent=live?`LIVE · nach ${String(index+1).padStart(2,'0')}`:`${String(index+1).padStart(2,'0')} / ${slides.length}`;
+  root.querySelector('.deck-current-title').textContent=live?'Live-Szenario · Annahmen & Wirkung':slides[index].title;
+  root.querySelector('[data-action="prev"]').disabled=!live&&index===0;
+  root.querySelector('[data-action="next"]').disabled=index===slides.length-1;
+  root.querySelector('[data-action="next"]').setAttribute('aria-label',!live&&index===13?'Weiter zum Live-Szenario':'Nächste Folie');
+  root.querySelectorAll('[data-action="finance"]').forEach(b=>b.setAttribute('aria-expanded',String(live)));
+  root.querySelector('.deck-finance-cue').hidden=live||index<11||index>14;
+ }
+ function render(){
+  const s=slides[index];stage.innerHTML=slideHTML(s,index);updateChrome();
+  root.querySelectorAll('[data-slide-jump]').forEach(b=>b.setAttribute('aria-current',String(+b.dataset.slideJump===index&&!live)));
+  reading.innerHTML=`<h3>${esc(s.title)}</h3>${transcript(s)}`;
+  root.querySelector('.deck-notes>div').innerHTML=s.notes?`<p>${esc(s.notes)}</p>`:'<p>Keine Originalnotizen zu dieser Folie.</p>';
+  if(slides[index+1]){const next=new Image();next.src=slides[index+1].image;}
+ }
+ function openLive(){
+  hideOverview();reading.hidden=true;root.querySelector('[data-action="read"]').setAttribute('aria-expanded','false');
+  live=true;updateChrome();
+  if(!finance)finance=mountFinance(root.querySelector('.deck-live-finance'),{compact:true,preset:params.get('live')==='1'&&params.get('preset')==='cham'?'cham':'zurich'});
+  root.querySelector('[data-action="finance-close"]').focus({preventScroll:true});
+  if(!expanded)root.scrollIntoView({block:'start',behavior:'instant'});
+ }
+ function closeLive(focus=true){live=false;updateChrome();if(focus)stage.focus({preventScroll:true});}
+ function go(n){closeLive(false);index=Math.max(0,Math.min(slides.length-1,n));render();}
+ function next(){if(!live&&index===13)openLive();else go(index+1);}
+ function prev(){if(live)closeLive();else if(index===14){go(13);openLive();}else go(index-1);}
  function exit(){root.classList.remove('deck-expanded');document.body.classList.remove('deck-is-presenting');expanded=false;root.querySelector('[data-action="fullscreen"]').textContent='Vollbild ↗';previousFocus?.focus();}
- async function fullscreen(){if(expanded){if(document.fullscreenElement===root)await document.exitFullscreen();exit();return;}previousFocus=document.activeElement;expanded=true;root.classList.add('deck-expanded');document.body.classList.add('deck-is-presenting');root.querySelector('[data-action="fullscreen"]').textContent='Vollbild beenden';try{await root.requestFullscreen?.();}catch{}stage.focus();}
- root.addEventListener('click',e=>{const jump=e.target.closest('[data-slide-jump]');if(jump){go(+jump.dataset.slideJump);overview.hidden=true;root.querySelector('[data-action="overview"]').setAttribute('aria-expanded','false');stage.focus();return;}const action=e.target.closest('[data-action]')?.dataset.action;if(action==='next')go(index+1);if(action==='prev')go(index-1);if(action==='fullscreen')fullscreen();if(action==='overview'){overview.hidden=!overview.hidden;root.querySelector('[data-action="overview"]').setAttribute('aria-expanded',String(!overview.hidden));}if(action==='read'){reading.hidden=!reading.hidden;root.querySelector('[data-action="read"]').setAttribute('aria-expanded',String(!reading.hidden));}if(action==='finance'){if(!lab.hidden){closeLab();return;}lab.hidden=false;[...root.children].filter(x=>x!==lab).forEach(x=>x.inert=true);root.querySelector('[data-action="finance"]').setAttribute('aria-expanded','true');finance=mountFinance(root.querySelector('.deck-live-finance'),{compact:true,preset:'zurich'});root.querySelector('[data-action="finance-close"]').focus();}if(action==='finance-close')closeLab();});
- root.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!lab.hidden){closeLab();return;}if(!overview.hidden){overview.hidden=true;root.querySelector('[data-action="overview"]').setAttribute('aria-expanded','false');return;}if(expanded){if(document.fullscreenElement===root)document.exitFullscreen();exit();}return;}if(!e.target.closest('input,select,textarea,[contenteditable="true"]')&&lab.hidden){if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();go(index+1);}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(index-1);}if(e.key==='Home'){e.preventDefault();go(0);}if(e.key==='End'){e.preventDefault();go(slides.length-1);}}if(e.key==='Tab'&&(expanded||!lab.hidden)){const scope=lab.hidden?root:lab;const all=[...scope.querySelectorAll('a,button:not(:disabled),input,select,summary,[tabindex="0"]')].filter(x=>!x.matches(':disabled')&&x.getClientRects().length&&![...scope.querySelectorAll('details:not([open])')].some(d=>d.contains(x)&&x!==d.querySelector(':scope > summary')));if(e.shiftKey&&document.activeElement===all[0]){e.preventDefault();all.at(-1)?.focus();}else if(!e.shiftKey&&document.activeElement===all.at(-1)){e.preventDefault();all[0]?.focus();}}});
+ async function fullscreen(){
+  if(expanded){if(document.fullscreenElement===root)await document.exitFullscreen();exit();return;}
+  previousFocus=document.activeElement;expanded=true;root.classList.add('deck-expanded');document.body.classList.add('deck-is-presenting');root.querySelector('[data-action="fullscreen"]').textContent='Vollbild beenden';
+  try{await root.requestFullscreen?.();}catch{}
+  (live?root.querySelector('[data-action="finance-close"]'):stage).focus({preventScroll:true});
+ }
+ root.addEventListener('click',e=>{
+  const jump=e.target.closest('[data-slide-jump]');if(jump){go(+jump.dataset.slideJump);hideOverview();stage.focus();return;}
+  const action=e.target.closest('[data-action]')?.dataset.action;
+  if(action==='next')next();if(action==='prev')prev();if(action==='fullscreen')fullscreen();
+  if(action==='overview'){overview.hidden=!overview.hidden;root.querySelector('[data-action="overview"]').setAttribute('aria-expanded',String(!overview.hidden));}
+  if(action==='read'){reading.hidden=!reading.hidden;root.querySelector('[data-action="read"]').setAttribute('aria-expanded',String(!reading.hidden));}
+  if(action==='finance')live?closeLive():openLive();
+  if(action==='finance-open')openLive();
+  if(action==='finance-jump'){go(13);openLive();}
+  if(action==='finance-close')closeLive();
+ });
+ root.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+   if(!overview.hidden){hideOverview();root.querySelector('[data-action="overview"]').focus();return;}
+   if(live){e.preventDefault();closeLive();return;}
+   if(expanded){if(document.fullscreenElement===root)document.exitFullscreen();exit();}return;
+  }
+  const editing=e.target.closest('input,select,textarea,summary,[contenteditable="true"]');
+  if(!editing&&overview.hidden){
+   if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();next();}
+   if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev();}
+   if(e.key==='Home'){e.preventDefault();go(0);}
+   if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+   if(e.key.toLowerCase()==='f'&&!e.ctrlKey&&!e.metaKey&&!e.altKey){e.preventDefault();live?closeLive():openLive();}
+  }
+  if(e.key==='Tab'&&expanded){
+   const all=[...root.querySelectorAll('a,button:not(:disabled),input,select,summary,[tabindex="0"]')].filter(x=>!x.matches(':disabled')&&x.getClientRects().length&&![...root.querySelectorAll('details:not([open])')].some(d=>d.contains(x)&&x!==d.querySelector(':scope > summary')));
+   if(e.shiftKey&&document.activeElement===all[0]){e.preventDefault();all.at(-1)?.focus();}
+   else if(!e.shiftKey&&document.activeElement===all.at(-1)){e.preventDefault();all[0]?.focus();}
+  }
+ });
  document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&expanded)exit();});render();
+ if(params.get('live')==='1'){go(13);openLive();}
 }
 try{const res=await fetch('/presentation-data.json');if(!res.ok)throw Error('Präsentation nicht verfügbar');const data=await res.json();document.querySelectorAll('[data-presentation]').forEach(root=>mountDeck(root,data));await document.fonts.ready;window.voltoPresentationReady=true;}catch(e){document.querySelectorAll('[data-presentation]').forEach(root=>root.innerHTML='<p>Bitte laden Sie die Seite erneut oder nutzen Sie die PDF- und PowerPoint-Downloads.</p>');console.error(e);}
