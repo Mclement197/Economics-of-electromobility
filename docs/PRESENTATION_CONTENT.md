@@ -46,3 +46,22 @@ BASE_URL=http://127.0.0.1:18929 node tests/interactive-presentation-browser.mjs
 An isolated local Impress runtime may be used via `LIBREOFFICE`; the export wrapper `scripts/build-presentation-pdf.mjs` accepts `PRESENTATION_PYTHON` and forwards arguments to the Python exporter. There is no browser-CDN or office-runtime dependency in the deployed static site.
 
 The original source is kept private; only the requested redesigned presentation and its display assets are published. The brand archive and unrelated application state are not published or changed.
+
+## Finance visual revision — 27 November 2026, follow-up
+
+After Mat rejected the finance layout, slide 14 was recomposed again: three
+headline metrics above an open ledger and native cashflow chart. The final
+cost row has a separate source-note margin. No original words, values, chart
+series, notes or hidden flags changed. The other 16 slide artworks remain
+byte-identical to the preceding release.
+
+The separate interactive step now follows a presentation hierarchy: financial
+results first, a broad chart, then four controls in a supporting horizontal
+rail. Model/reset and detailed assumptions are secondary controls at the
+bottom. All calculations still use the shared finance model; the standalone
+finance page remains unchanged. Avoid reverting this to a dashboard sidebar
+or putting multiple toolbars above the financial takeaway.
+
+The missing team portraits are not resolved by this finance release. The
+correct image files for Mathis and Joel are still required; do not invent or
+substitute portraits based only on matching names.

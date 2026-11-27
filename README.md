@@ -107,11 +107,14 @@ navigate, F opens the interactive scenario, and Escape returns/exits. Browsers
 without the Fullscreen API use the same viewport-filling layout.
 
 The live finance step is a bounded presentation layout, not an embedded page:
-four editable levers sit beside the cashflow chart and three headline metrics.
+three headline metrics and the cashflow chart lead; four editable levers sit
+in a slim supporting rail.
 “Weitere Annahmen” and “Rechenweg & Daten” replace the main content pane instead
 of extending the slide. On narrow screens only that pane scrolls. Presets,
 reset, validation and shared scenario state remain available; the standalone
-finance page and the original PDF/PPTX/artwork are unchanged.
+finance page is unchanged. The native financial slide was also recomposed
+with three headline metrics and an open ledger beside the chart, without
+changing its source text, figures or chart data.
 
 Focused viewport/interaction regression (native and fallback fullscreen,
 1280×720, 1440×900, 1920×1080, 768×1024 and 360×800):

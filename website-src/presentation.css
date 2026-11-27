@@ -112,3 +112,14 @@
 @media screen and (max-width:1000px){
  .deck-expanded.deck-live-active .deck-controls{bottom:76px;left:50%;transform:translateX(-50%)}
 }
+
+/* Live financial storytelling uses the same white canvas as the native deck. */
+.deck-lab{background:#fff}
+.deck-lab-heading h2{font-size:36px;line-height:1.12}
+.deck-expanded .deck-lab-heading h2{font-size:40px;line-height:1.12;margin-bottom:0}
+@media screen and (max-height:760px) and (min-width:721px){
+ .deck-expanded .deck-lab-heading h2{font-size:34px}
+}
+@media(max-width:720px){
+ .deck-lab-heading h2,.deck-expanded .deck-lab-heading h2{font-size:24px}
+}

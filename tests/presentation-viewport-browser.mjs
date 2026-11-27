@@ -8,15 +8,15 @@ let checks=0;
 const ok=(value,message)=>{assert.ok(value,message);checks++;};
 const inViewport=async locator=>locator.evaluate(el=>{const r=el.getBoundingClientRect();return r.width>0&&r.height>0&&r.left>=-1&&r.top>=-1&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1;});
 const closeTo=(a,b)=>Math.abs(a-b)<2;
-const sizes=[{width:1280,height:720},{width:1440,height:900},{width:1920,height:1080},{width:768,height:1024},{width:360,height:800}];
+const sizes=[{width:1280,height:720},{width:1440,height:900},{width:1920,height:1080},{width:768,height:1024},{width:360,height:800}].filter(size=>!process.env.VIEWPORT_WIDTHS||process.env.VIEWPORT_WIDTHS.split(',').includes(String(size.width)));
 try{
- for(const fallback of [false,true]){
+ for(const fallback of [false,true].filter(mode=>!process.env.FULLSCREEN_MODE||process.env.FULLSCREEN_MODE===(mode?'fallback':'native'))){
   const context=await browser.newContext();
   if(fallback)await context.addInitScript(()=>{Element.prototype.requestFullscreen=undefined;});
   const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const size of sizes){
    const name=`${fallback?'viewport fallback':'native fullscreen'} ${size.width}×${size.height}`;
-   await page.setViewportSize(size);await page.goto(base+'/praesentation/');
+   await page.setViewportSize(size);await page.goto(base+'/praesentation/',{waitUntil:'domcontentloaded',timeout:60000});
    await page.waitForFunction(()=>window.voltoPresentationReady);
    await page.locator('.deck-artwork').evaluate(img=>img.decode());
    await page.locator('[data-action="fullscreen"]').click();
@@ -56,6 +56,11 @@ try{
    if(size.width>=1280){
     ok(await inViewport(page.locator('.finance-chart')),name+' full chart is visible');
     ok(await inViewport(page.locator('.finance-kpis')),name+' all financial headline metrics visible');
+    const metrics=await page.locator('.finance-kpis').boundingBox(),plot=await page.locator('.finance-chart').boundingBox(),assumptions=await page.locator('.finance-assumptions').boundingBox();
+    ok(metrics.y+metrics.height<=plot.y+1,name+' financial headline metrics lead above chart');
+    ok(plot.y+plot.height<=assumptions.y+1,name+' controls support chart from below, not a dashboard sidebar');
+    const levers=await page.locator('.finance-quick .finance-lever').evaluateAll(els=>els.map(e=>({x:e.getBoundingClientRect().x,y:e.getBoundingClientRect().y})));
+    ok(levers.length===4&&levers.every((r,i)=>Math.abs(r.y-levers[0].y)<2&&(!i||r.x>levers[i-1].x)),name+' four levers share one horizontal rail');
     for(const key of ['subscription','margin','chargerCost','maintenance'])ok(await inViewport(page.locator(`[data-finance-key="${key}"]`)),name+' quick control '+key+' visible');
    }
    await page.locator('[data-finance-reset]').click();ok(await page.locator('[data-finance-key="subscription"]').inputValue()==='25',name+' baseline reset works');

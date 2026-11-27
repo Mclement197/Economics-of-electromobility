@@ -14,8 +14,8 @@ export function readFinanceState(preset='zurich') {
 function saveFinanceState(state) {
   try {let saved;try{saved=JSON.parse(localStorage.getItem(FINANCE_STORAGE_KEY)||'null');}catch{} const presets={...(saved?.presets||{}),[state.preset]:state.values};localStorage.setItem(FINANCE_STORAGE_KEY,JSON.stringify({version:1,presets}));}catch{}
 }
-function chart(result,id,compact=false,narrow=false) {
-  const series=result.cashflow,W=narrow?480:720,H=narrow?270:compact?170:300,left=narrow?83:77,right=24,top=26,bottom=38;
+function chart(result,id,compact=false,narrow=false,compactHeight=220,compactWidth=1100) {
+  const series=result.cashflow,W=narrow?480:compact?compactWidth:720,H=narrow?270:compact?compactHeight:300,left=narrow?83:77,right=24,top=26,bottom=38;
   const baseline=calculateFinance({preset:result.preset});
   const reference=series.map(p=>({year:p.year,value:-baseline.investment+baseline.annualCash*p.year}));
   const raw=[...series,...reference].map(p=>p.value),lo=Math.min(0,...raw),hi=Math.max(0,...raw),span=hi-lo||1;
@@ -64,7 +64,7 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
   let state=sync?readFinanceState(preset):normalizeState({preset}),result=calculateFinance(state),destroyed=false,narrow=root.clientWidth<=520;
   root.classList.add('finance');root.classList.toggle('finance--compact',compact);
   const fields=()=>FINANCE_FIELDS[state.preset].flatMap(g=>g.fields);
-  let sliderLimits={},rendering=false,compactPanel='scenario';
+  let sliderLimits={},rendering=false,compactPanel='scenario',compactChartHeight=220,compactChartWidth=root.clientWidth<=850?720:1100;
   function sliderMax(f){return sliderLimits[f.key]=Math.min(f.max,Math.max(sliderLimits[f.key]||0,SLIDER_MAX[f.key]||f.max,Math.ceil(state.values[f.key]/f.step)*f.step));}
   function input(f,quick=false) {
     const key=f.key,controlId=`${id}-${key}`,helpId=`${controlId}-help`;
@@ -73,7 +73,7 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
   }
   function showCompactPanel(panel,{focus=false}={}) {
     if(!compact)return;
-    compactPanel=panel;
+    compactPanel=panel;root.dataset.financeView=panel;
     root.querySelectorAll('[data-finance-panel]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.financePanel===panel)));
     root.querySelector('.finance-body').hidden=panel!=='scenario';
     root.querySelector('.finance-advanced').hidden=panel!=='advanced';
@@ -99,7 +99,13 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
       const body=root.querySelector('.finance-body');body.before(content);
       content.append(body,root.querySelector('.finance-advanced'),root.querySelector('.finance-more'));
       content.before(root.querySelector('.finance-validation'));
-      root.querySelector('.finance-basis').insertAdjacentHTML('beforebegin',`<div class="finance-panel-switch" role="group" aria-label="Finanzansicht"><button type="button" data-finance-panel="scenario" aria-pressed="true">Szenario</button><button type="button" data-finance-panel="advanced" aria-pressed="false">Weitere Annahmen</button><button type="button" data-finance-panel="details" aria-pressed="false">Rechenweg & Daten</button></div>`);
+      body.prepend(root.querySelector('.finance-results'));
+      const tools=document.createElement('div');tools.className='finance-slide-tools';
+      content.after(tools);
+      tools.append(root.querySelector('.finance-toolbar'));
+      tools.insertAdjacentHTML('beforeend',`<div class="finance-panel-switch" role="group" aria-label="Finanzansicht"><button type="button" data-finance-panel="scenario" aria-pressed="true">Szenario</button><button type="button" data-finance-panel="advanced" aria-pressed="false">Weitere Annahmen</button><button type="button" data-finance-panel="details" aria-pressed="false">Rechenweg & Daten</button></div>`);
+      root.querySelector('[data-finance-reset]').textContent='Zurücksetzen';
+      root.querySelector('.finance-control-hint').textContent='Live verändern';
     }
     syncControls();drawResult();showCompactPanel(compactPanel);
     } finally {rendering=false;}
@@ -122,7 +128,13 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
     const changed=Object.keys(state.values).filter(k=>state.values[k]!==PRESETS[state.preset][k]).length;
     root.querySelector('[data-finance-status]').textContent=changed?`${changed} ${changed===1?'Annahme verändert':'Annahmen verändert'}`:'Basis-Szenario';
     root.querySelector('[data-finance-status]').classList.toggle('is-changed',changed>0);
-    root.querySelector('.finance-results').innerHTML=`<div class="finance-chart-panel"><div class="finance-chart-heading"><div><span class="finance-eyebrow">Auswirkung im Zeitverlauf</span><h3>Kumulierter Cashflow</h3></div><span class="finance-horizon">${result.horizon} Jahre · CHF</span></div><div class="finance-outcome"><div><span>Nach ${result.horizon} Jahren</span><strong>${chf(result.cashflow.at(-1).value)}</strong></div><p class="finance-delta">${delta===0?'Gleich wie Basiswerte':`${delta>0?'+':'−'} CHF ${number(Math.abs(delta))} zur Basis`}</p></div>${chart(result,id,compact,narrow)}</div>${kpis(result,compact)}${result.warnings.length?`<ul class="finance-warnings">${result.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul>`:''}`;
+    root.querySelector('.finance-results').innerHTML=`<div class="finance-chart-panel"><div class="finance-chart-heading"><div><span class="finance-eyebrow">Auswirkung im Zeitverlauf</span><h3>Kumulierter Cashflow</h3></div><span class="finance-horizon">${result.horizon} Jahre · CHF</span></div><div class="finance-outcome"><div><span>Nach ${result.horizon} Jahren</span><strong>${chf(result.cashflow.at(-1).value)}</strong></div><p class="finance-delta">${delta===0?'Gleich wie Basiswerte':`${delta>0?'+':'−'} CHF ${number(Math.abs(delta))} zur Basis`}</p></div>${chart(result,id,compact,narrow,compactChartHeight,compactChartWidth)}</div>${kpis(result,compact)}${result.warnings.length?`<ul class="finance-warnings">${result.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul>`:''}`;
+    if(compact){
+      const results=root.querySelector('.finance-results');
+      results.prepend(results.querySelector('.finance-kpis'));
+      results.querySelector('.finance-outcome').innerHTML=`<span>Nach ${result.horizon} Jahren <strong>${chf(result.cashflow.at(-1).value)}</strong></span><span class="finance-delta">${delta===0?'Basis-Szenario':`${delta>0?'+':'−'} CHF ${number(Math.abs(delta))} zur Basis`}</span>`;
+      results.querySelector('.finance-chart-heading').append(results.querySelector('.finance-outcome'));
+    }
     root.querySelector('.finance-more').innerHTML=detailsHtml(result,id);
     if(oldDetails||compact)root.querySelector('.finance-details').open=true;
     if(announce)root.querySelector('[data-finance-live]').textContent=`Neu berechnet: ${chf(result.annualCash)} Cash-Überschuss pro Jahr.`;
@@ -168,7 +180,17 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
   const resizeObserver=typeof ResizeObserver==='undefined'?null:new ResizeObserver(()=>{
     if(destroyed)return;
     const next=root.clientWidth<=520;
-    if(next!==narrow){narrow=next;drawResult();}
+    let changed=next!==narrow;narrow=next;
+    if(compact&&!narrow){
+      const width=root.clientWidth<=850?720:1100;
+      if(width!==compactChartWidth){compactChartWidth=width;changed=true;}
+      const box=root.querySelector('.finance-chart').getBoundingClientRect();
+      if(box.width&&box.height){
+        const height=Math.max(140,Math.round(box.height/box.width*compactChartWidth));
+        if(Math.abs(height-compactChartHeight)>1){compactChartHeight=height;changed=true;}
+      }
+    }
+    if(changed)drawResult();
   });
   resizeObserver?.observe(root);
   const api={getState:()=>structuredClone(state),getResult:()=>calculateFinance(state),setState(patch){const previous=state.preset;state=normalizeState({preset:patch.preset??state.preset,values:{...(patch.preset&&patch.preset!==previous?PRESETS[patch.preset]:state.values),...patch.values}});if(previous!==state.preset)drawShell();else{syncControls();drawResult();}publish();},destroy(){if(destroyed)return;destroyed=true;resizeObserver?.disconnect();root.removeEventListener('input',onInput);root.removeEventListener('change',onChange);root.removeEventListener('click',onClick);window.removeEventListener('voltoshare:finance-change',receive);window.removeEventListener('storage',onStorage);mounted.delete(root);}};

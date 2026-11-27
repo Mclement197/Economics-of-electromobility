@@ -139,28 +139,29 @@ def apply(prs,kit):
         t(d[body],x+.61,6.14,2.26,.44,12.8,False,'muted')
         if j<3:rect(s,x+2.91,5.70,.008,.80,'line')
 
-    # 14: asymmetrical financial statement. A forest metric rail gives a clear
-    # reading order; the chart has a broad uninterrupted axis and the annual
-    # statement sits below it as an editorial ledger, not a stack of cards.
+    # 14: three headline figures, then an open ledger beside the native chart.
+    # Keep the full source calculation but let the investment/result/payback
+    # form the first reading line; no tall metric rail competing with the plot.
     s=prs.slides[13];d=ids(s)
-    panel(d[33],.65,2.03,3.20,4.53,'green')
-    hide_decor(d[36]);hide_decor(d[39])
-    for value,label,y in [(34,35,2.37),(37,38,3.80),(40,41,5.22)]:
-        t(d[value],.92,y,2.69,.58,30,True,'white')
-        t(d[label],.94,y+.67,2.65,.32,15,False,'pale')
+    for j,(back,value,label) in enumerate([(33,34,35),(36,37,38),(39,40,41)]):
+        x=.65+j*4.08
+        panel(d[back],x,2.02,3.87,1.15,'green' if j==1 else 'tint')
+        t(d[value],x+.22,2.19,3.43,.53,34,True,'white' if j==1 else 'green')
+        t(d[label],x+.24,2.79,3.39,.26,14,False,'white' if j==1 else 'ink')
     hide_decor(d[42]);hide_decor(d[55])
-    t(d[56],4.22,2.04,8.46,.44,24,True)
-    at(d[57],4.16,2.61,8.57,1.85)
-    t(d[58],4.22,4.44,8.46,.22,11.5,False,'muted',PP_ALIGN.CENTER)
-    t(d[43],4.22,4.85,4.12,.32,17,True,'green')
-    for label,value,y in [(44,45,5.36),(46,47,5.99)]:
-        t(d[label],4.22,y,2.98,.43,14,False)
-        t(d[value],7.30,y,1.10,.43,13.2,True,'ink',PP_ALIGN.RIGHT)
-    t(d[48],8.78,4.85,3.90,.32,17,True,'green')
-    for label,value,y in [(49,50,5.30),(51,52,5.75),(53,54,6.20)]:
-        t(d[label],8.78,y,2.68,.43,13,False)
-        t(d[value],11.57,y,1.11,.43,13,True,'ink',PP_ALIGN.RIGHT)
-    rect(s,8.58,4.86,.01,1.73,'line')
+    t(d[43],.65,3.48,5.30,.35,20,True,'green')
+    for label,value,y in [(44,45,3.96),(46,47,4.39)]:
+        t(d[label],.65,y,3.90,.39,15,False)
+        t(d[value],4.68,y,1.30,.39,15,True,'ink',PP_ALIGN.RIGHT)
+    rect(s,.65,4.88,5.33,.01,'line')
+    t(d[48],.65,5.03,5.30,.35,20,True,'green')
+    for label,value,y,h in [(49,50,5.48,.32),(51,52,5.88,.49),(53,54,6.28,.32)]:
+        t(d[label],.65,y,3.94,h,14.5,False)
+        t(d[value],4.68,y,1.30,h,14.5,True,'ink',PP_ALIGN.RIGHT)
+    rect(s,6.27,3.51,.01,3.16,'line')
+    t(d[56],6.57,3.48,6.11,.64,22,True)
+    at(d[57],6.46,4.23,6.27,2.13)
+    t(d[58],6.57,6.49,6.11,.22,11.5,False,'muted',PP_ALIGN.CENTER)
 
     # 15: landlord result as a large dark hero; the sensitivity chart takes the
     # wider column, with the source resident trade-offs kept readable beneath.
