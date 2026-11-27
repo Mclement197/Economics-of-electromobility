@@ -385,6 +385,12 @@ for s in list(prs.slides)[:17]:
 for s in list(prs.slides)[1:17]:
  if s is not prs.slides[15]:rect(s,0,7.40,13.333333,.10,'paper')
 
+# November 27 editorial refinement. The source objects remain the content master.
+from presentation_modern_main import apply as modernize_main
+from presentation_modern_appendix import apply as modernize_appendix
+modernize_main(prs, kit)
+modernize_appendix(prs, kit)
+
 # Fit unchanged text to its box using real font metrics. No text truncation.
 fontdir=kit/'04_Fonts'
 fit_changes=[]

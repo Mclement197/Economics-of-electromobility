@@ -29,7 +29,7 @@ The same render powers PDF and website; the editable PPTX retains original pictu
 
 - Keyboard navigation, slide overview and fullscreen operate on all 51 pages.
 - Reading mode exposes the original text and chart data at readable phone sizes. The artwork itself remains fixed 16:9 to preserve the composition.
-- The **Finanzlabor** is a separate overlay, available during the presentation, using the existing financial model and browser-local saved assumptions. It does not overwrite source slide values, PDF or PPTX. The financial page and tenant application data are unchanged.
+- The **Live-Szenario** is an integrated browser presentation step after original slide 14 (also available from the toolbar), using the existing financial model and browser-local saved assumptions. It does not overwrite source slide values, PDF or PPTX. The financial page and tenant application data are unchanged.
 - Original notes remain separate from reading text. No editorial qualifications are inserted into the slide content.
 
 ## Build
