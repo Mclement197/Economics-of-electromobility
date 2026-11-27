@@ -1,13 +1,13 @@
 {
   "title": "VoltoShare",
-  "revision": "afb18798e918",
+  "revision": "8df176230642",
   "sourceSha256": "1acd77e02c611e7e8bff836a790a47de6334cbbf0c526c7fe9f057bcf0bb7202",
   "slides": [
     {
       "number": 1,
       "title": "VoltoShare",
       "hidden": false,
-      "image": "/assets/slides/slide-01.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-01.svg?v=8df176230642",
       "text": [
         "VoltoShare",
         "Team VoltoShare: Mathis Clement, Cyrill Gasser, Robin Vinzenz Gasser, Joel Frei, Yannic David Schnell"
@@ -19,7 +19,7 @@
       "number": 2,
       "title": "Agenda",
       "hidden": false,
-      "image": "/assets/slides/slide-02.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-02.svg?v=8df176230642",
       "text": [
         "Agenda",
         "VoltoShare",
@@ -51,7 +51,7 @@
       "number": 3,
       "title": "Das Voltoshare-Team",
       "hidden": false,
-      "image": "/assets/slides/slide-03.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-03.svg?v=8df176230642",
       "text": [
         "Das Voltoshare-Team",
         "VoltoShare",
@@ -84,7 +84,7 @@
       "number": 4,
       "title": "Grundidee & Geschäftsmodell",
       "hidden": false,
-      "image": "/assets/slides/slide-04.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-04.svg?v=8df176230642",
       "text": [
         "Grundidee & Geschäftsmodell",
         "Gruppe 1 - FlexRide",
@@ -112,7 +112,7 @@
       "number": 5,
       "title": "Markt: Testgebiet Zürich",
       "hidden": false,
-      "image": "/assets/slides/slide-05.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-05.svg?v=8df176230642",
       "text": [
         "Markt: Testgebiet Zürich",
         "VoltoShare",
@@ -138,7 +138,7 @@
       "number": 6,
       "title": "Markt: Elektromobilität wächst",
       "hidden": false,
-      "image": "/assets/slides/slide-06.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-06.svg?v=8df176230642",
       "text": [
         "Markt: Elektromobilität wächst",
         "VoltoShare",
@@ -164,7 +164,7 @@
       "number": 7,
       "title": "Markt: Potenzial in der Stadt Zürich",
       "hidden": false,
-      "image": "/assets/slides/slide-07.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-07.svg?v=8df176230642",
       "text": [
         "Markt: Potenzial in der Stadt Zürich",
         "VoltoShare",
@@ -196,7 +196,7 @@
       "number": 8,
       "title": "Roadmap",
       "hidden": true,
-      "image": "/assets/slides/slide-08.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-08.svg?v=8df176230642",
       "text": [
         "Roadmap",
         "VoltoShare",
@@ -239,7 +239,7 @@
       "number": 9,
       "title": "Produkt: Die physische Komponente",
       "hidden": false,
-      "image": "/assets/slides/slide-09.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-09.svg?v=8df176230642",
       "text": [
         "Produkt: Die physische Komponente",
         "VoltoShare",
@@ -271,7 +271,7 @@
       "number": 10,
       "title": "Produkt: Die Plattformkomponente",
       "hidden": false,
-      "image": "/assets/slides/slide-10.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-10.svg?v=8df176230642",
       "text": [
         "Produkt: Die Plattformkomponente",
         "VoltoShare",
@@ -294,7 +294,7 @@
       "number": 11,
       "title": "Produkt: Leistungsversprechen und Ertragsmodell",
       "hidden": false,
-      "image": "/assets/slides/slide-11.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-11.svg?v=8df176230642",
       "text": [
         "Produkt: Leistungsversprechen und Ertragsmodell",
         "VoltoShare",
@@ -322,7 +322,7 @@
       "number": 12,
       "title": "Case: Grosses Wohngebäude in der Stadt Zürich",
       "hidden": false,
-      "image": "/assets/slides/slide-12.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-12.svg?v=8df176230642",
       "text": [
         "Case: Grosses Wohngebäude in der Stadt Zürich",
         "VoltoShare",
@@ -355,7 +355,7 @@
       "number": 13,
       "title": "Case: So wird geladen",
       "hidden": true,
-      "image": "/assets/slides/slide-13.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-13.svg?v=8df176230642",
       "text": [
         "Case: So wird geladen",
         "VoltoShare",
@@ -502,7 +502,7 @@
       "number": 14,
       "title": "Case: Die Rechnung für VoltoShare",
       "hidden": false,
-      "image": "/assets/slides/slide-14.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-14.svg?v=8df176230642",
       "text": [
         "Case: Die Rechnung für VoltoShare",
         "VoltoShare",
@@ -572,7 +572,7 @@
       "number": 15,
       "title": "Case: Wer profitiert?",
       "hidden": false,
-      "image": "/assets/slides/slide-15.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-15.svg?v=8df176230642",
       "text": [
         "Case: Wer profitiert?",
         "VoltoShare",
@@ -617,7 +617,7 @@
       "number": 16,
       "title": "Q&A",
       "hidden": false,
-      "image": "/assets/slides/slide-16.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-16.svg?v=8df176230642",
       "text": [
         "Q&A",
         "Vielen Dank für Ihre Aufmerksamkeit",
@@ -630,7 +630,7 @@
       "number": 17,
       "title": "Anhang: Quellen und Annahmen",
       "hidden": false,
-      "image": "/assets/slides/slide-17.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-17.svg?v=8df176230642",
       "text": [
         "Anhang: Quellen und Annahmen",
         "VoltoShare",
@@ -669,7 +669,7 @@
       "number": 18,
       "title": "FlexRide - Übersicht",
       "hidden": false,
-      "image": "/assets/slides/slide-18.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-18.svg?v=8df176230642",
       "text": [
         "FlexRide - Übersicht",
         "Was ist VoltoShare?\n",
@@ -690,7 +690,7 @@
       "number": 19,
       "title": "Agglomerationstheorie",
       "hidden": false,
-      "image": "/assets/slides/slide-19.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-19.svg?v=8df176230642",
       "text": [
         "Agglomerationstheorie",
         "\nWissenspillovers\nSpezialisierte Arbeitsmärkte\nExterne Skaleneffekte\nSteigert Produktivität\n",
@@ -708,7 +708,7 @@
       "number": 20,
       "title": "Besucherströme",
       "hidden": false,
-      "image": "/assets/slides/slide-20.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-20.svg?v=8df176230642",
       "text": [
         "Besucherströme",
         "Aufenthaltsdauer\n",
@@ -728,7 +728,7 @@
       "number": 21,
       "title": "Zürich-Case",
       "hidden": false,
-      "image": "/assets/slides/slide-21.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-21.svg?v=8df176230642",
       "text": [
         "Gruppe 1 - FlexRide",
         "21",
@@ -741,7 +741,7 @@
       "number": 22,
       "title": "Analyse - Methodik",
       "hidden": false,
-      "image": "/assets/slides/slide-22.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-22.svg?v=8df176230642",
       "text": [
         "Analyse - Methodik",
         "Übernachtungen\n",
@@ -764,7 +764,7 @@
       "number": 23,
       "title": "Tourismus-intensität",
       "hidden": true,
-      "image": "/assets/slides/slide-23.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-23.svg?v=8df176230642",
       "text": [
         "Tourismus-intensität",
         "Gruppe 1 - FlexRide",
@@ -778,7 +778,7 @@
       "number": 24,
       "title": "Tourismus-intensität",
       "hidden": false,
-      "image": "/assets/slides/slide-24.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-24.svg?v=8df176230642",
       "text": [
         "Tourismus-intensität",
         "Gruppe 1 - FlexRide",
@@ -792,7 +792,7 @@
       "number": 25,
       "title": "Wohnungsmarkt",
       "hidden": false,
-      "image": "/assets/slides/slide-25.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-25.svg?v=8df176230642",
       "text": [
         "Wohnungsmarkt",
         "Tourismus als Verstäker",
@@ -810,7 +810,7 @@
       "number": 26,
       "title": "Einflussfaktoren auf Mitpreise",
       "hidden": false,
-      "image": "/assets/slides/slide-26.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-26.svg?v=8df176230642",
       "text": [
         "Einflussfaktoren auf Mitpreise",
         "Prestige\n",
@@ -829,7 +829,7 @@
       "number": 27,
       "title": "Hotspots: 10\nÜbernachtungen: 2.7 Mio\nDurchsch. Miete pro m²: € 26.98",
       "hidden": false,
-      "image": "/assets/slides/slide-27.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-27.svg?v=8df176230642",
       "text": [
         "27",
         "Hotspots: 10\nÜbernachtungen: 2.7 Mio\nDurchsch. Miete pro m²: € 26.98",
@@ -846,7 +846,7 @@
       "number": 28,
       "title": "Wer ist FlexRide?\n",
       "hidden": false,
-      "image": "/assets/slides/slide-28.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-28.svg?v=8df176230642",
       "text": [
         "Wer ist FlexRide?\n",
         "Gruppe 1 - FlexRide",
@@ -860,7 +860,7 @@
       "number": 29,
       "title": "Unsere Persönlichkeit",
       "hidden": false,
-      "image": "/assets/slides/slide-29.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-29.svg?v=8df176230642",
       "text": [
         "Unsere Persönlichkeit",
         "Wer ist FlexRide?",
@@ -882,7 +882,7 @@
       "number": 30,
       "title": "Konkurrenz",
       "hidden": false,
-      "image": "/assets/slides/slide-30.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-30.svg?v=8df176230642",
       "text": [
         "Öffentliche Verkehrsmittel\n",
         "Taxi\n",
@@ -902,7 +902,7 @@
       "number": 31,
       "title": "Unsere Zielgruppen",
       "hidden": false,
-      "image": "/assets/slides/slide-31.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-31.svg?v=8df176230642",
       "text": [
         "Unsere Zielgruppen",
         "Wer ist FlexRide?",
@@ -920,7 +920,7 @@
       "number": 32,
       "title": "Pain Points und Bedürfnisse",
       "hidden": false,
-      "image": "/assets/slides/slide-32.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-32.svg?v=8df176230642",
       "text": [
         "Pain Points und Bedürfnisse",
         "Wer ist FlexRide?",
@@ -950,7 +950,7 @@
       "number": 33,
       "title": "FlexRide - Übersicht",
       "hidden": false,
-      "image": "/assets/slides/slide-33.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-33.svg?v=8df176230642",
       "text": [
         "FlexRide - Übersicht",
         "Was macht FlexRide?\n",
@@ -965,7 +965,7 @@
       "number": 34,
       "title": "Unser Leistungsversprechen – Value Proposition",
       "hidden": false,
-      "image": "/assets/slides/slide-34.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-34.svg?v=8df176230642",
       "text": [
         "Unser Leistungsversprechen – Value Proposition",
         "Was macht FlexRide?",
@@ -987,7 +987,7 @@
       "number": 35,
       "title": "Besucherströme",
       "hidden": false,
-      "image": "/assets/slides/slide-35.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-35.svg?v=8df176230642",
       "text": [
         "Reporting für Veranstalter",
         "CO₂ Reduktion\nAuslastung und Heatmaps\nAfter-Sales-Experience",
@@ -1012,7 +1012,7 @@
       "number": 36,
       "title": "Unsere USP",
       "hidden": false,
-      "image": "/assets/slides/slide-36.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-36.svg?v=8df176230642",
       "text": [
         "Unsere USP",
         "Gruppe 1 - FlexRide",
@@ -1027,7 +1027,7 @@
       "number": 37,
       "title": "Business Model Canvas – Kosten und Erträge im B2B2C-Modell",
       "hidden": false,
-      "image": "/assets/slides/slide-37.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-37.svg?v=8df176230642",
       "text": [
         "Business Model Canvas – Kosten und Erträge im B2B2C-Modell",
         "Gruppe 1 - FlexRide",
@@ -1044,7 +1044,7 @@
       "number": 38,
       "title": "FlexRide - Übersicht",
       "hidden": false,
-      "image": "/assets/slides/slide-38.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-38.svg?v=8df176230642",
       "text": [
         "FlexRide - Übersicht",
         "Gruppe 1 - FlexRide",
@@ -1059,7 +1059,7 @@
       "number": 39,
       "title": "Application",
       "hidden": false,
-      "image": "/assets/slides/slide-39.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-39.svg?v=8df176230642",
       "text": [
         "Application",
         "Wieso FlexRide?",
@@ -1073,7 +1073,7 @@
       "number": 40,
       "title": "LinkedIn",
       "hidden": false,
-      "image": "/assets/slides/slide-40.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-40.svg?v=8df176230642",
       "text": [
         "LinkedIn",
         "Wieso FlexRide?",
@@ -1087,7 +1087,7 @@
       "number": 41,
       "title": "Instagram",
       "hidden": false,
-      "image": "/assets/slides/slide-41.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-41.svg?v=8df176230642",
       "text": [
         "Instagram",
         "Wieso FlexRide?",
@@ -1101,7 +1101,7 @@
       "number": 42,
       "title": "Offline-Kampagne",
       "hidden": false,
-      "image": "/assets/slides/slide-42.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-42.svg?v=8df176230642",
       "text": [
         "Offline-Kampagne",
         "Gruppe 1 - FlexRide",
@@ -1115,7 +1115,7 @@
       "number": 43,
       "title": "Broschüre",
       "hidden": false,
-      "image": "/assets/slides/slide-43.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-43.svg?v=8df176230642",
       "text": [
         "Broschüre",
         "Wieso FlexRide?",
@@ -1129,7 +1129,7 @@
       "number": 44,
       "title": "Originalfolie 44",
       "hidden": false,
-      "image": "/assets/slides/slide-44.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-44.svg?v=8df176230642",
       "text": [
         "Gruppe 1 - FlexRide",
         "44"
@@ -1141,7 +1141,7 @@
       "number": 45,
       "title": "FlexRide – Your ride into the future.",
       "hidden": false,
-      "image": "/assets/slides/slide-45.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-45.svg?v=8df176230642",
       "text": [
         "FlexRide – Your ride into the future.",
         "Gruppe 1 - FlexRide",
@@ -1155,7 +1155,7 @@
       "number": 46,
       "title": "FlexRide – Your ride into the future.",
       "hidden": false,
-      "image": "/assets/slides/slide-46.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-46.svg?v=8df176230642",
       "text": [
         "FlexRide – Your ride into the future.",
         "Gruppe 1 - FlexRide",
@@ -1169,7 +1169,7 @@
       "number": 47,
       "title": "Unser Business Model Canvas",
       "hidden": false,
-      "image": "/assets/slides/slide-47.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-47.svg?v=8df176230642",
       "text": [
         "Unser Business Model Canvas",
         "Gruppe 1 - FlexRide",
@@ -1213,7 +1213,7 @@
       "number": 48,
       "title": "Marktsegmentierungsanalyse",
       "hidden": false,
-      "image": "/assets/slides/slide-48.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-48.svg?v=8df176230642",
       "text": [
         "Marktsegmentierungsanalyse",
         "Gruppe 1 - FlexRide",
@@ -1234,7 +1234,7 @@
       "number": 49,
       "title": "Theoretische Grundlagen",
       "hidden": false,
-      "image": "/assets/slides/slide-49.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-49.svg?v=8df176230642",
       "text": [
         "Theoretische Grundlagen",
         "Gruppe 1 - FlexRide",
@@ -1255,7 +1255,7 @@
       "number": 50,
       "title": "Wo man uns findet",
       "hidden": false,
-      "image": "/assets/slides/slide-50.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-50.svg?v=8df176230642",
       "text": [
         "Sonstiges",
         "20%",
@@ -1276,7 +1276,7 @@
       "number": 51,
       "title": "Originalfolie 51",
       "hidden": false,
-      "image": "/assets/slides/slide-51.svg?v=afb18798e918",
+      "image": "/assets/slides/slide-51.svg?v=8df176230642",
       "text": [
         "Gruppe 1 - FlexRide",
         "51"
