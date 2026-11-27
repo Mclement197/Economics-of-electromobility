@@ -37,3 +37,17 @@ Final release evidence follows below.
 - `downloads/VoltoShare-Praesentation.pptx`: `ac1e3110b3e7431795a2bb5ac9e408932fe3dc2bec075b519f681f8dd8ffbf2f`
 - `downloads/VoltoShare-Praesentation.pdf`: `6858650bd61a44f90f780901a70872ff96cbbdb407efbc4cd22e8de1a4c14fd5`
 - `assets/slides/slide-12.svg`: `aa2d81a3055017ec4d1364fb0a7229751e68a1904a2d9f31b017ad9447bc59c8`
+
+## Final professional review and stable browser artwork
+
+- Retained all 17 recomposed slides, with final source-preserving refinements to 4, 5, 12 and 14. Downloadable PPTX revision: `5498fcbec8bf`. Native PDF: 17 pages.
+- Browser player now uses 2560×1440 PNGs derived directly from that PDF; vector SVG derivatives, vector PDF, editable PPTX and exact accessible transcript remain available. Build/deploy guards reject excluded PNG pages and non-raster player URLs.
+- Every slide was captured sequentially in the actual fullscreen browser player and individually reviewed. Slides 1–2 and 4–17 pass layout/readability review. Slide 3's layout passes, but Mathis and Joel portraits remain missing; source placeholders are retained pending supplied image files.
+- A reviewer initially reported missing title prefixes in a downsampled tool preview. Original-resolution reopening and OCR of the exact saved screenshots confirmed the complete text. Do not infer a browser rendering failure from a tool thumbnail alone.
+- 281 source-fidelity checks and 192 staging browser checks pass. Public manifest, both downloads, and all 17 PNGs match local bytes. All 192 public browser checks passed, including every slide, fullscreen, downloads, mobile layouts and the live scenario.
+- Website-only rollback: `~/.local/state/voltoshare/releases/website-20261127T102152888291Z`. No tenant app, services, DNS or tunnel changed.
+- SHA256 manifest: `9ee8b89a0cb6daecb7d70b3fcfc9a5f1ee4ce719bd06bd134b70af37a161fe14`.
+- SHA256 PDF: `99f879b984c37fb234a1b7e90bc1d7abcdb6659902cee27e6ed38214ced2ab64`.
+- SHA256 PPTX: `5498fcbec8bfa2716862e40f847e6e1e5052fa97ac1563c4d26beb678791ee79`.
+
+Temporary screenshot files from the professional audit, final render diagnosis and raster review were removed after inspection; reports and public artwork remain.

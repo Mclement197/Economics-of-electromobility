@@ -178,9 +178,11 @@ def main():
             image = published.get('image', '')
             asset = ROOT / 'website-src' / image.split('?', 1)[0].lstrip('/')
             check(image.startswith('/assets/slides/') and asset.is_file(), f'{label}: browser artwork missing')
+            check(asset.suffix == '.png', f'{label}: browser must use stable raster artwork')
     if browser is not None:
         assets = ROOT / 'website-src/assets/slides'
         check({p.name for p in assets.glob('slide-*.svg')} == {f'slide-{i:02d}.svg' for i in range(1,18)}, 'Browser artwork directory retains obsolete appendix pages')
+        check({p.name for p in assets.glob('slide-*.png')} == {f'slide-{i:02d}.png' for i in range(1,18)}, 'Browser raster directory must contain exactly 17 pages')
     if failures:
         print(f'FAIL: {len(failures)} of {checks} fidelity checks failed')
         print('\n'.join(f'  - {f}' for f in failures))

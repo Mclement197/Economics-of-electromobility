@@ -29,7 +29,7 @@ Build writes only into the staging output (default `build/website`, ignored by G
 - `website-src/calculator.mjs`, `calculator.css`: pure financial helpers plus accessible UI.
 - `website-src/contact.mjs`, `contact.css`: local-only demo enquiry.
 - `website-src/finance-model.mjs`, `finance-ui.mjs`, `finance.css`: shared Zurich and Cham scenarios, local browser persistence, live charts.
-- `website-src/presentation-data.json`, `presentation.mjs`, `presentation.css`: 51-slide source-exact presentation, keyboard/fullscreen controls, accessible reading mode and integrated live financial scenarios.
+- `website-src/presentation-data.json`, `presentation.mjs`, `presentation.css`: 17-slide source-exact presentation, keyboard/fullscreen controls, accessible reading mode and integrated live financial scenarios.
 - `website-src/downloads/`: approved baseline PDF and editable PPTX; build/source details in `docs/PRESENTATION_CONTENT.md`.
 - `website-src/assets/`: only the public assets needed by this site.
 - `sites/website/`: generated deployed files, tracked for review; **do not hand-edit**.
@@ -84,7 +84,7 @@ Public preview remains `noindex, nofollow`. This is not a commercial launch. Ope
 
 `/finanzen/` offers the supplied Zürich per-apartment case and separate Cham per-wallbox alternative. All source calculator controls are retained; scenario edits stay in this browser and do not affect app invoices. `/praesentation/` and the homepage's final section use one HTML slide player. The resident app links to these project tools under More and in the sidebar.
 
-At Mathis’s explicit 27 November request, the redesigned deck now ends after original slide 17. These 17 VoltoShare slides retain their original content; the later FlexRide/tourism appendix is excluded from the PPTX, PDF and browser. The complete private original remains untouched. Original slide values are never replaced by scenarios. Fullscreen supports arrows/Home/End and Escape, with a viewport fallback. Mobile reading mode exposes original text and chart tables; an integrated Live-Szenario after original slide 14 provides live assumptions without altering source slide content (also accessible anytime from the toolbar). PDF and browser artwork share a native Impress render of the editable PowerPoint.
+At Mathis’s explicit 27 November request, the redesigned deck now ends after original slide 17. These 17 VoltoShare slides retain their original content; the later FlexRide/tourism appendix is excluded from the PPTX, PDF and browser. The complete private original remains untouched. Original slide values are never replaced by scenarios. Fullscreen supports arrows/Home/End and Escape, with a viewport fallback. Mobile reading mode exposes original text and chart tables; an integrated Live-Szenario after original slide 14 provides live assumptions without altering source slide content (also accessible anytime from the toolbar). PDF and browser artwork share a native Impress render of the editable PowerPoint. The player uses 2560px PNG derivatives to avoid Chromium SVG glyph-paint instability; vector PDF and editable PowerPoint remain available.
 
 ```sh
 node --test website-src/calculator.test.mjs website-src/finance-model.test.mjs

@@ -48,9 +48,13 @@ for i,s in enumerate(list(prs.slides)[:17],1):
  if i==1:title='VoltoShare'
  image=assets/f'slide-{i:02d}.svg'
  subprocess.run(['pdftocairo','-svg','-f',str(i),'-l',str(i),str(pdf),str(image)],check=True,timeout=60)
- slides.append({'number':i,'title':title,'hidden':s._element.get('show')=='0','image':f'/assets/slides/{image.name}?v={revision}','text':texts,'charts':charts,'notes':s.notes_slide.notes_text_frame.text if s.has_notes_slide else ''})
+ # Use a native-PDF raster in the player: Chromium can drop SVG glyph paths
+ # during sequential/composited playback. Keep SVG as the vector derivative.
+ raster=assets/f'slide-{i:02d}.png'
+ subprocess.run(['pdftocairo','-png','-singlefile','-scale-to','2560','-f',str(i),'-l',str(i),str(pdf),str(raster.with_suffix(''))],check=True,timeout=60)
+ slides.append({'number':i,'title':title,'hidden':s._element.get('show')=='0','image':f'/assets/slides/{raster.name}?v={revision}','text':texts,'charts':charts,'notes':s.notes_slide.notes_text_frame.text if s.has_notes_slide else ''})
 # Remove previously published appendix artwork after the new 17-page export succeeds.
-for stale in assets.glob('slide-*.svg'):
- if stale.name not in {f'slide-{i:02d}.svg' for i in range(1,18)}:stale.unlink()
+for stale in [*assets.glob('slide-*.svg'), *assets.glob('slide-*.png')]:
+ if stale.name not in {f'slide-{i:02d}.{ext}' for i in range(1,18) for ext in ['svg','png']}:stale.unlink()
 (ROOT/'website-src/presentation-data.json').write_text(json.dumps({'title':'VoltoShare','revision':revision,'includedSourceSlides':list(range(1,18)),'sourceSha256':hashlib.sha256(a.source.read_bytes()).hexdigest(),'slides':slides},ensure_ascii=False,indent=2)+'\n')
-print(f'Exported {len(slides)} source-exact slides, PDF, vector browser artwork, and accessible transcript ({revision})')
+print(f'Exported {len(slides)} source-exact slides, PDF, high-resolution browser artwork, vector derivatives, and accessible transcript ({revision})')

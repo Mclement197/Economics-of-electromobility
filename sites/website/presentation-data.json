@@ -1,6 +1,6 @@
 {
   "title": "VoltoShare",
-  "revision": "ac1e3110b3e7",
+  "revision": "5498fcbec8bf",
   "includedSourceSlides": [
     1,
     2,
@@ -26,7 +26,7 @@
       "number": 1,
       "title": "VoltoShare",
       "hidden": false,
-      "image": "/assets/slides/slide-01.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-01.png?v=5498fcbec8bf",
       "text": [
         "VoltoShare",
         "Team VoltoShare: Mathis Clement, Cyrill Gasser, Robin Vinzenz Gasser, Joel Frei, Yannic David Schnell"
@@ -38,7 +38,7 @@
       "number": 2,
       "title": "Agenda",
       "hidden": false,
-      "image": "/assets/slides/slide-02.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-02.png?v=5498fcbec8bf",
       "text": [
         "Agenda",
         "VoltoShare",
@@ -70,7 +70,7 @@
       "number": 3,
       "title": "Das Voltoshare-Team",
       "hidden": false,
-      "image": "/assets/slides/slide-03.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-03.png?v=5498fcbec8bf",
       "text": [
         "Das Voltoshare-Team",
         "VoltoShare",
@@ -103,7 +103,7 @@
       "number": 4,
       "title": "Grundidee & Geschäftsmodell",
       "hidden": false,
-      "image": "/assets/slides/slide-04.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-04.png?v=5498fcbec8bf",
       "text": [
         "Grundidee & Geschäftsmodell",
         "Gruppe 1 - FlexRide",
@@ -131,7 +131,7 @@
       "number": 5,
       "title": "Markt: Testgebiet Zürich",
       "hidden": false,
-      "image": "/assets/slides/slide-05.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-05.png?v=5498fcbec8bf",
       "text": [
         "Markt: Testgebiet Zürich",
         "VoltoShare",
@@ -157,7 +157,7 @@
       "number": 6,
       "title": "Markt: Elektromobilität wächst",
       "hidden": false,
-      "image": "/assets/slides/slide-06.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-06.png?v=5498fcbec8bf",
       "text": [
         "Markt: Elektromobilität wächst",
         "VoltoShare",
@@ -183,7 +183,7 @@
       "number": 7,
       "title": "Markt: Potenzial in der Stadt Zürich",
       "hidden": false,
-      "image": "/assets/slides/slide-07.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-07.png?v=5498fcbec8bf",
       "text": [
         "Markt: Potenzial in der Stadt Zürich",
         "VoltoShare",
@@ -215,7 +215,7 @@
       "number": 8,
       "title": "Roadmap",
       "hidden": true,
-      "image": "/assets/slides/slide-08.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-08.png?v=5498fcbec8bf",
       "text": [
         "Roadmap",
         "VoltoShare",
@@ -258,7 +258,7 @@
       "number": 9,
       "title": "Produkt: Die physische Komponente",
       "hidden": false,
-      "image": "/assets/slides/slide-09.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-09.png?v=5498fcbec8bf",
       "text": [
         "Produkt: Die physische Komponente",
         "VoltoShare",
@@ -290,7 +290,7 @@
       "number": 10,
       "title": "Produkt: Die Plattformkomponente",
       "hidden": false,
-      "image": "/assets/slides/slide-10.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-10.png?v=5498fcbec8bf",
       "text": [
         "Produkt: Die Plattformkomponente",
         "VoltoShare",
@@ -313,7 +313,7 @@
       "number": 11,
       "title": "Produkt: Leistungsversprechen und Ertragsmodell",
       "hidden": false,
-      "image": "/assets/slides/slide-11.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-11.png?v=5498fcbec8bf",
       "text": [
         "Produkt: Leistungsversprechen und Ertragsmodell",
         "VoltoShare",
@@ -341,7 +341,7 @@
       "number": 12,
       "title": "Case: Grosses Wohngebäude in der Stadt Zürich",
       "hidden": false,
-      "image": "/assets/slides/slide-12.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-12.png?v=5498fcbec8bf",
       "text": [
         "Case: Grosses Wohngebäude in der Stadt Zürich",
         "VoltoShare",
@@ -374,7 +374,7 @@
       "number": 13,
       "title": "Case: So wird geladen",
       "hidden": true,
-      "image": "/assets/slides/slide-13.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-13.png?v=5498fcbec8bf",
       "text": [
         "Case: So wird geladen",
         "VoltoShare",
@@ -521,7 +521,7 @@
       "number": 14,
       "title": "Case: Die Rechnung für VoltoShare",
       "hidden": false,
-      "image": "/assets/slides/slide-14.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-14.png?v=5498fcbec8bf",
       "text": [
         "Case: Die Rechnung für VoltoShare",
         "VoltoShare",
@@ -591,7 +591,7 @@
       "number": 15,
       "title": "Case: Wer profitiert?",
       "hidden": false,
-      "image": "/assets/slides/slide-15.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-15.png?v=5498fcbec8bf",
       "text": [
         "Case: Wer profitiert?",
         "VoltoShare",
@@ -636,7 +636,7 @@
       "number": 16,
       "title": "Q&A",
       "hidden": false,
-      "image": "/assets/slides/slide-16.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-16.png?v=5498fcbec8bf",
       "text": [
         "Q&A",
         "Vielen Dank für Ihre Aufmerksamkeit",
@@ -649,7 +649,7 @@
       "number": 17,
       "title": "Anhang: Quellen und Annahmen",
       "hidden": false,
-      "image": "/assets/slides/slide-17.svg?v=ac1e3110b3e7",
+      "image": "/assets/slides/slide-17.png?v=5498fcbec8bf",
       "text": [
         "Anhang: Quellen und Annahmen",
         "VoltoShare",

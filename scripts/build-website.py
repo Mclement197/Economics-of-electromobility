@@ -40,8 +40,8 @@ for cssfile in ['site.css','calculator.css','contact.css']:
 shutil.copytree(SRC/'assets',out/'assets',dirs_exist_ok=True)
 # An existing staging folder must not retain the now-excluded appendix pages.
 slide_assets=out/'assets/slides'
-for stale in slide_assets.glob('slide-*.svg'):
-    if stale.name not in {f'slide-{i:02d}.svg' for i in range(1,18)}:stale.unlink()
+for stale in [*slide_assets.glob('slide-*.svg'), *slide_assets.glob('slide-*.png')]:
+    if stale.name not in {f'slide-{i:02d}.{ext}' for i in range(1,18) for ext in ['svg','png']}:stale.unlink()
 shutil.copytree(SRC/'downloads',out/'downloads',dirs_exist_ok=True)
 shutil.copy2(SRC/'assets/symbol.svg',out/'favicon.svg')
 for size,name in [(180,'apple-touch-icon.png'),(192,'icon-192.png'),(512,'icon-512.png')]:

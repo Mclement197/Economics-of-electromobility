@@ -112,10 +112,14 @@ def apply(prs,kit):
     s=prs.slides[11];d=ids(s)
     _transform([d[n] for n in range(33,76)],(.65,2.0,5.45,4.42),(.65,2.03,4.65,4.56))
     panel(d[33],.65,2.03,4.65,4.56,'tint')
-    # Metric blocks deliberately use the source paragraphs, not replacement text.
+    # Reserve a true annotation lane: labels must not sit on the building edge.
+    for no in range(34,75):
+        sh=d[no];sh.left=Inches(.90+(sh.left/Inches(1)-.90)*.78);sh.width=round(sh.width*.78)
+    # Retain the original complete number/label paragraphs in separate callouts.
     for no,y in [(76,2.48),(77,5.18)]:
-        t(d[no],3.68,y,1.53,1.15,16,True,'green',PP_ALIGN.CENTER)
-    t(d[75],.95,6.27,2.77,.28,11.8,False,'muted',PP_ALIGN.CENTER)
+        rect(s,3.47,y,1.68,.95,'white')
+        t(d[no],3.60,y+.17,1.43,.65,16,True,'green',PP_ALIGN.LEFT);front(d[no])
+    t(d[75],.90,6.27,2.48,.28,11.8,False,'muted',PP_ALIGN.CENTER)
     hide_decor(d[78]);t(d[79],5.84,2.05,6.84,.45,25,True)
     for j,(label,value) in enumerate([(80,81),(83,84),(86,87),(89,90),(92,93),(95,96),(98,99)]):
         y=2.80+j*.53
@@ -146,17 +150,17 @@ def apply(prs,kit):
         t(d[label],.94,y+.67,2.65,.32,15,False,'pale')
     hide_decor(d[42]);hide_decor(d[55])
     t(d[56],4.22,2.04,8.46,.44,24,True)
-    at(d[57],4.16,2.61,8.57,2.15)
-    t(d[58],4.22,4.74,8.46,.22,11.5,False,'muted',PP_ALIGN.CENTER)
-    t(d[43],4.22,5.11,3.74,.32,17,True,'green')
-    for label,value,y in [(44,45,5.60),(46,47,6.10)]:
-        t(d[label],4.22,y,2.54,.40,12.6,False)
-        t(d[value],6.93,y,1.14,.40,12.6,True,'ink',PP_ALIGN.RIGHT)
-    t(d[48],8.52,5.11,4.16,.32,17,True,'green')
-    for label,value,y in [(49,50,5.55),(51,52,5.93),(53,54,6.31)]:
-        t(d[label],8.52,y,2.90,.33,11.4,False)
-        t(d[value],11.53,y,1.15,.33,12.2,True,'ink',PP_ALIGN.RIGHT)
-    rect(s,8.28,5.12,.01,1.45,'line')
+    at(d[57],4.16,2.61,8.57,1.85)
+    t(d[58],4.22,4.44,8.46,.22,11.5,False,'muted',PP_ALIGN.CENTER)
+    t(d[43],4.22,4.85,4.12,.32,17,True,'green')
+    for label,value,y in [(44,45,5.36),(46,47,5.99)]:
+        t(d[label],4.22,y,2.98,.43,14,False)
+        t(d[value],7.30,y,1.10,.43,13.2,True,'ink',PP_ALIGN.RIGHT)
+    t(d[48],8.78,4.85,3.90,.32,17,True,'green')
+    for label,value,y in [(49,50,5.30),(51,52,5.75),(53,54,6.20)]:
+        t(d[label],8.78,y,2.68,.43,13,False)
+        t(d[value],11.57,y,1.11,.43,13,True,'ink',PP_ALIGN.RIGHT)
+    rect(s,8.58,4.86,.01,1.73,'line')
 
     # 15: landlord result as a large dark hero; the sensitivity chart takes the
     # wider column, with the source resident trade-offs kept readable beneath.

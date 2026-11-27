@@ -87,15 +87,19 @@ def apply(prs,kit):
     s=prs.slides[3];d=ids(s)
     panel(d[13],.65,1.82,4.80,4.88,'green')
     text(d[14],.96,2.15,4.18,4.18,23,False,'white')
-    for j,sid in enumerate([15,17,18,19,20,21]):
-        y=1.94+j*.77
-        fill(d[sid],None);text(d[sid],5.79,y,2.09,.56,15.5,True,'green')
-        _rule(s,5.79,y+.68,6.89)
+    for j,sid in enumerate([15,17,18]):
+        y=2.08+j*1.12
+        fill(d[sid],None);text(d[sid],5.79,y,2.09,.60,15.5,True,'green')
+        _rule(s,5.79,y+.82,6.89)
     for sid,row,col in [(22,0,0),(23,0,1),(25,1,0),(26,1,1),(27,1,2),(28,2,0),(29,2,1),(30,2,2)]:
-        fill(d[sid],None);text(d[sid],8.12+col*1.53,1.96+row*.77,1.45,.56,14,False,'ink',PP_ALIGN.CENTER)
+        fill(d[sid],None);text(d[sid],8.12+col*1.53,2.10+row*1.12,1.45,.60,14,False,'ink',PP_ALIGN.CENTER)
+    # Source categories without option text are retained as a compact quiet band.
+    rect(s,5.79,5.55,6.89,1.10,'tint')
+    for j,sid in enumerate([19,20,21]):
+        text(d[sid],5.95+j*2.27,5.80,2.03,.64,14.5,True,'green',PP_ALIGN.CENTER);front(d[sid])
 
     # 05: a single market insight gets a dramatic, editorial dark spread.
-    s=prs.slides[4];d=ids(s);bg(s,'green');rect(s,0,5.02,13.3333,2.48,'white',True)
+    s=prs.slides[4];d=ids(s);bg(s,'green');rect(s,0,4.88,13.3333,2.62,'white',True)
     text(d[2],.65,.59,12.0,.70,36,True,'white');text(d[32],.68,1.43,11.95,.28,14.5,False,'pale')
     text(d[40],.65,1.99,4.71,1.39,100,True,'white')
     text(d[41],.72,3.53,4.48,1.13,22,False,'white')
@@ -104,9 +108,9 @@ def apply(prs,kit):
         text(d[baseid+1],6.02,y,3.03,.55,33,True,'white')
         text(d[baseid+2],9.35,y+.04,3.22,.75,16,False,'white')
         if j<2:_rule(s,6.02,y+.82,6.62,'sage')
-    text(d[46],.68,5.25,11.98,.34,19,True,'green')
-    text(d[47],.68,5.65,5.64,1.00,14.5,False)
-    text(d[48],6.92,5.65,5.65,1.00,14.5,False)
+    text(d[46],.68,5.05,11.98,.34,19,True,'green')
+    text(d[47],.68,5.44,5.64,1.15,14.5,False)
+    text(d[48],6.92,5.44,5.65,1.15,14.5,False)
     for sh in s.shapes:
         if sh.has_text_frame and sh.top/Inches(1)>6.65:fmt(sh,10,False,'muted')
 

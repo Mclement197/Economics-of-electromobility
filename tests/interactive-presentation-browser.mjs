@@ -12,6 +12,8 @@ try{
  ok(data.slides.length===17,'all 17 original slides are in the manifest');
  assert.deepEqual(data.slides.filter(s=>s.hidden).map(s=>s.number),[8,13]);checks++;
  ok((await page.request.get(base+'/assets/slides/slide-18.svg')).status()===404,'removed appendix artwork is not published');
+ ok((await page.request.get(base+'/assets/slides/slide-18.png')).status()===404,'removed appendix raster is not published');
+ ok(data.slides.every(s=>/\.png\?v=/.test(s.image)),'player uses stable native-PDF raster images');
  const waitArtwork=()=>page.locator('.deck-artwork').evaluate(async img=>{await img.decode();return img.naturalWidth>0&&img.naturalHeight>0;});
  const jump=async i=>{await page.locator('[data-action="overview"]').click();await page.locator(`[data-slide-jump="${i}"]`).click();await waitArtwork();};
  await page.goto(base+'/finanzen/');await page.waitForSelector('[data-finance-key="subscription"]');
