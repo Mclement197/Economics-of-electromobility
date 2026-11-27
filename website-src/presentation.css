@@ -46,3 +46,69 @@
  .deck-expanded .deck-lab-heading>div>span{display:none}
 }
 @media print{.deck-lab,.deck-finance-cue,.deck-toolbar,.deck-controls,.deck-utility,.deck-overview,.deck-downloads,.deck-notes{display:none!important}}
+
+/* Presentation canvas: fullscreen has no reserved header/footer space.
+   Pointer near either edge, touch on artwork or Tab reveals floating controls. */
+@media screen {
+ .deck-lab{display:flex;flex-direction:column;height:720px;max-height:85dvh;min-height:480px;overflow:hidden}
+ .deck-lab-heading{flex:none}
+ .deck-live-finance{flex:1;min-height:0;width:100%}
+ body.deck-is-presenting{container-type:normal!important;overflow:hidden}
+ .deck-expanded{display:grid;place-items:center;padding:0;background:#23262B;isolation:isolate}
+ .deck-expanded .deck-stage,
+ .deck-expanded:has(.deck-finance-cue:not([hidden])) .deck-stage{
+  width:min(100vw,calc(100dvh * 16 / 9));height:auto;aspect-ratio:16/9;flex:none;margin:0;
+ }
+ .deck-expanded .deck-utility,.deck-expanded .deck-finance-cue{display:none!important}
+ .deck-expanded .deck-toolbar,.deck-expanded .deck-controls{
+  position:absolute;z-index:10;width:auto;max-width:calc(100% - 32px);padding:8px;
+  border:1px solid #748178;border-radius:12px;background:#23262B;color:#fff;
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s;
+ }
+ .deck-expanded .deck-toolbar{top:max(12px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));gap:12px}
+ .deck-expanded .deck-label{display:none}
+ .deck-expanded .deck-tools{width:auto;flex-wrap:nowrap}
+ .deck-expanded .deck-controls{bottom:max(12px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);gap:24px}
+ .deck-expanded .deck-current-title{max-width:50vw;color:#fff}
+ .deck-expanded.deck-chrome-visible .deck-toolbar,.deck-expanded.deck-chrome-visible .deck-controls,
+ .deck-expanded .deck-toolbar:focus-within,.deck-expanded .deck-controls:focus-within{
+  opacity:1;visibility:visible;pointer-events:auto;
+ }
+ .deck-expanded .deck-overview,.deck-expanded .deck-reading{
+  inset:80px 24px;z-index:11;max-height:none;border:1px solid #748178;border-radius:12px;
+ }
+ .deck-expanded .deck-lab{display:flex;flex-direction:column;width:100%;height:100%;max-height:none;min-height:0;max-width:none;margin:0;padding:24px 32px;overflow:hidden}
+ .deck-expanded .deck-lab-heading{width:100%;max-width:1600px;margin:0 auto 16px}
+ .deck-expanded .deck-lab-heading h2{font-size:32px}
+ .deck-expanded .deck-live-finance{width:100%;max-width:1600px;margin:0 auto;flex:1;min-height:0}
+}
+@media screen and (max-width:720px){
+ .deck-lab{height:760px;max-height:90dvh;min-height:440px}
+ .deck-expanded .deck-lab{padding:16px}
+ .deck-expanded .deck-lab-heading{flex-direction:row;gap:12px;margin-bottom:12px}
+ .deck-expanded .deck-lab-heading h2{font-size:24px}
+ .deck-expanded .deck-lab-heading p{font-size:9px;max-width:180px}
+ .deck-expanded .deck-lab-heading>div>span{display:none}
+ .deck-expanded .deck-lab-heading button{font-size:11px;max-width:110px;white-space:normal;padding:8px}
+ .deck-expanded .deck-toolbar{right:8px;max-width:calc(100% - 16px);padding:4px}
+ .deck-expanded .deck-tools{gap:4px}
+ .deck-expanded .deck-tools button{padding:8px;font-size:11px;min-width:44px}
+ .deck-expanded .deck-controls{gap:12px;max-width:calc(100% - 16px)}
+ .deck-expanded .deck-overview,.deck-expanded .deck-reading{inset:72px 12px}
+}
+@media screen and (max-height:760px) and (min-width:721px){
+ .deck-expanded .deck-lab{padding:16px 24px}
+ .deck-expanded .deck-lab-heading{margin-bottom:12px}
+ .deck-expanded .deck-lab-heading h2{font-size:28px;margin-bottom:0}
+ .deck-expanded .deck-lab-heading>div>span{display:none}
+}
+@media(prefers-reduced-motion:reduce){.deck-expanded .deck-toolbar,.deck-expanded .deck-controls{transition:none}}
+
+/* In the live slide, keep the return button and form header unobstructed. */
+@media screen {
+ .deck-expanded.deck-live-active .deck-toolbar{top:auto;bottom:max(12px,env(safe-area-inset-bottom))}
+ .deck-expanded.deck-live-active .deck-controls{left:max(16px,env(safe-area-inset-left));transform:none}
+}
+@media screen and (max-width:1000px){
+ .deck-expanded.deck-live-active .deck-controls{bottom:76px;left:50%;transform:translateX(-50%)}
+}

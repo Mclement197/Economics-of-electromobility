@@ -97,3 +97,29 @@ node tests/website-browser.mjs
 ```
 
 See `docs/FINANCIAL_MODEL.md` for model corrections and limitations. PPTX text/tables/charts remain editable. The revised deck is rendered through an isolated native Impress runtime for PDF and browser artwork; Microsoft PowerPoint itself is not available on this host. See `docs/PRESENTATION_CONTENT.md` for the source-exact contract and export procedure.
+
+## Presentation viewport update — 27 November 2026
+
+Fullscreen now gives the entire viewport to the slide, preserving its 16:9
+aspect ratio without reserving a header or footer. Floating controls appear at
+the screen edges (or on Tab/touch) and hide after inactivity. Arrow keys still
+navigate, F opens the interactive scenario, and Escape returns/exits. Browsers
+without the Fullscreen API use the same viewport-filling layout.
+
+The live finance step is a bounded presentation layout, not an embedded page:
+four editable levers sit beside the cashflow chart and three headline metrics.
+“Weitere Annahmen” and “Rechenweg & Daten” replace the main content pane instead
+of extending the slide. On narrow screens only that pane scrolls. Presets,
+reset, validation and shared scenario state remain available; the standalone
+finance page and the original PDF/PPTX/artwork are unchanged.
+
+Focused viewport/interaction regression (native and fallback fullscreen,
+1280×720, 1440×900, 1920×1080, 768×1024 and 360×800):
+
+```sh
+node tests/presentation-viewport-browser.mjs
+```
+
+Set `SCREENSHOTS=1` for temporary `/tmp/volto-viewport-*` review images; inspect
+and remove them after checking. Controls in the live view float at the bottom
+so they cannot cover the return button or form header.

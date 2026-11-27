@@ -6,7 +6,7 @@ function transcript(s){return s.text.map(t=>`<p>${esc(t)}</p>`).join('')+(s.char
 function slideHTML(s,i){return `<article class="deck-slide" data-slide="${i}" aria-label="Folie ${s.number}: ${esc(s.title)}"><img class="deck-artwork" src="${esc(s.image)}" width="1600" height="900" alt="${esc(s.title)} – vollständiger Folieninhalt im Lesemodus" ${i?'loading="lazy"':''}></article>`;}
 function mountDeck(root,data){
  const slides=data.slides;
- let index=0,expanded=false,previousFocus=null,finance=null,live=false;
+ let index=0,expanded=false,previousFocus=null,finance=null,live=false,chromeTimer=null;
  root.classList.add('deck');root.setAttribute('aria-label','VoltoShare-Präsentation');
  if(printMode){root.innerHTML=slides.map((s,i)=>`<div class="deck-stage">${slideHTML(s,i)}</div>`).join('');root.querySelectorAll('img').forEach(x=>x.loading='eager');document.body.classList.add('deck-print');return;}
  function overviewButton(s){return `<button type="button" data-slide-jump="${s.number-1}"><span>${String(s.number).padStart(2,'0')}</span>${esc(s.title)}${s.hidden?'<small>Original: ausgeblendet</small>':''}</button>`;}
@@ -16,7 +16,7 @@ function mountDeck(root,data){
  <section class="deck-lab" aria-label="Live-Szenario: Annahmen und Wirkung" hidden><div class="deck-lab-heading"><div><p>LIVE-SZENARIO · ERGÄNZUNG ZUR ORIGINALFOLIE</p><h2>Was wäre, wenn?</h2><span>Annahmen verändern. Die Wirkung direkt vergleichen.</span></div><button type="button" data-action="finance-close">Zurück zur Originalfolie</button></div><div class="deck-live-finance"></div></section>
  <div class="deck-controls"><button type="button" data-action="prev" aria-label="Vorherige Folie">←</button><div class="deck-current-title"></div><button type="button" data-action="next" aria-label="Nächste Folie">→</button></div>
  <div class="deck-finance-cue" hidden><div><strong>Jetzt die Annahmen hinterfragen.</strong><span>Zum Beispiel: Wie wirkt ein anderes Abo auf den Cashflow?</span></div><button type="button" data-action="finance-open">Live ausprobieren →</button></div>
- <div class="deck-utility"><button type="button" data-action="read" aria-expanded="false">Lesemodus</button><span>← → blättern · F: Live-Szenario · Esc: zurück</span></div><div class="deck-reading" hidden></div><details class="deck-notes"><summary>Originalnotizen</summary><div></div></details><div class="deck-downloads"><a href="/downloads/VoltoShare-Praesentation.pdf?v=${esc(data.revision)}" download>PDF herunterladen ↓</a><a href="/downloads/VoltoShare-Praesentation.pptx?v=${esc(data.revision)}" download>Editierbares PowerPoint ↓</a><p>17 Originalfolien mit unveränderten Inhalten. Das zusätzliche Live-Szenario funktioniert im Browser, auch im Vollbild. PDF und PowerPoint bleiben unveränderte Momentaufnahmen.</p></div>`;
+ <div class="deck-utility"><button type="button" data-action="read" aria-expanded="false">Lesemodus</button><span>← → blättern · F: Live-Szenario · Esc: zurück · Vollbild: Maus zum Rand für Steuerung</span></div><div class="deck-reading" hidden></div><details class="deck-notes"><summary>Originalnotizen</summary><div></div></details><div class="deck-downloads"><a href="/downloads/VoltoShare-Praesentation.pdf?v=${esc(data.revision)}" download>PDF herunterladen ↓</a><a href="/downloads/VoltoShare-Praesentation.pptx?v=${esc(data.revision)}" download>Editierbares PowerPoint ↓</a><p>17 Originalfolien mit unveränderten Inhalten. Das zusätzliche Live-Szenario funktioniert im Browser, auch im Vollbild. PDF und PowerPoint bleiben unveränderte Momentaufnahmen.</p></div>`;
  const stage=root.querySelector('.deck-stage'),overview=root.querySelector('.deck-overview'),lab=root.querySelector('.deck-lab'),reading=root.querySelector('.deck-reading');
  function hideOverview(){overview.hidden=true;root.querySelector('[data-action="overview"]').setAttribute('aria-expanded','false');}
  function updateChrome(){
@@ -47,17 +47,38 @@ function mountDeck(root,data){
  function go(n){closeLive(false);index=Math.max(0,Math.min(slides.length-1,n));render();}
  function next(){if(!live&&index===13)openLive();else go(index+1);}
  function prev(){if(live)closeLive();else if(index===14){go(13);openLive();}else go(index-1);}
- function exit(){root.classList.remove('deck-expanded');document.body.classList.remove('deck-is-presenting');expanded=false;root.querySelector('[data-action="fullscreen"]').textContent='Vollbild ↗';previousFocus?.focus();}
+ // Controls float over the canvas; they never reserve slide space.
+ function revealChrome(){
+  if(!expanded)return;
+  root.classList.add('deck-chrome-visible');clearTimeout(chromeTimer);
+  chromeTimer=setTimeout(hideChrome,2200);
+ }
+ function hideChrome(){
+  if(root.querySelector('.deck-toolbar:focus-within,.deck-controls:focus-within,.deck-toolbar:hover,.deck-controls:hover'))return;
+  root.classList.remove('deck-chrome-visible');
+ }
+ root.addEventListener('pointermove',e=>{
+  if(!expanded)return;
+  const rect=root.getBoundingClientRect();
+  if((!live&&e.clientY-rect.top<72)||rect.bottom-e.clientY<(live?16:72))revealChrome();
+  else if(root.classList.contains('deck-chrome-visible')){clearTimeout(chromeTimer);chromeTimer=setTimeout(hideChrome,2200);}
+ });
+ root.addEventListener('pointerdown',e=>{if(expanded&&e.pointerType==='touch'&&e.target.closest('.deck-stage'))revealChrome();});
+ root.addEventListener('focusin',e=>{if(e.target.closest('.deck-toolbar,.deck-controls'))revealChrome();});
+ root.addEventListener('focusout',()=>{if(expanded){clearTimeout(chromeTimer);chromeTimer=setTimeout(hideChrome,2200);}});
+ function exit(){clearTimeout(chromeTimer);root.classList.remove('deck-expanded','deck-chrome-visible');document.body.classList.remove('deck-is-presenting');expanded=false;root.querySelector('[data-action="fullscreen"]').textContent='Vollbild ↗';previousFocus?.focus();}
  async function fullscreen(){
   if(expanded){if(document.fullscreenElement===root)await document.exitFullscreen();exit();return;}
   previousFocus=document.activeElement;expanded=true;root.classList.add('deck-expanded');document.body.classList.add('deck-is-presenting');root.querySelector('[data-action="fullscreen"]').textContent='Vollbild beenden';
   try{await root.requestFullscreen?.();}catch{}
   (live?root.querySelector('[data-action="finance-close"]'):stage).focus({preventScroll:true});
+  revealChrome();
  }
  root.addEventListener('click',e=>{
   const jump=e.target.closest('[data-slide-jump]');if(jump){go(+jump.dataset.slideJump);hideOverview();stage.focus();return;}
   const action=e.target.closest('[data-action]')?.dataset.action;
-  if(action==='next')next();if(action==='prev')prev();if(action==='fullscreen')fullscreen();
+  if(action==='next'||action==='prev'){action==='next'?next():prev();if(!live)stage.focus({preventScroll:true});revealChrome();}
+  if(action==='fullscreen')fullscreen();
   if(action==='overview'){overview.hidden=!overview.hidden;root.querySelector('[data-action="overview"]').setAttribute('aria-expanded',String(!overview.hidden));}
   if(action==='read'){reading.hidden=!reading.hidden;root.querySelector('[data-action="read"]').setAttribute('aria-expanded',String(!reading.hidden));}
   if(action==='finance')live?closeLive():openLive();
@@ -66,6 +87,8 @@ function mountDeck(root,data){
   if(action==='finance-close')closeLive();
  });
  root.addEventListener('keydown',e=>{
+  if(e.defaultPrevented)return;
+  if(e.key==='Tab'&&expanded)revealChrome();
   if(e.key==='Escape'){
    if(!overview.hidden){hideOverview();root.querySelector('[data-action="overview"]').focus();return;}
    if(live){e.preventDefault();closeLive();return;}

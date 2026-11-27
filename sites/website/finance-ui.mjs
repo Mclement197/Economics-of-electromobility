@@ -64,12 +64,25 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
   let state=sync?readFinanceState(preset):normalizeState({preset}),result=calculateFinance(state),destroyed=false,narrow=root.clientWidth<=520;
   root.classList.add('finance');root.classList.toggle('finance--compact',compact);
   const fields=()=>FINANCE_FIELDS[state.preset].flatMap(g=>g.fields);
-  let sliderLimits={},rendering=false;
+  let sliderLimits={},rendering=false,compactPanel='scenario';
   function sliderMax(f){return sliderLimits[f.key]=Math.min(f.max,Math.max(sliderLimits[f.key]||0,SLIDER_MAX[f.key]||f.max,Math.ceil(state.values[f.key]/f.step)*f.step));}
   function input(f,quick=false) {
     const key=f.key,controlId=`${id}-${key}`,helpId=`${controlId}-help`;
     const numeric=`<div class="finance-number"><input id="${controlId}" data-finance-key="${key}" type="number" inputmode="decimal" value="${state.values[key]}" min="${f.min}" max="${f.max}" step="${f.step}" required aria-describedby="${helpId} ${id}-validation"><span aria-hidden="true">${escape(unitText(f))}</span></div>`;
     return `<div class="finance-field ${quick?'finance-lever':''}"><div class="finance-field-heading"><label for="${controlId}">${escape(f.label)}${f.unit?`<span class="finance-sr"> (${escape(f.unit)})</span>`:''}</label>${quick?`<small>Basis ${fieldNumber.format(f.value)}</small>`:''}</div>${f.options?`<select id="${controlId}" data-finance-key="${key}" aria-describedby="${helpId}">${f.options.map(([v,label])=>`<option value="${v}">${escape(label)}</option>`).join('')}</select>`:numeric}${quick?`<input type="range" class="finance-slider" data-finance-slider="${key}" min="${f.min}" max="${sliderMax(f)}" step="${f.step}" value="${state.values[key]}" aria-label="${escape(f.label)} – Regler" aria-describedby="${helpId}">`:''}<p class="finance-field-help" id="${helpId}">${quick?escape(QUICK_HELP[key]):escape(f.unit||'Auswahl für dieses Szenario')}</p></div>`;
+  }
+  function showCompactPanel(panel,{focus=false}={}) {
+    if(!compact)return;
+    compactPanel=panel;
+    root.querySelectorAll('[data-finance-panel]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.financePanel===panel)));
+    root.querySelector('.finance-body').hidden=panel!=='scenario';
+    root.querySelector('.finance-advanced').hidden=panel!=='advanced';
+    root.querySelector('.finance-advanced').open=true;
+    root.querySelector('.finance-more').hidden=panel!=='details';
+    root.querySelector('.finance-details').open=true;
+    const content=root.querySelector('.finance-slide-content');
+    content.scrollTop=0;
+    if(focus)root.querySelector(`[data-finance-panel="${panel}"]`).focus({preventScroll:true});
   }
   function drawShell() {
     // Replacing a focused field may synchronously emit its final change event.
@@ -80,7 +93,15 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
     const groups=FINANCE_FIELDS[state.preset],quick=QUICK_FIELDS[state.preset];
     const quickFields=quick.map(key=>fields().find(f=>f.key===key));
     root.innerHTML=`<div class="finance-toolbar"><label for="${id}-preset"><span>Rechenmodell</span><select id="${id}-preset" data-finance-preset>${Object.entries(PRESET_LABELS).map(([value,label])=>`<option value="${value}">${label}</option>`).join('')}</select></label><div class="finance-toolbar-actions"><span class="finance-scenario-status" data-finance-status></span><button class="finance-reset" type="button" data-finance-reset>Basiswerte zurücksetzen</button></div></div><p class="finance-basis">${state.preset==='zurich'?'Zürich · Abo pro abrechenbarer Wohnung. Strommarge getrennt vom Abo.':'Cham · alternatives Modell: Entschädigung pro Wallbox, nicht pro Wohnung.'}</p><div class="finance-body"><section class="finance-assumptions" aria-labelledby="${id}-assumptions"><div class="finance-section-heading"><span class="finance-eyebrow">Was wäre, wenn …</span><h3 id="${id}-assumptions">Annahmen verändern</h3></div><div class="finance-quick">${quickFields.map(f=>input(f,true)).join('')}</div><p class="finance-validation" id="${id}-validation" role="status"></p><p class="finance-control-hint">Regler bewegen oder Werte direkt eingeben.</p></section><section class="finance-results" aria-label="Berechnetes Szenario"></section></div><details class="finance-advanced"><summary>Weitere Annahmen <span>Gebäude, Nutzung & Kosten</span></summary><div class="finance-advanced-grid">${groups.map(g=>{const remaining=g.fields.filter(f=>!quick.includes(f.key));return remaining.length?`<fieldset class="finance-group"><legend>${g.title}</legend><div class="finance-fields">${remaining.map(f=>input(f)).join('')}</div></fieldset>`:'';}).join('')}</div></details><div class="finance-more"></div><p class="finance-note finance-boundary">Szenario, keine Prognosegarantie. Konstante Jahreswerte; ohne Steuern, Finanzierung, Inflation oder Ersatzinvestitionen.${state.preset==='zurich'?' Der Überschuss ist vor Abschreibung, kein Nettogewinn.':' Akquise wird im Cashflow einmalig zu Beginn bezahlt, nicht nochmals jährlich.'}</p><span class="finance-sr" data-finance-live aria-live="polite" aria-atomic="true"></span>`;
-    syncControls();drawResult();
+    if(compact){
+      const content=document.createElement('div');content.className='finance-slide-content';
+      content.setAttribute('role','region');content.setAttribute('aria-label','Szenario und Finanzannahmen');content.tabIndex=0;
+      const body=root.querySelector('.finance-body');body.before(content);
+      content.append(body,root.querySelector('.finance-advanced'),root.querySelector('.finance-more'));
+      content.before(root.querySelector('.finance-validation'));
+      root.querySelector('.finance-basis').insertAdjacentHTML('beforebegin',`<div class="finance-panel-switch" role="group" aria-label="Finanzansicht"><button type="button" data-finance-panel="scenario" aria-pressed="true">Szenario</button><button type="button" data-finance-panel="advanced" aria-pressed="false">Weitere Annahmen</button><button type="button" data-finance-panel="details" aria-pressed="false">Rechenweg & Daten</button></div>`);
+    }
+    syncControls();drawResult();showCompactPanel(compactPanel);
     } finally {rendering=false;}
   }
   function syncControls(changedKey) {
@@ -103,7 +124,7 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
     root.querySelector('[data-finance-status]').classList.toggle('is-changed',changed>0);
     root.querySelector('.finance-results').innerHTML=`<div class="finance-chart-panel"><div class="finance-chart-heading"><div><span class="finance-eyebrow">Auswirkung im Zeitverlauf</span><h3>Kumulierter Cashflow</h3></div><span class="finance-horizon">${result.horizon} Jahre · CHF</span></div><div class="finance-outcome"><div><span>Nach ${result.horizon} Jahren</span><strong>${chf(result.cashflow.at(-1).value)}</strong></div><p class="finance-delta">${delta===0?'Gleich wie Basiswerte':`${delta>0?'+':'−'} CHF ${number(Math.abs(delta))} zur Basis`}</p></div>${chart(result,id,compact,narrow)}</div>${kpis(result,compact)}${result.warnings.length?`<ul class="finance-warnings">${result.warnings.map(w=>`<li>${escape(w)}</li>`).join('')}</ul>`:''}`;
     root.querySelector('.finance-more').innerHTML=detailsHtml(result,id);
-    if(oldDetails)root.querySelector('.finance-details').open=true;
+    if(oldDetails||compact)root.querySelector('.finance-details').open=true;
     if(announce)root.querySelector('[data-finance-live]').textContent=`Neu berechnet: ${chf(result.annualCash)} Cash-Überschuss pro Jahr.`;
   }
   function publish() {
@@ -132,6 +153,8 @@ export function mountFinance(root,{compact=false,preset='zurich',sync=true}={}) 
     }
   }
   function onClick(event) {
+    const panel=event.target.closest('[data-finance-panel]');
+    if(panel){showCompactPanel(panel.dataset.financePanel,{focus:true});return;}
     if(event.target.closest('[data-finance-reset]')){state=normalizeState({preset:state.preset});drawShell();publish();root.querySelector('[data-finance-reset]').focus();}
   }
   function receive(event) {
