@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cosmetic-only redesign of the complete supplied 51-slide PowerPoint.
+"""Cosmetic-only redesign of the authorized first 17 source PowerPoint slides.
 
 The source is the content master: native text runs, diagrams, pictures, charts,
 notes and hidden-slide flags are retained. Only geometry, colours and typography
@@ -21,6 +21,12 @@ parser.add_argument('--source',type=Path,default=Path.home()/'.local/state/volto
 parser.add_argument('--out',type=Path,default=ROOT/'website-src/downloads/VoltoShare-Praesentation.pptx')
 args=parser.parse_args()
 prs=Presentation(args.source)
+# Mathis explicitly excluded original slides 18–51 on 27 November 2026.
+# Remove their relationships as well as manifest entries; the private source stays intact.
+if len(prs.slides)<17:raise SystemExit('The source must contain the 17 authorized slides')
+for slide_id in list(prs.slides._sldIdLst)[17:]:
+ prs.part.drop_rel(slide_id.rId)
+ prs.slides._sldIdLst.remove(slide_id)
 kit=ROOT/'design/brand-kit'
 C={'green':'28563B','ink':'1E2023','dark':'23262B','paper':'F8F5F0','white':'FFFFFF','tint':'EAF0EB','line':'D9DFD9','muted':'58615C','sage':'748178','pale':'D6E5D6','blue':'1959A6'}
 def rgb(c):return RGBColor.from_string(C.get(c,c))
@@ -324,44 +330,6 @@ for j in range(12):
  if row<5:rect(s,x,y+.64,5.82,.008,'line')
 panel(d[57],.65,6.17,12.03,.52,'tint');text(d[58],.84,6.25,11.65,.40,11.5,False)
 
-# 18–51 — preserve the source layouts/media, repair inherited text overflow.
-# All table/diagram labels remain editable; these edits are geometry/style only.
-def allids(slide):return {sh.shape_id:sh for sh in walk(slide.shapes)}
-s=prs.slides[18];d=allids(s)
-text(d[25],9.30,3.10,2.7,.47,21,True,'white',PP_ALIGN.CENTER,True)
-s=prs.slides[25];d=allids(s)
-for id,x,y,w in [(58,2.25,2.50,1.80),(62,2.25,4.92,1.80),(64,9.38,2.48,2.12),(68,9.38,4.87,2.12),(19,5.31,6.69,2.72),(20,5.24,.48,2.84)]:
- text(d[id],x,y,w,.58,18,True,'ink',PP_ALIGN.CENTER)
-for id in [2]:text(d[id],.60,.55,4.6,1.0,28,True)
-s=prs.slides[26];d=allids(s)
-# The source's giant overlapping diagram shapes cover two source headings.
-# Bring those original text objects forward without changing their content.
-for id in [19,20,2]:
- sh=d[id];parent=sh.element.getparent();parent.remove(sh.element);parent.append(sh.element)
-text(d[19],8.14,1.07,4.65,.58,28,True,'white')
-text(d[3],8.14,1.85,4.63,1.14,16,False,'white')
-s=prs.slides[30];d=allids(s)
-text(d[25],3.16,4.66,3.15,.61,19,True,'white',PP_ALIGN.CENTER)
-text(d[26],6.71,4.66,3.15,.61,19,True,'white',PP_ALIGN.CENTER)
-text(d[81],.18,3.02,2.39,2.45,15,True,'ink',PP_ALIGN.CENTER)
-s=prs.slides[33];d=allids(s)
-for id,x,y,w in [(15,2.52,2.28,3.27),(27,8.64,4.69,3.43),(30,2.52,4.69,3.27),(3,8.65,2.28,2.70)]:
- text(d[id],x,y,w,.34,13.5,True,'white',PP_ALIGN.CENTER,True)
-s=prs.slides[46];d=allids(s)
-text(d[2],.65,.42,12.03,.67,31,True)
-for p in d[2].text_frame.paragraphs:
- pp=p._p.get_or_add_pPr();pp.set('marL','0');pp.set('indent','0')
-for id in [15,17,19,21,23,25,27,29,33]:
- sh=d[id];text(sh,sh.left/914400,sh.top/914400,sh.width/914400,.55,16,True,'green',PP_ALIGN.CENTER)
-for id in [16,18,20,22,24,26,28,30,34,36,38,39,40,41,71,72,73,74,75,76,77,78]:
- sh=d[id];fmt(sh,11.5,False,'ink')
-# Keep all blank source paragraphs. They take space but are not discarded.
-for id in [20]:d[id].height=Inches(1.1)
-text(d[30],5.74,5.30,1.87,.55,11.5,False,'ink',PP_ALIGN.CENTER)
-text(d[74],5.74,5.88,1.87,.45,11.5,False,'ink',PP_ALIGN.CENTER)
-text(d[75],5.74,6.37,1.87,.58,11.5,False,'ink',PP_ALIGN.CENTER)
-text(d[28],10.43,2.74,2.05,.83,11.5,False,'ink',PP_ALIGN.CENTER)
-
 # Native chart cosmetics only; no categories, numbers, series, chart type edited.
 for s in list(prs.slides)[:17]:
  for sh in s.shapes:
@@ -387,9 +355,11 @@ for s in list(prs.slides)[1:17]:
 
 # November 27 editorial refinement. The source objects remain the content master.
 from presentation_modern_main import apply as modernize_main
-from presentation_modern_appendix import apply as modernize_appendix
+from presentation_premium_intro import apply as premium_intro
+from presentation_premium_story import apply as premium_story
 modernize_main(prs, kit)
-modernize_appendix(prs, kit)
+premium_intro(prs, kit)
+premium_story(prs, kit)
 
 # Fit unchanged text to its box using real font metrics. No text truncation.
 fontdir=kit/'04_Fonts'
@@ -413,6 +383,10 @@ for idx,s in enumerate(list(prs.slides)[:17],1):
   if not sh.has_text_frame or not sh.text.strip():continue
   sizes=[r.font.size.pt for p in sh.text_frame.paragraphs for r in p.runs if r.font.size]
   if not sizes:continue
+  # Preserve intentional heading/body and number/label hierarchies. A single
+  # maximum-size estimate would flatten mixed-size runs and can create overflow.
+  # These explicitly laid-out boxes are checked in the native rendered review.
+  if len({round(n,2) for n in sizes})>1:continue
   current=max(sizes);size=current
   bold=any(r.font.bold for p in sh.text_frame.paragraphs for r in p.runs)
   while size>10 and not estimate(sh,size,bold):size-=.5
@@ -423,7 +397,7 @@ for idx,s in enumerate(list(prs.slides)[:17],1):
     for r in p.runs:r.font.size=Pt(size)
 
 args.out.parent.mkdir(parents=True,exist_ok=True);prs.save(args.out)
-# Resolve source theme colours too (many appendix shapes use scheme references).
+# Resolve source theme colours too; source objects can use scheme references.
 # Raster source images, embedded workbooks and all non-visual content are untouched.
 from io import BytesIO
 raw=args.out.read_bytes();buffer=BytesIO()
@@ -444,10 +418,20 @@ with zipfile.ZipFile(BytesIO(raw)) as zin,zipfile.ZipFile(buffer,'w',zipfile.ZIP
   zout.writestr(info,blob)
 args.out.write_bytes(buffer.getvalue())
 # Assert that all original slide-visible literals survive (z-order may change).
-ns={'a':'http://schemas.openxmlformats.org/drawingml/2006/main'}
+ns={'a':'http://schemas.openxmlformats.org/drawingml/2006/main',
+    'p':'http://schemas.openxmlformats.org/presentationml/2006/main',
+    'r':'http://schemas.openxmlformats.org/officeDocument/2006/relationships'}
+def manifest_slides(package):
+ import posixpath
+ rels={r.get('Id'):posixpath.normpath(posixpath.join('ppt',r.get('Target')))
+       for r in ET.fromstring(package.read('ppt/_rels/presentation.xml.rels'))}
+ manifest=ET.fromstring(package.read('ppt/presentation.xml'))
+ return [rels[s.get('{'+ns['r']+'}id')] for s in manifest.xpath('./p:sldIdLst/p:sldId',namespaces=ns)]
 with zipfile.ZipFile(args.source) as original,zipfile.ZipFile(args.out) as final:
- for i in range(1,52):
-  name=f'ppt/slides/slide{i}.xml';a=ET.fromstring(original.read(name));b=ET.fromstring(final.read(name))
+ source_slides=manifest_slides(original)[:17];output_slides=manifest_slides(final)
+ assert len(output_slides)==17,'Output must end after original slide 17'
+ for i,(source_name,target_name) in enumerate(zip(source_slides,output_slides),1):
+  a=ET.fromstring(original.read(source_name));b=ET.fromstring(final.read(target_name))
   assert sorted(a.xpath('//a:t/text()',namespaces=ns))==sorted(b.xpath('//a:t/text()',namespaces=ns)),f'Text changed on slide {i}'
   assert a.get('show')==b.get('show'),f'Hidden flag changed on slide {i}'
 print(f'Built {len(prs.slides)} cosmetically redesigned editable slides: {args.out}')

@@ -59,8 +59,8 @@ try {
 
   await page.goto(base+'/praesentation/');await page.waitForFunction(()=>window.voltoPresentationReady);
   const response=await page.request.get(base+'/presentation-data.json'),data=await response.json();
-  ok(data.slides.length===51,'original 51-slide manifest remains unchanged');
-  ok(await page.locator('[data-slide-jump]').count()===51,'all original slides still selectable');
+  ok(data.slides.length===17,'authorized 17-slide manifest retains original content');
+  ok(await page.locator('[data-slide-jump]').count()===17,'all original slides still selectable');
   await jump(13);
   const original=await page.locator('.deck-artwork').getAttribute('src');
   ok(original===data.slides[13].image,'finance source slide remains original artwork');
@@ -143,7 +143,7 @@ try {
   await page.goto(base+'/praesentation/?slide=14&live=1');await page.waitForFunction(()=>window.voltoPresentationReady);
   ok(await visibleLab(),'direct presentation link opens live step');
   await page.goto(base+'/praesentation/?print=1');await page.waitForFunction(()=>window.voltoPresentationReady);
-  ok(await page.locator('.deck-stage').count()===51,'print version retains 51 original slides only');
+  ok(await page.locator('.deck-stage').count()===17,'print version retains 17 original slides only');
   ok(errors.length===0,'no browser errors: '+errors.join(';'));
   console.log(`PASS ${checks} financial redesign / live presentation browser checks on ${base}`);
 } finally {await browser.close();}

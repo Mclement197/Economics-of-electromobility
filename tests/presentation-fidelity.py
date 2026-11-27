@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check cosmetic-only presentation changes against the untouched source PPTX.
+"""Check the authorized first 17 slides against the untouched full source PPTX.
 
 Standard library only. Shape order/position, font styling and decorative logos
 may change. Source text, pictures, chart data, notes and hidden flags may not.
@@ -149,15 +149,20 @@ def main():
         if not ok:
             failures.append(label)
 
-    check(len(source.slides) == len(target.slides), 'PPTX slide count differs')
+    check(len(source.slides) >= 17, 'Source does not contain 17 slides')
+    included = source.slides[:17]
+    check(len(target.slides) == 17, 'PPTX must end after source slide 17')
+    actual_slide_parts = [name for name in target.zip.namelist() if name.startswith('ppt/slides/slide') and name.endswith('.xml')]
+    check(len(actual_slide_parts) == 17, 'PPTX retains unwanted appendix slide parts')
     browser = None
     if not args.skip_browser:
         browser = json.loads(args.manifest.read_text())
-        check(len(browser['slides']) == len(source.slides), 'Browser slide count differs')
+        check(len(browser['slides']) == 17, 'Browser must end after source slide 17')
+        check(browser.get('includedSourceSlides') == list(range(1,18)), 'Browser source scope differs')
         check(browser.get('sourceSha256') == hashlib.sha256(args.source.read_bytes()).hexdigest(), 'Browser source hash differs')
         check(browser.get('revision') == hashlib.sha256(args.pptx.read_bytes()).hexdigest()[:12], 'Browser revision does not match the downloadable PPTX')
 
-    for index, source_path in enumerate(source.slides):
+    for index, source_path in enumerate(included):
         if index >= len(target.slides):
             break
         original, redesigned = source.read_slide(source_path), target.read_slide(target.slides[index])
@@ -173,11 +178,14 @@ def main():
             image = published.get('image', '')
             asset = ROOT / 'website-src' / image.split('?', 1)[0].lstrip('/')
             check(image.startswith('/assets/slides/') and asset.is_file(), f'{label}: browser artwork missing')
+    if browser is not None:
+        assets = ROOT / 'website-src/assets/slides'
+        check({p.name for p in assets.glob('slide-*.svg')} == {f'slide-{i:02d}.svg' for i in range(1,18)}, 'Browser artwork directory retains obsolete appendix pages')
     if failures:
         print(f'FAIL: {len(failures)} of {checks} fidelity checks failed')
         print('\n'.join(f'  - {f}' for f in failures))
         return 1
-    print(f'PASS: {checks} fidelity checks across all {len(source.slides)} slides; exact source text, notes, chart values, images and hidden flags preserved' + ('; browser export pending' if args.skip_browser else '; browser transcript and revision match'))
+    print(f'PASS: {checks} fidelity checks across the first {len(included)} source slides; exact source text, notes, chart values, images and hidden flags preserved' + ('; browser export pending' if args.skip_browser else '; browser transcript and revision match'))
     return 0
 
 

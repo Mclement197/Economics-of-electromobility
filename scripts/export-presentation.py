@@ -24,16 +24,18 @@ else:
   if not rendered.exists():raise SystemExit('Impress did not produce a fresh PDF')
   shutil.copy2(rendered,pdf)
 info=subprocess.check_output(['pdfinfo',str(pdf)],text=True)
-if 'Pages:           51' not in info:raise SystemExit('Expected exactly 51 PDF pages, including hidden slides')
+if next((line.split(':',1)[1].strip() for line in info.splitlines() if line.startswith('Pages:')),None)!='17':raise SystemExit('Expected exactly 17 PDF pages, including hidden slides')
 revision=hashlib.sha256(pptx.read_bytes()).hexdigest()[:12]
 assets=ROOT/'website-src/assets/slides';assets.mkdir(exist_ok=True)
 prs=Presentation(a.source)
+if len(prs.slides)<17:raise SystemExit('Source does not contain all 17 authorized slides')
+if len(Presentation(pptx).slides)!=17:raise SystemExit('Editable output must end after original slide 17')
 def walk(shapes):
  for s in shapes:
   if s.shape_type==6:yield from walk(s.shapes)
   else:yield s
 slides=[]
-for i,s in enumerate(prs.slides,1):
+for i,s in enumerate(list(prs.slides)[:17],1):
  texts=[];charts=[]
  for shape in walk(s.shapes):
   if shape.has_text_frame and shape.text.strip():texts.append(shape.text)
@@ -44,9 +46,11 @@ for i,s in enumerate(prs.slides,1):
    charts.append({'title':chart.chart_title.text_frame.text if chart.has_title and chart.chart_title.has_text_frame else '', 'categories':[str(c.label) for c in chart.plots[0].categories], 'series':[{'name':x.name,'values':list(x.values)} for x in chart.series]})
  title=s.shapes.title.text if s.shapes.title and s.shapes.title.text.strip() else next((t for t in texts if t.strip() and t not in ['VoltoShare','Gruppe 1 - FlexRide'] and not t.strip().isdigit()),f'Originalfolie {i}')
  if i==1:title='VoltoShare'
- if i in [44,51]:title=f'Originalfolie {i}'
  image=assets/f'slide-{i:02d}.svg'
  subprocess.run(['pdftocairo','-svg','-f',str(i),'-l',str(i),str(pdf),str(image)],check=True,timeout=60)
  slides.append({'number':i,'title':title,'hidden':s._element.get('show')=='0','image':f'/assets/slides/{image.name}?v={revision}','text':texts,'charts':charts,'notes':s.notes_slide.notes_text_frame.text if s.has_notes_slide else ''})
-(ROOT/'website-src/presentation-data.json').write_text(json.dumps({'title':'VoltoShare','revision':revision,'sourceSha256':hashlib.sha256(a.source.read_bytes()).hexdigest(),'slides':slides},ensure_ascii=False,indent=2)+'\n')
+# Remove previously published appendix artwork after the new 17-page export succeeds.
+for stale in assets.glob('slide-*.svg'):
+ if stale.name not in {f'slide-{i:02d}.svg' for i in range(1,18)}:stale.unlink()
+(ROOT/'website-src/presentation-data.json').write_text(json.dumps({'title':'VoltoShare','revision':revision,'includedSourceSlides':list(range(1,18)),'sourceSha256':hashlib.sha256(a.source.read_bytes()).hexdigest(),'slides':slides},ensure_ascii=False,indent=2)+'\n')
 print(f'Exported {len(slides)} source-exact slides, PDF, vector browser artwork, and accessible transcript ({revision})')

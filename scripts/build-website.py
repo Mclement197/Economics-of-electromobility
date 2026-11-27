@@ -38,6 +38,10 @@ for cssfile in ['site.css','calculator.css','contact.css']:
         blocks.append(css[start:end].replace('@media','@container',1))
     (out/cssfile).write_text(css+'\n'+('body{container-type:inline-size}\n' if cssfile=='site.css' else '')+'\n'.join(blocks))
 shutil.copytree(SRC/'assets',out/'assets',dirs_exist_ok=True)
+# An existing staging folder must not retain the now-excluded appendix pages.
+slide_assets=out/'assets/slides'
+for stale in slide_assets.glob('slide-*.svg'):
+    if stale.name not in {f'slide-{i:02d}.svg' for i in range(1,18)}:stale.unlink()
 shutil.copytree(SRC/'downloads',out/'downloads',dirs_exist_ok=True)
 shutil.copy2(SRC/'assets/symbol.svg',out/'favicon.svg')
 for size,name in [(180,'apple-touch-icon.png'),(192,'icon-192.png'),(512,'icon-512.png')]:

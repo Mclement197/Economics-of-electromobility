@@ -9,8 +9,9 @@ let checks=0;const ok=(v,m)=>{assert.ok(v,m);checks++;};
 try{
  const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
  const assetResponse=await page.request.get(base+'/presentation-data.json');ok(assetResponse.ok(),'slide manifest available');const data=await assetResponse.json();
- ok(data.slides.length===51,'all 51 original slides are in the manifest');
- assert.deepEqual(data.slides.filter(s=>s.hidden).map(s=>s.number),[8,13,23]);checks++;
+ ok(data.slides.length===17,'all 17 original slides are in the manifest');
+ assert.deepEqual(data.slides.filter(s=>s.hidden).map(s=>s.number),[8,13]);checks++;
+ ok((await page.request.get(base+'/assets/slides/slide-18.svg')).status()===404,'removed appendix artwork is not published');
  const waitArtwork=()=>page.locator('.deck-artwork').evaluate(async img=>{await img.decode();return img.naturalWidth>0&&img.naturalHeight>0;});
  const jump=async i=>{await page.locator('[data-action="overview"]').click();await page.locator(`[data-slide-jump="${i}"]`).click();await waitArtwork();};
  await page.goto(base+'/finanzen/');await page.waitForSelector('[data-finance-key="subscription"]');
@@ -22,9 +23,9 @@ try{
  await page.locator('[data-finance-key="subscription"]').fill('-1');ok(await page.locator('[data-finance-key="subscription"]').getAttribute('aria-invalid')==='true','negative subscription rejected');
  await page.locator('[data-finance-key="subscription"]').fill('35');await page.reload();await page.waitForSelector('[data-finance-key="subscription"]');ok(await page.locator('[data-finance-key="subscription"]').inputValue()==='35','scenario persists');
  await page.goto(base+'/praesentation/');await page.waitForFunction(()=>window.voltoPresentationReady);
- ok(await page.locator('.deck-overview [data-slide-jump]').count()===51,'all 51 slides selectable');
- assert.deepEqual(await page.locator('.deck-overview-group').evaluateAll(groups=>groups.map(g=>g.querySelectorAll('button').length)),[17,34]);checks++;
- ok(await page.locator('.deck-overview small').count()===3,'original hidden slides are labelled');
+ ok(await page.locator('.deck-overview [data-slide-jump]').count()===17,'all 17 slides selectable');
+ assert.deepEqual(await page.locator('.deck-overview-group').evaluateAll(groups=>groups.map(g=>g.querySelectorAll('button').length)),[17]);checks++;
+ ok(await page.locator('.deck-overview small').count()===2,'original hidden slides are labelled');
  for(let i=0;i<data.slides.length;i++){
   await jump(i);const s=data.slides[i];
   ok(await page.locator('.deck-slide').getAttribute('data-slide')===String(i),'select slide '+(i+1));
@@ -38,7 +39,7 @@ try{
    const rows=await page.locator('.deck-reading table').nth(c).locator('tbody tr').allTextContents();
    ok(rows.length===s.charts[c].series.length,'every chart series retained '+(i+1));
   }
-  if(process.env.SCREENSHOTS&&[0,2,4,7,8,12,13,14,16,43,50].includes(i))await page.locator('.deck-stage').screenshot({path:`/tmp/volto-redesign-slide-${String(i+1).padStart(2,'0')}.png`});
+  if(process.env.SCREENSHOTS&&[0,2,4,7,8,12,13,14,16].includes(i))await page.locator('.deck-stage').screenshot({path:`/tmp/volto-redesign-slide-${String(i+1).padStart(2,'0')}.png`});
  }
  ok(data.slides[12].charts[0].series.length===3,'charging chart retains all three source series');
  await jump(12);await page.locator('[data-action="read"]').click();
@@ -63,7 +64,7 @@ try{
  await page.locator('[data-action="fullscreen"]').click();ok(await page.locator('.deck').evaluate(e=>e.classList.contains('deck-expanded')),'fullscreen enters');
  await page.locator('.deck-stage').focus();await page.keyboard.press('ArrowLeft');ok(await page.locator('.deck-slide').getAttribute('data-slide')==='12','fullscreen keyboard navigates');
  await page.keyboard.press('Home');ok(await page.locator('.deck-slide').getAttribute('data-slide')==='0','Home selects first slide');
- await page.keyboard.press('End');ok(await page.locator('.deck-slide').getAttribute('data-slide')==='50','End reaches final original slide');
+ await page.keyboard.press('End');ok(await page.locator('.deck-slide').getAttribute('data-slide')==='16','End reaches final original slide');
  await page.locator('[data-action="finance"]').click();ok(await page.locator('.deck-lab').isVisible(),'finance lab also works fullscreen');
  await page.keyboard.press('Escape');ok(await page.locator('.deck').evaluate(e=>e.classList.contains('deck-expanded')),'first Escape closes lab without leaving fullscreen');
  await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('.deck').classList.contains('deck-expanded'));ok(!(await page.locator('.deck').evaluate(e=>e.classList.contains('deck-expanded'))),'second Escape exits fullscreen');
@@ -89,7 +90,7 @@ try{
  ok((await page.locator('.finance-kpis').innerText()).includes('17’400'),'Cham baseline investment');
  await page.locator('[data-finance-key="evShare"]').fill('0');ok((await page.locator('.finance-kpis').innerText()).includes('Nicht erreicht'),'zero EV handled');ok(!(await page.locator('.finance').innerText()).match(/NaN|Infinity/),'no invalid numbers');await page.locator('[data-finance-reset]').click();
  await page.setViewportSize({width:1280,height:900});await page.goto(base+'/praesentation/?print=1');await page.waitForFunction(()=>window.voltoPresentationReady);
- ok(await page.locator('.deck-stage').count()===51,'print route retains all 51 slides');
+ ok(await page.locator('.deck-stage').count()===17,'print route retains all 17 slides');
  ok(await page.locator('.deck-artwork').evaluateAll(async images=>(await Promise.all(images.map(async img=>{try{await img.decode();return img.naturalWidth>0;}catch{return false;}}))).every(Boolean)),'all print slide assets decode');
  await page.goto(base+'/praesentation/');await page.waitForFunction(()=>window.voltoPresentationReady);
  for(const ext of ['pdf','pptx']){
